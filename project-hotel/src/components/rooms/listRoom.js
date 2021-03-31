@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class listRoom extends Component {
+class ListRoom extends Component {
      render() {
           return (
                <div className="container">
@@ -43,4 +43,4 @@ class listRoom extends Component {
      }
 }
 
-export default listRoom;
+export default ListRoom;

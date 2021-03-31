@@ -1,6 +1,51 @@
 import React, { Component } from 'react';
+import { Route, Link } from 'react-router-dom'
 
-class header extends Component {
+const menus = [
+    {
+        name: "Trang chủ",
+        to: "/",
+        exact: true
+    },
+    {
+        name: "Đặt phòng",
+        to: "/rooms",
+        exact: false
+    },
+    {
+        name: "Liên hệ",
+        to: "/contact",
+        exact: false
+    },
+    {
+        name: "Kho hình",
+        to: "/gallery",
+        exact: false
+    },
+    {
+     name: "Giới thiệu",
+     to: "/intro",
+     exact: false
+     },
+    {
+        name: "Đăng nhập",
+        to: "/login",
+        exact: false
+    },
+]
+const MenuLink = ({ label, to, activeOnlyWhenExact }) => {
+     return (
+         <Route path={to} exact={activeOnlyWhenExact} children={({ match }) => {
+             let active = match ? 'active abcClassTest ' : '';
+             return (
+                 <li>
+                     <Link to={to}>{label}</Link>
+                 </li>
+             )
+         }}></Route>
+     )
+ }
+class Header extends Component {
      render() {
           return (
                <div>
@@ -20,11 +65,7 @@ class header extends Component {
                     {/* Collect the nav links, forms, and other content for toggling */}
                     <div className="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                     <ul className="nav navbar-nav">        
-                         <li><a href="#">Home </a></li>
-                         <li><a href="#">Rooms &amp; Tariff</a></li>        
-                         <li><a href="#">Introduction</a></li>
-                         <li><a href="#">Gallery</a></li>
-                         <li><a href="#">Contact</a></li>
+                         {this.showMenu(menus)}
                     </ul>
                     </div>{/* Wnavbar-collapse */}
                </div>{/* container-fluid */}
@@ -33,6 +74,15 @@ class header extends Component {
                </div>
           );
      }
+     showMenu = (menus) =>{
+          let result = null
+          if(menus.length > 0){
+              result = menus.map((menu,index) => {
+                  return (<MenuLink key = {index} label={menu.name} to = {menu.to} activeOnlyWhenExact={menu.exact}></MenuLink>)
+              })
+          }
+          return result
+      }
 }
 
-export default header;
+export default Header;
