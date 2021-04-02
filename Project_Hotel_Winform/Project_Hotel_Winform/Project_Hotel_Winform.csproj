@@ -50,12 +50,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="All User Control\CustomerRegistation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="All User Control\CustomerRegistation.Designer.cs">
+      <DependentUpon>CustomerRegistation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="All User Control\ManagementRooms.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="All User Control\ManagementRooms.Designer.cs">
+      <DependentUpon>ManagementRooms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config.cs" />
     <Compile Include="Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Login.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +78,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="All User Control\CustomerRegistation.resx">
+      <DependentUpon>CustomerRegistation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="All User Control\ManagementRooms.resx">
+      <DependentUpon>ManagementRooms.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
