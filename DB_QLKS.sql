@@ -2,15 +2,6 @@
 go
 
 --Tạo table
-create table THONG_TIN_KS (
-	TenKS nvarchar(20) not null primary key,
-	Dchi nvarchar(50),
-	Tphho nvarchar(20),
-	Qgia nvarchar(20),
-	Sodt nchar(11),
-	Email nchar(10),
-	Website nchar(10)
-);
 
 set dateformat dmy;
 create table KhachHang (
@@ -38,12 +29,6 @@ create table Phong (
 	Trangthai nchar(2)
 );
 
-create table Dichvu (
-	MaDV nchar(10) not null primary key,
-	TenDV nvarchar(20),
-	GiaDV float
-);
-
 create table Hoadon (
 	MaHD nchar(10) not null primary key,
 	TenKhaiThue nvarchar(20),
@@ -66,8 +51,7 @@ create table Phieu_Dang_Ky (
 	MaPDK nchar(10) not null primary key,
 	Ngayden date,
 	Ngaydi date,
-	TreEm int,
-	NguoiLon int,
+	SoNguoi int,
 	Tratruoc nchar(10),
 	Chuthich nvarchar(100),
 	Maphong nchar(10),
