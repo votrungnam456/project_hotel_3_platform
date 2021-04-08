@@ -26,7 +26,7 @@ create table Phong (
 	Mota nvarchar(50),
 	MaKP nchar(10),
 	MaLP nchar(10),
-	Trangthai nchar(2)
+	Trangthai bit
 );
 
 create table Hoadon (
@@ -34,7 +34,8 @@ create table Hoadon (
 	TenKhaiThue nvarchar(20),
 	Masothue nchar(10),
 	DchiKhaiThue nvarchar(50),
-	MaPTT nchar(10)
+	MaPTT nchar(10),
+	MaNV nchar(10),
 );
 
 create table Phieu_Thanh_Toan (
@@ -62,29 +63,43 @@ create table Phieu_Dang_Ky (
 set dateformat dmy;
 create table TaiKhoan_NhanVien (
 	ID_NV nchar(10) not null primary key,
-	HoTen_NV nvarchar(50),
-	ChucVu nchar(10),
 	TenTK nchar(10),
 	MatKhau nchar(10)
+);
+
+create table NhanVien (
+	ID_NV nchar(10) not null primary key,
+	HoTen_NV nvarchar(50),
+	ChucVu nchar(10),
+);
+
+create table TK_KhachHang (
+	MaKH nchar(10) not null primary key,
+	TenTK nchar(20),
+	MatKhau nchar(20)
 );
 
 
 --Tạo khóa ngoại
 alter table Phong
-add constraint FK_Phong_KieuPhong foreign key (MaKP) references KieuPhong(MaKP)
-
-alter table Phong
-add constraint FK_Phong_LoaiPhong foreign key (MaLP) references LoaiPhong(MaLP)
+add constraint FK_Phong_KieuPhong foreign key (MaKP) references KieuPhong(MaKP);
 
 alter table HoaDon
-add constraint FK_HoaDon_PhieuTT foreign key (MaPTT) references Phieu_Thanh_Toan(MaPTT)
+add constraint FK_HoaDon_NhanVien foreign key (MaNV) references NhanVien(ID_NV);
+
+alter table TK_KhachHang
+add constraint FK_KhachHang_TKKH foreign key (MaKH) references KhachHang(MaKH);
+
+alter table HoaDon
+add constraint FK_HoaDon_PhieuTT foreign key (MaPTT) references Phieu_Thanh_Toan(MaPTT);
 
 alter table Phieu_Thanh_Toan
 add constraint FK_PhieuTT_PhieuDK foreign key (MaPTT) references Phieu_Dang_Ky(MaPDK);
 
 alter table Phieu_Dang_Ky
-add constraint FK_PhieuDK_DichVu foreign key (MaDV) references Dichvu(MaDV);
-alter table Phieu_Dang_Ky
 add constraint FK_PhieuDK_KhachHang foreign key (MaKH) references KhachHang(MaKH);
 alter table Phieu_Dang_Ky
 add constraint FK_PhieuDK_Phong foreign key (MaPhong) references Phong(MaPhong);
+
+alter table TaiKhoan_NhanVien
+add constraint FK_TKNV_NhanVien foreign key (ID_NV) references NhanVien(ID_NV);
