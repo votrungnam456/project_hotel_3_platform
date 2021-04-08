@@ -26,7 +26,7 @@ create table Phong (
 	Mota nvarchar(50),
 	MaKP nchar(10),
 	MaLP nchar(10),
-	Trangthai bit
+	Trangthai int,
 );
 
 create table Hoadon (
