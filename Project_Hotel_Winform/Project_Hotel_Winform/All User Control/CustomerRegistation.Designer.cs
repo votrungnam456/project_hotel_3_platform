@@ -50,8 +50,8 @@
             this.cbRoom = new Guna.UI2.WinForms.Guna2ComboBox();
             this.dateCheckIn = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtDateStay = new Guna.UI2.WinForms.Guna2TextBox();
-            this.btnBooking = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.SuspendLayout();
             // 
             // guna2Elipse1
@@ -65,7 +65,7 @@
             this.label1.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(67, 55);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(286, 40);
+            this.label1.Size = new System.Drawing.Size(279, 40);
             this.label1.TabIndex = 1;
             this.label1.Text = "Khách hàng mới";
             // 
@@ -141,6 +141,7 @@
             this.txtName.SelectionStart = 18;
             this.txtName.ShadowDecoration.Parent = this.txtName;
             this.txtName.Size = new System.Drawing.Size(363, 44);
+            this.txtName.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txtName.TabIndex = 8;
             // 
             // txtEmail
@@ -165,6 +166,7 @@
             this.txtEmail.SelectionStart = 15;
             this.txtEmail.ShadowDecoration.Parent = this.txtEmail;
             this.txtEmail.Size = new System.Drawing.Size(363, 44);
+            this.txtEmail.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txtEmail.TabIndex = 9;
             // 
             // txtPwd
@@ -189,6 +191,7 @@
             this.txtPwd.SelectionStart = 7;
             this.txtPwd.ShadowDecoration.Parent = this.txtPwd;
             this.txtPwd.Size = new System.Drawing.Size(363, 44);
+            this.txtPwd.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txtPwd.TabIndex = 10;
             // 
             // txtCMND
@@ -212,7 +215,10 @@
             this.txtCMND.SelectedText = "";
             this.txtCMND.ShadowDecoration.Parent = this.txtCMND;
             this.txtCMND.Size = new System.Drawing.Size(363, 44);
+            this.txtCMND.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txtCMND.TabIndex = 11;
+            this.txtCMND.TextChanged += new System.EventHandler(this.txtCMND_TextChanged);
+            this.txtCMND.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCMND_KeyPress);
             // 
             // txtSDT
             // 
@@ -235,7 +241,10 @@
             this.txtSDT.SelectedText = "";
             this.txtSDT.ShadowDecoration.Parent = this.txtSDT;
             this.txtSDT.Size = new System.Drawing.Size(363, 44);
+            this.txtSDT.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txtSDT.TabIndex = 12;
+            this.txtSDT.TextChanged += new System.EventHandler(this.txtSDT_TextChanged);
+            this.txtSDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSDT_KeyPress);
             // 
             // label7
             // 
@@ -243,9 +252,9 @@
             this.label7.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(622, 123);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(82, 19);
+            this.label7.Size = new System.Drawing.Size(53, 19);
             this.label7.TabIndex = 13;
-            this.label7.Text = "Tên phòng";
+            this.label7.Text = "Phòng";
             this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label8
@@ -299,6 +308,7 @@
             this.txtTypeRoom.SelectedText = "";
             this.txtTypeRoom.ShadowDecoration.Parent = this.txtTypeRoom;
             this.txtTypeRoom.Size = new System.Drawing.Size(363, 44);
+            this.txtTypeRoom.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txtTypeRoom.TabIndex = 18;
             // 
             // txtPrice
@@ -322,6 +332,7 @@
             this.txtPrice.SelectedText = "";
             this.txtPrice.ShadowDecoration.Parent = this.txtPrice;
             this.txtPrice.Size = new System.Drawing.Size(363, 44);
+            this.txtPrice.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txtPrice.TabIndex = 19;
             // 
             // cbRoom
@@ -341,13 +352,14 @@
             this.cbRoom.Name = "cbRoom";
             this.cbRoom.ShadowDecoration.Parent = this.cbRoom;
             this.cbRoom.Size = new System.Drawing.Size(363, 36);
+            this.cbRoom.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.cbRoom.TabIndex = 20;
             this.cbRoom.SelectedIndexChanged += new System.EventHandler(this.guna2ComboBox1_SelectedIndexChanged);
             // 
             // dateCheckIn
             // 
             this.dateCheckIn.CheckedState.Parent = this.dateCheckIn;
-            this.dateCheckIn.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dateCheckIn.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateCheckIn.HoverState.Parent = this.dateCheckIn;
             this.dateCheckIn.Location = new System.Drawing.Point(626, 484);
             this.dateCheckIn.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
@@ -368,55 +380,55 @@
             this.label11.TabIndex = 22;
             this.label11.Text = "Qua đêm (ngày)";
             // 
-            // txtDateStay
+            // guna2ComboBox1
             // 
-            this.txtDateStay.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtDateStay.DefaultText = "";
-            this.txtDateStay.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtDateStay.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtDateStay.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtDateStay.DisabledState.Parent = this.txtDateStay;
-            this.txtDateStay.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtDateStay.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDateStay.FocusedState.Parent = this.txtDateStay;
-            this.txtDateStay.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDateStay.HoverState.Parent = this.txtDateStay;
-            this.txtDateStay.Location = new System.Drawing.Point(626, 582);
-            this.txtDateStay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txtDateStay.Name = "txtDateStay";
-            this.txtDateStay.PasswordChar = '\0';
-            this.txtDateStay.PlaceholderText = "";
-            this.txtDateStay.SelectedText = "";
-            this.txtDateStay.ShadowDecoration.Parent = this.txtDateStay;
-            this.txtDateStay.Size = new System.Drawing.Size(363, 44);
-            this.txtDateStay.TabIndex = 23;
+            this.guna2ComboBox1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.guna2ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.guna2ComboBox1.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox1.FocusedState.Parent = this.guna2ComboBox1;
+            this.guna2ComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.guna2ComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.guna2ComboBox1.HoverState.Parent = this.guna2ComboBox1;
+            this.guna2ComboBox1.ItemHeight = 30;
+            this.guna2ComboBox1.ItemsAppearance.Parent = this.guna2ComboBox1;
+            this.guna2ComboBox1.Location = new System.Drawing.Point(626, 582);
+            this.guna2ComboBox1.Name = "guna2ComboBox1";
+            this.guna2ComboBox1.ShadowDecoration.Parent = this.guna2ComboBox1;
+            this.guna2ComboBox1.Size = new System.Drawing.Size(363, 36);
+            this.guna2ComboBox1.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
+            this.guna2ComboBox1.TabIndex = 25;
             // 
-            // btnBooking
+            // guna2Button1
             // 
-            this.btnBooking.BorderRadius = 25;
-            this.btnBooking.CheckedState.BorderColor = System.Drawing.Color.White;
-            this.btnBooking.CheckedState.FillColor = System.Drawing.Color.Blue;
-            this.btnBooking.CheckedState.ForeColor = System.Drawing.Color.White;
-            this.btnBooking.CheckedState.Parent = this.btnBooking;
-            this.btnBooking.CustomImages.Parent = this.btnBooking;
-            this.btnBooking.FillColor = System.Drawing.Color.White;
-            this.btnBooking.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnBooking.ForeColor = System.Drawing.Color.Black;
-            this.btnBooking.HoverState.Parent = this.btnBooking;
-            this.btnBooking.Location = new System.Drawing.Point(1059, 582);
-            this.btnBooking.Name = "btnBooking";
-            this.btnBooking.ShadowDecoration.Parent = this.btnBooking;
-            this.btnBooking.Size = new System.Drawing.Size(180, 45);
-            this.btnBooking.TabIndex = 24;
-            this.btnBooking.Text = "Đặt phòng";
+            this.guna2Button1.BorderRadius = 20;
+            this.guna2Button1.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+            this.guna2Button1.BorderThickness = 1;
+            this.guna2Button1.CheckedState.BorderColor = System.Drawing.Color.White;
+            this.guna2Button1.CheckedState.CustomBorderColor = System.Drawing.Color.White;
+            this.guna2Button1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(221)))));
+            this.guna2Button1.CheckedState.ForeColor = System.Drawing.Color.White;
+            this.guna2Button1.CheckedState.Parent = this.guna2Button1;
+            this.guna2Button1.CustomImages.Parent = this.guna2Button1;
+            this.guna2Button1.FillColor = System.Drawing.Color.White;
+            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button1.ForeColor = System.Drawing.Color.Black;
+            this.guna2Button1.HoverState.Parent = this.guna2Button1;
+            this.guna2Button1.Location = new System.Drawing.Point(1084, 570);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.ShadowDecoration.Parent = this.guna2Button1;
+            this.guna2Button1.Size = new System.Drawing.Size(149, 48);
+            this.guna2Button1.TabIndex = 26;
+            this.guna2Button1.Text = "Đặt phòng";
             // 
             // CustomerRegistation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.btnBooking);
-            this.Controls.Add(this.txtDateStay);
+            this.Controls.Add(this.guna2Button1);
+            this.Controls.Add(this.guna2ComboBox1);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.dateCheckIn);
             this.Controls.Add(this.cbRoom);
@@ -461,13 +473,13 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private Guna.UI2.WinForms.Guna2Button btnBooking;
-        private Guna.UI2.WinForms.Guna2TextBox txtDateStay;
         private System.Windows.Forms.Label label11;
         private Guna.UI2.WinForms.Guna2DateTimePicker dateCheckIn;
         private Guna.UI2.WinForms.Guna2ComboBox cbRoom;
         private Guna.UI2.WinForms.Guna2TextBox txtPrice;
         private Guna.UI2.WinForms.Guna2TextBox txtTypeRoom;
         private System.Windows.Forms.Label label10;
+        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox1;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
     }
 }

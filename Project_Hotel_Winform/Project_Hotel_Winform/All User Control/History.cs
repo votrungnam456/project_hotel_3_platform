@@ -10,14 +10,19 @@ using System.Windows.Forms;
 
 namespace Project_Hotel_Winform.All_User_Control
 {
-    public partial class ManagementRooms : UserControl
+    public partial class History : UserControl
     {
-        public ManagementRooms()
+        public History()
         {
             InitializeComponent();
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
         {
 
         }
