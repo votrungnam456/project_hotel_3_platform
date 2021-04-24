@@ -1,9 +1,9 @@
 'use strict'
-const RoomsService = require("../service/RoomsService");
-class RoomsController {
-    static async list(req, res, next) {
+const BookingService = require("../service/BookingService");
+class BookingController {
+    static async listBookingRoom(req, res, next) {
         try {
-            let data = await RoomsService.listRoomService(req);
+            let data = await BookingService.listBookingRoomService(req);
             res.status(200).json({
                 status: "SUCCESS",
                 errors: null,
@@ -22,31 +22,32 @@ class RoomsController {
             });
         }
     }
-    static async getItem(req, res, next) {
+    // static async getItem(req, res, next) {
+    //     try {
+    //         let data = await RoomsService.getItemService(req);
+    //         console.log(data)
+    //         res.status(200).json({
+    //             status: "SUCCESS",
+    //             errors: null,
+    //             data: {
+    //                 result: data
+    //             }
+    //         });
+    //     } catch (e) {
+    //         res.status(200).json({
+    //             status: "FAIL",
+    //             errors: [{
+    //                 code: 1000,
+    //                 message: "Server Error"
+    //             }],
+    //             data: null
+    //         });
+    //     }
+    // }
+
+    static async createBookingRoom(req, res, next){
         try {
-            let data = await RoomsService.getItemService(req);
-            console.log(data)
-            res.status(200).json({
-                status: "SUCCESS",
-                errors: null,
-                data: {
-                    result: data
-                }
-            });
-        } catch (e) {
-            res.status(200).json({
-                status: "FAIL",
-                errors: [{
-                    code: 1000,
-                    message: "Server Error"
-                }],
-                data: null
-            });
-        }
-    }
-    static async createRoom(req, res, next){
-        try {
-            let data = await RoomsService.createRoomsService(req);
+            let data = await BookingService.createBookingRoomService(req);
             res.status(200).json({
                 status: "SUCCESS",
                 errors:null,
@@ -65,9 +66,31 @@ class RoomsController {
             });
         }
     }
-    static async updateRoom(req, res, next){
+
+    static async updateCustomer(req, res, next){
         try {
-            let data = await RoomsService.updateRoomService(req);
+            let data = await BookingService.updateBookingRoomService(req);
+            res.status(200).json({
+                status: "SUCCESS",
+                errors:null,
+                data: {
+                    result: data
+                }
+            });
+        } catch (e) {
+            res.status(200).json({
+                status: "FAIL",
+                errors: [{
+                    code: 1000,
+                    message: "Server Error"
+                }],
+                data: null
+            });
+        }
+    }
+    static async deleteBooking(req, res, next){
+        try {
+            let data = await BookingService.deleteBookingService(req);
             res.status(200).json({
                 status: "SUCCESS",
                 errors:null,
@@ -87,4 +110,4 @@ class RoomsController {
         }
     }
 }
-module.exports = RoomsController
+module.exports = BookingController

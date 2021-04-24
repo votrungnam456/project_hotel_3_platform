@@ -4,7 +4,7 @@ const uuid = require('uuid');
 class RoomService {
     static async listRoomService(req) {
         try {
-            let result = await queryBuilder('phong').select();
+            let result = await queryBuilder().select('phong.Tenphong','phong.Mota','phong.Gia','kieuphong.TenKP').from('phong').join('kieuphong', {'Phong.MaKP': 'KieuPhong.MaKP'});
             return result;
         } catch (e) {
             console.log(e);
@@ -15,7 +15,8 @@ class RoomService {
         try {
 
             let MaPhong = req.params.MaPhong;
-            let result = await queryBuilder('phong').where("MaPhong",MaPhong).first();
+            let result = await queryBuilder().select('*').from('phong').join('kieuphong', {'Phong.MaKP': 'KieuPhong.MaKP'})
+            // where("MaPhong",MaPhong).first();
             return result;
         } catch (e) {
             console.log(e);
@@ -25,33 +26,42 @@ class RoomService {
     static async createRoomsService(req){
         try {
             let params = req.body;
+            let id = params.MaPhong;
             let dataInsert = {
                 MaPhong: params.MaPhong,
                 Tenphong: params.Tenphong || null,
                 Mota: params.Mota || null,
                 MaKP: params.MaKP,
-                MaLP: null,
+                Gia: params.Gia,
                 Trangthai: 1
                 
             }
-            await queryBuilder('phong').insert(dataInsert);
-            return "Tạo phòng thành công";
+            let check = await queryBuilder('phong').where("MaPhong",id).first();
+            if(check != null){
+                return "Mã phòng đã tồn tại";
+            }
+            else{
+                await queryBuilder('phong').insert(dataInsert);
+                return "Tạo phòng thành công";
+            }
+
         } catch (e) {
             console.log(e);
             return e
         }
     }
-    ///not done
     static async updateRoomService(req){
         try {
-            let idTodo = req.params.MaPhong;
+            let MaPhong = req.params.MaPhong;
             let params = req.body;
             let dataInsert = {
-                title: params.title,
-                description: params.description,
-                updated_at: new Date(),
+                Tenphong: params.Tenphong,
+                Mota: params.Mota,
+                MaKP: params.MaKP,
+                Gia: params.Gia,
+                Trangthai: params.Trangthai
             }
-            await queryBuilder('todo').where("id", idTodo).update(dataInsert);
+            await queryBuilder('phong').where("MaPhong", MaPhong).update(dataInsert);
             return "Cập nhật công việc thành công";
         } catch (e) {
             console.log(e);
