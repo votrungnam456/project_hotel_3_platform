@@ -49,7 +49,7 @@ const routes = [
      {
           path: '/register',
           exact: true,
-          main: () => <Register></Register>
+          main: ({history}) => <Register history={history}></Register>
      },
      {
           path: '/rooms',

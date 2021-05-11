@@ -7,27 +7,11 @@ class login extends Component {
           this.state = {
                email: "",
                pwd: "",
-               // listCustomers:[]
           }
-     }
-
-
-     componentDidMount() {
-          // axios.get('http://localhost:4444/customers/list')
-          // .then(res=>{
-          //      this.setState({
-          //           listCustomers:res.data.data
-          //      })
-          // })
-          // console.log(this.props)
-     }
-     componentDidUpdate() {
-
      }
      onChange = (ev) => {
           let name = ev.target.name;
           let value = ev.target.value
-          // console.log(name, value)
           this.setState({
                [name]: value
           })
@@ -39,18 +23,8 @@ class login extends Component {
                this.props.userFunc(user)
           }
           let { history,location } = this.props
-          // let {userFunc} = this.userFunc();
           ev.preventDefault();
           let { pwd, email } = this.state;
-          // let loginFunc = this.userFunc;
-          // listCustomers.forEach(customer => {
-          //      if(email === customer.Email && pwd === customer.MatKhau){
-          //           sessionStorage.setItem('user',email);
-          //           return;
-          //      }
-          // });
-          // let data;
-
           axios.post('http://localhost:4444/customers/user', {
                Email: email,
                MatKhau: pwd
@@ -59,10 +33,7 @@ class login extends Component {
                     if (response.data.data == null) {
                     }
                     else {
-                         // console.log(this)
                          localStorage.setItem('user', JSON.stringify(response.data.data));
-                         // data = JSON.stringify(response.data.data)
-                         // \
                          userFunc({
                               user: JSON.stringify(response.data.data)
                          })
@@ -72,10 +43,6 @@ class login extends Component {
                .catch(function (error) {
                     console.log(error);
                });
-          // // if(!check){
-          //      this.props.history.push('/');
-          // // }
-
      }
      render() {
           
