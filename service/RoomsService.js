@@ -4,7 +4,16 @@ const uuid = require('uuid');
 class RoomService {
     static async listRoomService(req) {
         try {
-            let result = await queryBuilder().select('phong.Tenphong','phong.Mota','phong.Gia','kieuphong.TenKP').from('phong').join('kieuphong', {'Phong.MaKP': 'KieuPhong.MaKP'});
+            let result = await queryBuilder().select('phong.MaPhong','phong.Tenphong','phong.Mota','phong.Gia','kieuphong.TenKP').from('phong').join('kieuphong', {'Phong.MaKP': 'KieuPhong.MaKP'});
+            return result;
+        } catch (e) {
+            console.log(e);
+            return e
+        }
+    }
+    static async typeRoomService(req) {
+        try {
+            let result = await queryBuilder('kieuphong').select('*');
             return result;
         } catch (e) {
             console.log(e);
@@ -15,8 +24,9 @@ class RoomService {
         try {
 
             let MaPhong = req.params.MaPhong;
-            let result = await queryBuilder().select('*').from('phong').join('kieuphong', {'Phong.MaKP': 'KieuPhong.MaKP'})
-            // where("MaPhong",MaPhong).first();
+            let result = await queryBuilder().select('phong.MaPhong','phong.Tenphong','phong.Mota','phong.Gia','kieuphong.TenKP','phong.TinhTrang')
+            .from('phong').join('kieuphong', {'Phong.MaKP': 'KieuPhong.MaKP'}).where("MaPhong",MaPhong).first();
+            //.where("MaPhong",MaPhong).first();
             return result;
         } catch (e) {
             console.log(e);

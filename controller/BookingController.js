@@ -7,9 +7,7 @@ class BookingController {
             res.status(200).json({
                 status: "SUCCESS",
                 errors: null,
-                data: {
-                    result: data
-                }
+                data
             });
         } catch (e) {
             res.status(200).json({
@@ -51,9 +49,26 @@ class BookingController {
             res.status(200).json({
                 status: "SUCCESS",
                 errors:null,
-                data: {
-                    result: data
-                }
+                data
+            });
+        } catch (e) {
+            res.status(200).json({
+                status: "FAIL",
+                errors: [{
+                    code: 1000,
+                    message: "Server Error"
+                }],
+                data: null
+            });
+        }
+    }
+    static async createBookingRoomNumber(req, res, next){
+        try {
+            let data = await BookingService.createBookingRoomServiceNumber(req);
+            res.status(200).json({
+                status: "SUCCESS",
+                errors:null,
+                data
             });
         } catch (e) {
             res.status(200).json({
@@ -73,9 +88,7 @@ class BookingController {
             res.status(200).json({
                 status: "SUCCESS",
                 errors:null,
-                data: {
-                    result: data
-                }
+                data
             });
         } catch (e) {
             res.status(200).json({
@@ -94,9 +107,7 @@ class BookingController {
             res.status(200).json({
                 status: "SUCCESS",
                 errors:null,
-                data: {
-                    result: data
-                }
+                data
             });
         } catch (e) {
             res.status(200).json({

@@ -11,20 +11,29 @@ class RoomService {
             return e
         }
     }
-    // static async getItemService(req){
-    //     try {
-
-    //         let MaPhong = req.params.MaPhong;
-    //         let result = await queryBuilder('phong').where("MaPhong",MaPhong).first();
-    //         return result;
-    //     } catch (e) {
-    //         console.log(e);
-    //         return e
-    //     }
-    // }
+    static async getCustomerService(req){
+        try {
+            let params = req.body;
+            let Email = params.Email;
+            let MatKhau = params.MatKhau;
+            let result = await queryBuilder('khachhang').where({
+                "Email":Email,
+                "MatKhau":MatKhau
+            }).first();
+            return result;
+        } catch (e) {
+            console.log(e);
+            return e
+        }
+    }
     static async createCustomerService(req){
         try {
             let params = req.body;
+            let email = params.Email;
+            let check = await queryBuilder('khachhang').where("Email",email).first();
+            if(check != null){
+                return -1;//trùng email
+            }
             let dataInsert = {
                 ID_KH: uuid.v4(),
                 TenKH: params.TenKH || null,
@@ -36,9 +45,9 @@ class RoomService {
                 Email:params.Email,
                 MatKhau:params.MatKhau
             }
-
+            
             await queryBuilder('khachhang').insert(dataInsert);
-            return "Thêm khách hàng thành công";
+            return 1;//Thêm thành công
         } catch (e) {
             console.log(e);
             return e
