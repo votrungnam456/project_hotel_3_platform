@@ -38,7 +38,7 @@ class Service extends Component {
                                         <a className="right carousel-control" href="#TourCarousel" role="button" data-slide="next"><i className="fa fa-angle-right" /></a>
                                    </div>
                                    {/* RoomCarousel*/}
-                                   <div className="caption">Trải nghiệmx
+                                   <div className="caption">Trải nghiệm
                                         <Link className="pull-right" to="/gallery"><i className="fa fa-edit" /></Link>
                                    </div>
                               </div>

@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-
 export default class Banner extends Component {
      render() {
           return (
                <div>
                {/* banner */}
                     <div className="banner">    	   
-                    <img src="images/photos/banner.jpg" className="img-responsive" alt="slide" />
+                    <img src="../../images/photos/banner.jpg" className="img-responsive" alt="slide" />
                     <div className="welcome-message">
                          <div className="wrap-info">
                          <div className="information">

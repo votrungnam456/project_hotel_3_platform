@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom'
 
+
+let user = JSON.parse(localStorage.getItem('user'));
+let checkUser = (user == null ? true : false);
 const menus = [
     {
         name: "Trang chủ",
@@ -27,11 +30,11 @@ const menus = [
      to: "/intro",
      exact: false
      },
-    {
-        name: "Đăng nhập",
-        to: "/login",
-        exact: false
-    },
+    // {
+    //     name: checkUser == true ? "Đăng nhập" : "Đăng xuất",
+    //     to: checkUser == true ? "/login" : "/logout",
+    //     exact: false
+    // },
 ]
 const MenuLink = ({ label, to, activeOnlyWhenExact }) => {
      return (
@@ -46,8 +49,26 @@ const MenuLink = ({ label, to, activeOnlyWhenExact }) => {
      )
  }
 class Header extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            user:null
+        }
+    }
+
+    // loginFunc = (user) =>{
+    //     this.props.loginFunc(user);
+    // }
+
+    // componentDidMount(){
+    //     this.setState({
+    //         user: JSON.parse(localStorage.getItem('user'))
+    //     })
+    // }
      render() {
+         let {user} = this.props
           return (
+              
                <div>
                {/* header */}
                <nav className="navbar  navbar-default" role="navigation">
@@ -66,6 +87,7 @@ class Header extends Component {
                     <div className="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                     <ul className="nav navbar-nav">        
                          {this.showMenu(menus)}
+                         <MenuLink  label={user == null ? "Đăng nhập" : "Đăng xuất"} to={user == null ? "/login" : "/logout"} exact="true"></MenuLink>
                     </ul>
                     </div>{/* Wnavbar-collapse */}
                </div>{/* container-fluid */}

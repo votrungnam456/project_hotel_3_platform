@@ -1,30 +1,33 @@
 import React, { Component } from 'react';
-
+import axios from 'axios';
+import RoomItem from './RoomItem'
 class ListRoom extends Component {
+     constructor(props) {
+          super(props);
+          this.state = {
+            data:[]
+          };
+        }
+     componentDidMount(){
+          axios.get('http://localhost:4444/rooms/list')
+               .then(res=>{
+                    console.log(res.data.data.result)
+                    this.setState({
+                         data:res.data.data
+                    })
+               })
+     }
      render() {
+          // console.log(this.state.data);
+          let {data} = this.state;
           return (
                <div className="container">
-                    {/* form */}
-                    <div className="row">
-                         <div className="col-sm-6 wowload fadeInUp"><div className="rooms">
-                              <img src="images/photos/8.jpg" className="img-responsive" />
-                              <div className="info">
-                                   <h3>Luxirious Suites</h3>
-                                   <p> Missed lovers way one vanity wishes nay but. Use shy seemed within twenty wished old few regret passed. Absolute one hastened mrs any sensible</p><a href="room-details.php" className="btn btn-default">Check Details</a>
-                              </div>
-                         </div>
-                         </div>
-                         <div className="col-sm-6 wowload fadeInUp"><div className="rooms"><img src="images/photos/9.jpg" className="img-responsive" /><div className="info"><h3>Luxirious Suites</h3><p> Missed lovers way one vanity wishes nay but. Use shy seemed within twenty wished old few regret passed. Absolute one hastened mrs any sensible</p><a href="room-details.php" className="btn btn-default">Check Details</a></div></div></div>
-                         <div className="col-sm-6 wowload fadeInUp"><div className="rooms"><img src="images/photos/10.jpg" className="img-responsive" /><div className="info"><h3>Luxirious Suites</h3><p> Missed lovers way one vanity wishes nay but. Use shy seemed within twenty wished old few regret passed. Absolute one hastened mrs any sensible</p><a href="room-details.php" className="btn btn-default">Check Details</a></div></div></div>
-                         <div className="col-sm-6 wowload fadeInUp"><div className="rooms"><img src="images/photos/11.jpg" className="img-responsive" /><div className="info"><h3>Luxirious Suites</h3><p> Missed lovers way one vanity wishes nay but. Use shy seemed within twenty wished old few regret passed. Absolute one hastened mrs any sensible</p><a href="room-details.php" className="btn btn-default">Check Details</a></div></div></div>
-                         <div className="col-sm-6 wowload fadeInUp"><div className="rooms"><img src="images/photos/9.jpg" className="img-responsive" /><div className="info"><h3>Luxirious Suites</h3><p> Missed lovers way one vanity wishes nay but. Use shy seemed within twenty wished old few regret passed. Absolute one hastened mrs any sensible</p><a href="room-details.php" className="btn btn-default">Check Details</a></div></div></div>
-                         <div className="col-sm-6 wowload fadeInUp"><div className="rooms"><img src="images/photos/8.jpg" className="img-responsive" /><div className="info"><h3>Luxirious Suites</h3><p> Missed lovers way one vanity wishes nay but. Use shy seemed within twenty wished old few regret passed. Absolute one hastened mrs any sensible</p><a href="room-details.php" className="btn btn-default">Check Details</a></div></div></div>
-                         <div className="col-sm-6 wowload fadeInUp"><div className="rooms"><img src="images/photos/10.jpg" className="img-responsive" /><div className="info"><h3>Luxirious Suites</h3><p> Missed lovers way one vanity wishes nay but. Use shy seemed within twenty wished old few regret passed. Absolute one hastened mrs any sensible</p><a href="room-details.php" className="btn btn-default">Check Details</a></div></div></div>
-                         <div className="col-sm-6 wowload fadeInUp"><div className="rooms"><img src="images/photos/11.jpg" className="img-responsive" /><div className="info"><h3>Luxirious Suites</h3><p> Missed lovers way one vanity wishes nay but. Use shy seemed within twenty wished old few regret passed. Absolute one hastened mrs any sensible</p><a href="room-details.php" className="btn btn-default">Check Details</a></div></div></div>
-                         <div className="col-sm-6 wowload fadeInUp"><div className="rooms"><img src="images/photos/9.jpg" className="img-responsive" /><div className="info"><h3>Luxirious Suites</h3><p> Missed lovers way one vanity wishes nay but. Use shy seemed within twenty wished old few regret passed. Absolute one hastened mrs any sensible</p><a href="room-details.php" className="btn btn-default">Check Details</a></div></div></div>
-                         <div className="col-sm-6 wowload fadeInUp"><div className="rooms"><img src="images/photos/8.jpg" className="img-responsive" /><div className="info"><h3>Luxirious Suites</h3><p> Missed lovers way one vanity wishes nay but. Use shy seemed within twenty wished old few regret passed. Absolute one hastened mrs any sensible</p><a href="room-details.php" className="btn btn-default">Check Details</a></div></div></div>
-                         <div className="col-sm-6 wowload fadeInUp"><div className="rooms"><img src="images/photos/11.jpg" className="img-responsive" /><div className="info"><h3>Luxirious Suites</h3><p> Missed lovers way one vanity wishes nay but. Use shy seemed within twenty wished old few regret passed. Absolute one hastened mrs any sensible</p><a href="room-details.php" className="btn btn-default">Check Details</a></div></div></div>
-                         <div className="col-sm-6 wowload fadeInUp"><div className="rooms"><img src="images/photos/10.jpg" className="img-responsive" /><div className="info"><h3>Luxirious Suites</h3><p> Missed lovers way one vanity wishes nay but. Use shy seemed within twenty wished old few regret passed. Absolute one hastened mrs any sensible</p><a href="room-details.php" className="btn btn-default">Check Details</a></div></div></div>
+                    <div className="row"> 
+                         {data.map((value,index)=>{
+                              return (
+                                   <RoomItem key={index} value={value}></RoomItem>
+                              )
+                         })}  
                     </div>
                     <div className="text-center">
                          <ul className="pagination">
