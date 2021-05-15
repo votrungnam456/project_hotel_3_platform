@@ -1,26 +1,42 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Project_Hotel_Winform.Model;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net;
 using System.Windows.Forms;
 
 namespace Project_Hotel_Winform.All_User_Control
 {
-    public partial class CustomerDetail : UserControl
+    public partial class ServiceCustomers : UserControl
     {
-        public CustomerDetail()
+        ConnectAPI api = new ConnectAPI();
+        List<Customers> listCus = new List<Customers>();
+        List<String> arrayHead = new List<string> { "Mã khách hàng", "Tên khách hàng", "Giới tính", "CMND", "Địa chỉ", "Quốc tịch", "Số điện thoại", "Email", "Mật khẩu" };
+        //HttpClient client;
+        public ServiceCustomers()
         {
             InitializeComponent();
+            //loadCustomer();
         }
 
         private void CustomerDetail_Load(object sender, EventArgs e)
         {
-                    }
+        }
 
+        //private void loadCustomer()
+        //{
+        //    var data = JsonConvert.DeserializeObject<listCustomers>(api.getAPI("customers/list"));
+        //    foreach (Customers item in data.data)
+        //    {
+        //        listCus.Add(item);
+                
+        //    }
+        //    GridViewCustomers.DataSource = listCus;
+        //    for (int i = 0; i < arrayHead.Count; i++)
+        //    {
+        //        GridViewCustomers.Columns[i].HeaderText = arrayHead[0].ToString();
+        //    }
+        //}
         private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -62,6 +78,11 @@ namespace Project_Hotel_Winform.All_User_Control
         }
 
         private void btnCheckOut_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2DataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
         }

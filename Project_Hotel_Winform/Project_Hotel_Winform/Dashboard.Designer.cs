@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnService = new Guna.UI2.WinForms.Guna2Button();
             this.panelMoving = new System.Windows.Forms.Panel();
             this.btnEmployees = new Guna.UI2.WinForms.Guna2Button();
             this.btnCustomerDetails = new Guna.UI2.WinForms.Guna2Button();
@@ -38,9 +39,10 @@
             this.btnNewCustomer = new Guna.UI2.WinForms.Guna2Button();
             this.btnAdd = new Guna.UI2.WinForms.Guna2Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.service1 = new Project_Hotel_Winform.All_User_Control.Service();
             this.history1 = new Project_Hotel_Winform.All_User_Control.History();
             this.employees1 = new Project_Hotel_Winform.All_User_Control.Employees();
-            this.customerDetail1 = new Project_Hotel_Winform.All_User_Control.CustomerDetail();
+            this.customerDetail1 = new Project_Hotel_Winform.All_User_Control.ServiceCustomers();
             this.managementRooms1 = new Project_Hotel_Winform.All_User_Control.ManagementRooms();
             this.customerRegistation1 = new Project_Hotel_Winform.All_User_Control.CustomerRegistation();
             this.checkOut1 = new Project_Hotel_Winform.All_User_Control.CheckOut();
@@ -55,23 +57,48 @@
             this.guna2Elipse6 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Elipse7 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Elipse8 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse9 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnService);
             this.panel1.Controls.Add(this.panelMoving);
             this.panel1.Controls.Add(this.btnEmployees);
             this.panel1.Controls.Add(this.btnCustomerDetails);
             this.panel1.Controls.Add(this.btnCheckOut);
             this.panel1.Controls.Add(this.btnNewCustomer);
             this.panel1.Controls.Add(this.btnAdd);
-            this.panel1.Location = new System.Drawing.Point(295, 43);
+            this.panel1.Location = new System.Drawing.Point(207, 43);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1373, 132);
+            this.panel1.Size = new System.Drawing.Size(1572, 132);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // btnService
+            // 
+            this.btnService.BorderRadius = 26;
+            this.btnService.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnService.CheckedState.FillColor = System.Drawing.Color.White;
+            this.btnService.CheckedState.ForeColor = System.Drawing.Color.Black;
+            this.btnService.CheckedState.Parent = this.btnService;
+            this.btnService.CustomImages.Parent = this.btnService;
+            this.btnService.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
+            this.btnService.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnService.ForeColor = System.Drawing.Color.White;
+            this.btnService.HoverState.Parent = this.btnService;
+            this.btnService.Image = ((System.Drawing.Image)(resources.GetObject("btnService.Image")));
+            this.btnService.ImageSize = new System.Drawing.Size(40, 40);
+            this.btnService.Location = new System.Drawing.Point(1353, 16);
+            this.btnService.Name = "btnService";
+            this.btnService.ShadowDecoration.Parent = this.btnService;
+            this.btnService.Size = new System.Drawing.Size(201, 85);
+            this.btnService.TabIndex = 5;
+            this.btnService.Text = "Dịch vụ";
+            this.btnService.Click += new System.EventHandler(this.btnService_Click);
             // 
             // panelMoving
             // 
@@ -98,7 +125,7 @@
             this.btnEmployees.Location = new System.Drawing.Point(1108, 16);
             this.btnEmployees.Name = "btnEmployees";
             this.btnEmployees.ShadowDecoration.Parent = this.btnEmployees;
-            this.btnEmployees.Size = new System.Drawing.Size(248, 85);
+            this.btnEmployees.Size = new System.Drawing.Size(239, 85);
             this.btnEmployees.TabIndex = 4;
             this.btnEmployees.Text = "Nhân viên";
             this.btnEmployees.Click += new System.EventHandler(this.btnEmployees_Click);
@@ -193,6 +220,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Controls.Add(this.service1);
             this.panel2.Controls.Add(this.history1);
             this.panel2.Controls.Add(this.employees1);
             this.panel2.Controls.Add(this.customerDetail1);
@@ -203,6 +232,14 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1575, 798);
             this.panel2.TabIndex = 1;
+            // 
+            // service1
+            // 
+            this.service1.BackColor = System.Drawing.Color.White;
+            this.service1.Location = new System.Drawing.Point(0, 3);
+            this.service1.Name = "service1";
+            this.service1.Size = new System.Drawing.Size(1628, 871);
+            this.service1.TabIndex = 6;
             // 
             // history1
             // 
@@ -347,6 +384,18 @@
             this.guna2Elipse8.BorderRadius = 30;
             this.guna2Elipse8.TargetControl = this.history1;
             // 
+            // guna2Elipse9
+            // 
+            this.guna2Elipse9.BorderRadius = 30;
+            this.guna2Elipse9.TargetControl = this.service1;
+            // 
+            // panel3
+            // 
+            this.panel3.Location = new System.Drawing.Point(14, 19);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1628, 871);
+            this.panel3.TabIndex = 7;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -388,7 +437,7 @@
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse3;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse4;
         private All_User_Control.Employees employees1;
-        private All_User_Control.CustomerDetail customerDetail1;
+        private All_User_Control.ServiceCustomers customerDetail1;
         private All_User_Control.ManagementRooms managementRooms1;
         private All_User_Control.CustomerRegistation customerRegistation1;
         private All_User_Control.CheckOut checkOut1;
@@ -397,5 +446,9 @@
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse7;
         private All_User_Control.History history1;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse8;
+        private Guna.UI2.WinForms.Guna2Button btnService;
+        private All_User_Control.Service service1;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse9;
+        private System.Windows.Forms.Panel panel3;
     }
 }

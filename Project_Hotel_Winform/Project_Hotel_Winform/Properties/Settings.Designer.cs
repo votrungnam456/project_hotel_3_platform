@@ -34,5 +34,16 @@ namespace Project_Hotel_Winform.Properties {
                 this["ChuoiKetNoi"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-5ED3MM2\\SQLEXPRESS;Initial Catalog=QLKS;Integrated Security=T" +
+            "rue")]
+        public string QLKSConnectionString {
+            get {
+                return ((string)(this["QLKSConnectionString"]));
+            }
+        }
     }
 }
