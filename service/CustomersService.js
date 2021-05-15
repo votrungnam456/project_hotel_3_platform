@@ -30,19 +30,24 @@ class RoomService {
         try {
             let params = req.body;
             let email = params.Email;
-            let check = await queryBuilder('khachhang').where("Email",email).first();
-            if(check != null){
+            let cmnd = params.CMND
+            let checkCMND = await queryBuilder('khachhang').where("CMND",cmnd).first();
+            if(checkCMND != null){
+                return -2;//trùng cmnd
+            }
+            let checkEmail = await queryBuilder('khachhang').where("Email",email).first();
+            if(checkEmail != null){
                 return -1;//trùng email
             }
             let dataInsert = {
                 ID_KH: uuid.v4(),
-                TenKH: params.TenKH || null,
-                GTinh: params.GTinh || null,
-                CMND: params.CMND || null,
+                TenKH: params.TenKH,
+                GTinh: params.GTinh,
+                CMND: params.CMND,
                 Dchi: params.Dchi || null,
-                QTich: params.QTich || null,
+                QTich: params.QTich,
                 SoDT:params.SoDT || null,
-                Email:params.Email,
+                Email:email,
                 MatKhau:params.MatKhau
             }
             

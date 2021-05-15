@@ -5,8 +5,6 @@ class CustomersController {
         try {
             let data = await CustomersService.listCustomerService(req);
             res.status(200).json({
-                status: "SUCCESS",
-                errors: null,
                 data
             });
         } catch (e) {

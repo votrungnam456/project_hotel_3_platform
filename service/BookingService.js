@@ -2,6 +2,7 @@
 const queryBuilder = require('../config/database');
 const uuid = require('uuid');
 class RoomService {
+    // lấy danh sách phiếu đăng ký
     static async listBookingRoomService(req) {
         try {
             let result = await queryBuilder('phieu_dang_ky').select();
@@ -11,22 +12,12 @@ class RoomService {
             return e
         }
     }
-    // static async getItemService(req){
-    //     try {
-
-    //         let MaPhong = req.params.MaPhong;
-    //         let result = await queryBuilder('phong').where("MaPhong",MaPhong).first();
-    //         return result;
-    //     } catch (e) {
-    //         console.log(e);
-    //         return e
-    //     }
-    // }
+    // đặt từng phòng
     static async createBookingRoomService(req){
         try {
             let params = req.body;
             let Ngayden= new Date(params.Ngayden);
-            let Ngaydi=new Date(params.Ngaydi)|| null;
+            let Ngaydi=params.Ngaydi != null ? new Date(params.Ngaydi) : null
             Ngayden = Ngayden.toISOString().split("T")[0]
             Ngaydi = Ngaydi != null ? Ngaydi.toISOString().split("T")[0] : null
             let Maphong = params.Maphong;
@@ -39,13 +30,17 @@ class RoomService {
                 ID_KH: params.ID_KH
             }
             await queryBuilder('phieu_dang_ky').insert(dataInsert);
-            await queryBuilder('phong').where("Maphong",Maphong).update({TinhTrang:1});
+            await queryBuilder('phong').where("Maphong",Maphong).update({
+                TinhTrang:1,
+                MaPDK:dataInsert.MaPDK 
+            });
             return 1;
         } catch (e) {
             console.log(e);
             return 0;
         }
     }
+    // đặt phòng với số phòng do khách hàng chọn
     static async createBookingRoomServiceNumber(req){
         try {
             let params = req.body;
@@ -63,9 +58,9 @@ class RoomService {
                 return 0;
             }
             let Ngayden= new Date(params.Ngayden);
-            let Ngaydi=new Date(params.Ngaydi)|| null;
+            let Ngaydi=params.Ngaydi != null ? new Date(params.Ngaydi) : null
             Ngayden = Ngayden.toISOString().split("T")[0]
-            Ngaydi = Ngaydi.toISOString().split("T")[0]
+            Ngaydi = Ngaydi != null ? Ngaydi.toISOString().split("T")[0] : null
             let Chuthich=params.Chuthich  || null;
             let ID_KH= params.ID_KH
             for(var i = 0 ; i < numRoom ; i++){
@@ -78,7 +73,10 @@ class RoomService {
                     ID_KH
                 }
                 await queryBuilder('phieu_dang_ky').insert(dataInsert);
-                await queryBuilder('phong').where("Maphong",checkRoom[i].Maphong).update({TinhTrang:1});
+                await queryBuilder('phong').where("Maphong",checkRoom[i].Maphong).update({
+                    TinhTrang:1,
+                    MaPDK:dataInsert.MaPDK
+                });
             }
             return 1;
         } catch (e) {
@@ -86,6 +84,7 @@ class RoomService {
             return e
         }
     }
+    // update thông tin của phiếu đăng ký
     static async updateBookingRoomService(req){
         try {
             
@@ -105,6 +104,8 @@ class RoomService {
             return e
         }
     }
+
+    // xoá phiếu đăng ký
     static async deleteBookingService(req){
         try {
             let idBooking = req.params.MaPDK;
