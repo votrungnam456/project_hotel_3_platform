@@ -47,12 +47,29 @@ class Info extends Component {
      
      onSubmit = (ev) =>{
           ev.preventDefault();
+          let {id,numRoom,typeRoom,checkIn,checkOut,ghiChu,error} = this.state;
           if(id == ""){
                this.props.history.push("/login");
           }
-          let {id,numRoom,typeRoom,checkIn,checkOut,ghiChu,error} = this.state;
           let dateIn = new Date(checkIn);
-          let dateOut = new Date(checkOut);
+          let date = new Date();
+          let now = new Date(date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate());
+          if(+now > +dateIn){
+               this.setState({
+                    error:1
+               })
+               return ;
+          }
+          let dateOut = null;
+          if(checkOut != ""){
+               dateOut = new Date(checkOut);
+          }
+          else if(checkIn == ""){
+               this.setState({
+                    error:2
+               })
+               return;
+          }
           if(dateOut != null){
                if(+dateIn > +dateOut){
                     this.setState({
@@ -96,6 +113,7 @@ class Info extends Component {
      }
      render() {
           let {listkieuPhong,error} = this.state
+          console.log(this.state.id)
           return (
                /* reservation-information */
                <div id="information" className="spacer reserve-info ">
@@ -156,7 +174,7 @@ class Info extends Component {
                                              <textarea value={this.state.ghiChu || ""} name="ghiChu" onChange={this.onChange} className="form-control" placeholder="Lời nhắn" rows={4} />
                                         </div>
                                         <button type="submit" className="btn btn-default">Đặt phòng</button>
-                                        <p style={error == 4?{color : "green"}:{color:"red"}}>{error == 1 ? "Ngày trả phòng phải lớn hơn ngày đặt phòng":error == 2? "Các thông tin cần thiết không được để trống" : error==3?`Số phòng hiện tại không đủ`:error == 4 ? "Đặt phòng thành công" : ""}</p>
+                                        <p style={error == 4?{color : "green"}:{color:"red"}}>{error == 1 ? "Ngày trả phòng phải lớn hơn ngày đặt phòng và ngày đặt phòng không được nhỏ hơn ngày hôm nay":error == 2? "Các thông tin cần thiết không được để trống" : error==3?`Số phòng hiện tại không đủ`:error == 4 ? "Đặt phòng thành công" : ""}</p>
                                    </form>
                               </div>
                          </div>

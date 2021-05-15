@@ -38,24 +38,38 @@ class BookingRoom extends Component {
      onSubmit = (ev) =>{
           ev.preventDefault();
           let {checkIn, checkOut} = this.state;
-          if(checkOut != null){
-               if(+checkIn > +checkOut){
+
+          let date = new Date();
+          let now = new Date(date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate());
+          // if(+now > +checkIn){
+          //      this.setState({
+          //           message:4
+          //      })
+          //      return ;
+          // }
+          let dateIn = new Date(checkIn);
+          let dateOut = null;
+          if(checkOut != ""){
+               dateOut = new Date(checkOut);
+          }
+          if(dateOut != null){
+               if(+dateIn > +dateOut){
                     this.setState({
                          message:2
                     })
                     return ;
                }
           }
-          else if(checkIn == null){
+          else if(checkIn == ""){
                this.setState({
                     message:3
                })
                return;
           }
-          console.log(this.state.roomDetail.MaPhong)
+
           axios.post("http://localhost:4444/booking/create",{
-               Ngayden: this.state.checkIn,
-               Ngaydi:this.state.checkOut,
+               Ngayden: dateIn,
+               Ngaydi:dateOut,
                Chuthich: this.state.ghiChu,
                Maphong:this.state.roomDetail.MaPhong,
                ID_KH:this.state.id
@@ -63,21 +77,19 @@ class BookingRoom extends Component {
                this.setState({
                     message:res.data.data
                })
+               console.log(this.state)
                // console.log(res)
           }).catch(error=>console.log(error))
      }
      onChange = (ev) =>{
           let name = ev.target.name;
           let value = ev.target.value
-          console.log(name , value)
           this.setState({
                [name]:value
-          })
-          
+          })    
      }
      render() {
           let {roomDetail,message} = this.state;
-          console.log(roomDetail)
           return (  
                <div className="container">
                     <h3 style={{paddingTop:"5px"}}>Vui lòng kiểm tra lại thông tin và xác nhận ngày giờ nhận, trả phòng</h3>
@@ -122,7 +134,7 @@ class BookingRoom extends Component {
                               <textarea value={this.state.ghiChu || ""} onChange={this.onChange}  name="ghiChu" className="form-control" placeholder="Lời nhắn" rows={4} />
                          </div>
                          <button type="submit" className="btn btn-default">Xác nhận đặt phòng</button>
-                         <p style={message == 1?{color : "green"}:{message:"red"}}>{message == 1? "Đặt phòng thành công": message == 2 ? "Ngày trả phòng phải lớn hơn ngày đặt phòng" : message == 3 ? "Ngày nhận phòng không được để trống hoặc nhỏ hơn ngày hiện tại" : ""}</p>
+                         <p style={message == 1?{color : "green"}:{message:"red"}}>{message == 1? "Đặt phòng thành công": message == 2 ? "Ngày trả phòng phải lớn hơn ngày đặt phòng" : message == 3 ? "Ngày nhận phòng không được để trống hoặc nhỏ hơn ngày hiện tại" : message == 4 ? "Ngày nhận phòng phải trước hoặc trong ngày hôm nay" : "" }</p>
                     </form>
                </div>
           );
