@@ -12,7 +12,15 @@ namespace Project_Hotel_Winform
 {
     public partial class Dashboard : Form
     {
-        
+        private string nameUserLogin;
+        private string quyen;
+        private string iD_NV;
+        private int coQuyen;
+        public string NameUserLogin { get => nameUserLogin; set => nameUserLogin = value; }
+        public string Quyen { get => quyen; set => quyen = value; }
+        public string ID_NV { get => iD_NV; set => iD_NV = value; }
+        public int CoQuyen { get => coQuyen; set => coQuyen = value; }
+
         public Dashboard()
         {
             InitializeComponent();
@@ -23,33 +31,17 @@ namespace Project_Hotel_Winform
             Application.Exit();
         }
 
-        public void visibleControl(bool manageRoom,bool customerRegis, bool checkOut, bool customerDetail, bool employees, bool history, bool service)
-        {
-
-            //managementRooms1.Visible = manageRoom;
-            UserControl managementRooms = new UserControl();
-            managementRooms = managementRooms1;
-            managementRooms.Visible = manageRoom;
-
-
-            customerRegistation1.Visible = customerRegis;
-            checkOut1.Visible = checkOut;
-            customerDetail1.Visible = customerDetail;
-            employees1.Visible = employees;
-            history1.Visible = history;
-            service1.Visible = service;
-        }
 
         private void btnNewCustomer_Click(object sender, EventArgs e)
         {
             panelMoving.Visible = true;
             panelMoving.Size = new Size(199, 5);
             panelMoving.Left = btnNewCustomer.Left;
-            visibleControl(false, true,false,false,false,false,false);
-            ManagementRooms a = new ManagementRooms();
-            a.Visible = true;
-            panel1.Controls.Add(a);
 
+            panel3.Controls.Clear();
+            CustomerRegistation customerRegistation = new CustomerRegistation();
+            customerRegistation.Size = new Size(1575, 798);
+            panel3.Controls.Add(customerRegistation);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -57,7 +49,10 @@ namespace Project_Hotel_Winform
             panelMoving.Visible = true;
             panelMoving.Size = new Size(199, 5);
             panelMoving.Left = btnAdd.Left;
-            visibleControl(true, false, false, false, false, false, false);
+            panel3.Controls.Clear();
+            ManagementRooms managementRooms = new ManagementRooms();
+            managementRooms.Size = new Size(1575, 798);
+            panel3.Controls.Add(managementRooms);
         }
 
         private void btnCheckOut_Click(object sender, EventArgs e)
@@ -65,7 +60,10 @@ namespace Project_Hotel_Winform
             panelMoving.Visible = true;
             panelMoving.Size = new Size(199, 5);
             panelMoving.Left = btnCheckOut.Left;
-            visibleControl(false, false, true, false, false, false, false);
+            panel3.Controls.Clear();
+            CheckOut checkOut = new CheckOut();
+            checkOut.Size = new Size(1575, 798);
+            panel3.Controls.Add(checkOut);
         }
 
         private void btnCustomerDetails_Click(object sender, EventArgs e)
@@ -73,7 +71,10 @@ namespace Project_Hotel_Winform
             panelMoving.Visible = true;
             panelMoving.Size = new Size (220,5);
             panelMoving.Left = btnCustomerDetails.Left;
-            visibleControl(false, false, false, true, false, false, false);
+            panel3.Controls.Clear();
+            CustomersDetails customersDetails = new CustomersDetails();
+            customersDetails.Size = new Size(1575, 798);
+            panel3.Controls.Add(customersDetails);
         }
 
         private void btnEmployees_Click(object sender, EventArgs e)
@@ -81,7 +82,10 @@ namespace Project_Hotel_Winform
             panelMoving.Visible = true;
             panelMoving.Size = new Size(199, 5);
             panelMoving.Left = btnEmployees.Left;
-            visibleControl(false, false, false, false, true, false, false);
+            panel3.Controls.Clear();
+            Employees employees = new Employees();
+            employees.Size = new Size(1575, 798);
+            panel3.Controls.Add(employees);
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)
@@ -92,7 +96,7 @@ namespace Project_Hotel_Winform
         private void Dashboard_Load(object sender, EventArgs e)
         {
             panelMoving.Visible = false;
-            visibleControl(false, false, false, false, false, false, false);
+
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -103,15 +107,21 @@ namespace Project_Hotel_Winform
         private void guna2CircleButton1_Click(object sender, EventArgs e)
         {
             panelMoving.Visible = false;
-            visibleControl(false, false, false, false, false, true, false);
+            panel3.Controls.Clear();
+            History history = new History();
+            history.Size = new Size(1575, 798);
+            panel3.Controls.Add(history);
         }
 
         private void btnService_Click(object sender, EventArgs e)
         {
             panelMoving.Visible = true;
-            panelMoving.Size = new Size(199, 5);
-            panelMoving.Left = btnEmployees.Left;
-            visibleControl(false, false, false, false, false, false, true);
+            panelMoving.Size = new Size(180, 5);
+            panelMoving.Left = btnService.Left;
+            panel3.Controls.Clear();
+            Service service = new Service();
+            service.Size = new Size(1575, 798);
+            panel3.Controls.Add(service);
         }
 
 

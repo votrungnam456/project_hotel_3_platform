@@ -62,6 +62,12 @@
     <Compile Include="All User Control\CheckOut.Designer.cs">
       <DependentUpon>CheckOut.cs</DependentUpon>
     </Compile>
+    <Compile Include="All User Control\CustomersDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="All User Control\CustomersDetails.Designer.cs">
+      <DependentUpon>CustomersDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="All User Control\History.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -73,12 +79,6 @@
     </Compile>
     <Compile Include="All User Control\Employees.Designer.cs">
       <DependentUpon>Employees.cs</DependentUpon>
-    </Compile>
-    <Compile Include="All User Control\CustomerDetail.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="All User Control\CustomerDetail.Designer.cs">
-      <DependentUpon>CustomerDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="All User Control\CustomerRegistation.cs">
       <SubType>UserControl</SubType>
@@ -114,27 +114,37 @@
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\checkInRoom.cs" />
+    <Compile Include="Model\checkOutRoom.cs" />
     <Compile Include="Model\Customers.cs" />
+    <Compile Include="Model\Decentralization.cs" />
+    <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\listCheckInRoom.cs" />
+    <Compile Include="Model\listChectOutRoom.cs" />
     <Compile Include="Model\listCustomers.cs" />
+    <Compile Include="Model\listDecentralization.cs" />
+    <Compile Include="Model\listEmployees.cs" />
     <Compile Include="Model\listRooms.cs" />
+    <Compile Include="Model\listServices.cs" />
     <Compile Include="Model\listTypeRooms.cs" />
     <Compile Include="Model\returnData.cs" />
+    <Compile Include="Model\returnDataLogin.cs" />
     <Compile Include="Model\Room.cs" />
+    <Compile Include="Model\Services.cs" />
     <Compile Include="Model\typeRoom.cs" />
+    <Compile Include="Model\UserLogin.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="All User Control\CheckOut.resx">
       <DependentUpon>CheckOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="All User Control\CustomersDetails.resx">
+      <DependentUpon>CustomersDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="All User Control\History.resx">
       <DependentUpon>History.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="All User Control\Employees.resx">
       <DependentUpon>Employees.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="All User Control\CustomerDetail.resx">
-      <DependentUpon>CustomerDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="All User Control\CustomerRegistation.resx">
       <DependentUpon>CustomerRegistation.cs</DependentUpon>

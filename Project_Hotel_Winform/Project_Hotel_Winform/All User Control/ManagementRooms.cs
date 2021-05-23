@@ -68,7 +68,7 @@ namespace Project_Hotel_Winform.All_User_Control
 
         private async void guna2Button1_Click(object sender, EventArgs e)
         {
-            if (txtMaPhong.Text == "" && txtMaPhong.Text == "" && txtMaPhong.Text == "" && txtMaPhong.Text == "" && txtMaPhong.Text == "")
+            if (txtMaPhong.Text == "" || txtMaPhong.Text == "" || txtMaPhong.Text == "" || txtMaPhong.Text == "" || txtMaPhong.Text == "")
             {
                 MessageBox.Show("Thông tin phòng không được để trống");
                 return;
@@ -123,7 +123,7 @@ namespace Project_Hotel_Winform.All_User_Control
 
         private async void guna2Button2_Click(object sender, EventArgs e)
         {
-            if (txtMaPhong.Text == "" && txtMaPhong.Text == "" && txtMaPhong.Text == "" && txtMaPhong.Text == "" && txtMaPhong.Text == "")
+            if (txtMaPhong.Text == "" || txtMaPhong.Text == "" || txtMaPhong.Text == "" || txtMaPhong.Text == "" || txtMaPhong.Text == "")
             {
                 MessageBox.Show("Thông tin phòng không được để trống");
             }

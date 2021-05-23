@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using Project_Hotel_Winform.Model;
+
 namespace Project_Hotel_Winform.All_User_Control
 {
     public partial class CustomerRegistation : UserControl
