@@ -21,13 +21,15 @@ class RoomService {
             Ngayden = Ngayden.toISOString().split("T")[0]
             Ngaydi = Ngaydi != null ? Ngaydi.toISOString().split("T")[0] : null
             let Maphong = params.Maphong;
+            let GiaPhong = await queryBuilder('phong').select("Gia").where("Maphong",Maphong).first();
             let dataInsert = {
                 MaPDK:uuid.v4(),
                 Ngayden,
                 Ngaydi,
                 Chuthich:params.Chuthich,
                 Maphong,
-                ID_KH: params.ID_KH
+                ID_KH: params.ID_KH,
+                GiaPhong:GiaPhong["Gia"]
             }
             await queryBuilder('phieu_dang_ky').insert(dataInsert);
             await queryBuilder('phong').where("Maphong",Maphong).update({
@@ -64,13 +66,15 @@ class RoomService {
             let Chuthich=params.Chuthich  || null;
             let ID_KH= params.ID_KH
             for(var i = 0 ; i < numRoom ; i++){
+                let GiaPhong = await queryBuilder('phong').select("Gia").where("Maphong",checkRoom[i].Maphong).first();
                 let dataInsert = {
                     MaPDK:uuid.v4(),
                     Ngayden,
                     Ngaydi,
                     Chuthich,
                     Maphong: checkRoom[i].Maphong,
-                    ID_KH
+                    ID_KH,
+                    GiaPhong:GiaPhong["Gia"]
                 }
                 await queryBuilder('phieu_dang_ky').insert(dataInsert);
                 await queryBuilder('phong').where("Maphong",checkRoom[i].Maphong).update({

@@ -11,6 +11,27 @@ class RoomService {
             return e
         }
     }
+    static async listCustomerExistService(req) {
+        try {
+            let check = await queryBuilder('phong').select('MaPDK').havingRaw("MaPDK IS NOT ?", [null]);
+            let arrUser = []
+            for(let i = 0 ; i< check.length ; i++){
+                    let checkZ = await queryBuilder('phieu_dang_ky').select('ID_KH').where('MaPDK',check[i]["MaPDK"]).first();
+                    arrUser.push(checkZ['ID_KH'])
+
+            }
+            let uniqueValues = [...new Set(arrUser)];
+            let lastResult = [];
+            for(let i = 0 ; i< uniqueValues.length ; i++){
+                let query = await queryBuilder('khachhang').where('ID_KH',uniqueValues[i]).first();
+                lastResult.push(query);
+            }
+            return lastResult;
+        } catch (e) {
+            console.log(e);
+            return e
+        }
+    }
     static async getCustomerService(req){
         try {
             let params = req.body;
@@ -43,10 +64,10 @@ class RoomService {
                 ID_KH: uuid.v4(),
                 TenKH: params.TenKH,
                 GTinh: params.GTinh,
-                CMND: params.CMND,
+                Cmnd: params.CMND,
                 Dchi: params.Dchi || null,
                 QTich: params.QTich,
-                SoDT:params.SoDT || null,
+                Sodt:params.SoDT || null,
                 Email:email,
                 MatKhau:params.MatKhau
             }
