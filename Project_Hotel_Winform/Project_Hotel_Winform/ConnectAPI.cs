@@ -32,5 +32,13 @@ namespace Project_Hotel_Winform
             var responseString = await response.Content.ReadAsStringAsync();
             return responseString;
         }
+        public async Task<string> deleteAPI(string pathname)
+        {
+            //var content = new FormUrlEncodedContent(param);
+
+            var response = await client.DeleteAsync("http://localhost:4444/" + pathname);
+            var responseString = await response.Content.ReadAsStringAsync();
+            return responseString;
+        }
     }
 }

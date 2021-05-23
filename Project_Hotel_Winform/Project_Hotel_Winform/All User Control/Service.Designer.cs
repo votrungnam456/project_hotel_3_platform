@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -43,11 +43,11 @@
             this.txtNameService = new Guna.UI2.WinForms.Guna2TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.listBoxService = new System.Windows.Forms.CheckedListBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.cboRoom = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.listBoxService = new System.Windows.Forms.CheckedListBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridViewDichVu)).BeginInit();
@@ -112,6 +112,7 @@
             this.btnAddService.ShadowDecoration.Parent = this.btnAddService;
             this.btnAddService.Size = new System.Drawing.Size(149, 48);
             this.btnAddService.TabIndex = 63;
+            this.btnAddService.Tag = "0";
             this.btnAddService.Text = "Thêm dịch vụ";
             this.btnAddService.Click += new System.EventHandler(this.btnThemDichVu_Click);
             // 
@@ -135,34 +136,36 @@
             this.btnDelService.ShadowDecoration.Parent = this.btnDelService;
             this.btnDelService.Size = new System.Drawing.Size(149, 48);
             this.btnDelService.TabIndex = 62;
+            this.btnDelService.Tag = "0";
             this.btnDelService.Text = "Xoá dịch vụ";
+            this.btnDelService.Click += new System.EventHandler(this.btnDelService_Click);
             // 
             // GridViewDichVu
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.GridViewDichVu.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            this.GridViewDichVu.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.GridViewDichVu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.GridViewDichVu.BackgroundColor = System.Drawing.Color.White;
             this.GridViewDichVu.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridViewDichVu.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.GridViewDichVu.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridViewDichVu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridViewDichVu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.GridViewDichVu.ColumnHeadersHeight = 4;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.GridViewDichVu.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.GridViewDichVu.DefaultCellStyle = dataGridViewCellStyle9;
             this.GridViewDichVu.EnableHeadersVisualStyles = false;
             this.GridViewDichVu.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.GridViewDichVu.Location = new System.Drawing.Point(3, 6);
@@ -252,7 +255,9 @@
             this.btnUpdateService.ShadowDecoration.Parent = this.btnUpdateService;
             this.btnUpdateService.Size = new System.Drawing.Size(149, 48);
             this.btnUpdateService.TabIndex = 19;
+            this.btnUpdateService.Tag = "0";
             this.btnUpdateService.Text = "Sửa dịch vụ";
+            this.btnUpdateService.Click += new System.EventHandler(this.btnUpdateService_Click);
             // 
             // txtNameService
             // 
@@ -303,23 +308,38 @@
             this.tabPage2.Text = "Đăng ký dịch vụ";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // listBoxService
+            // cboRoom
             // 
-            this.listBoxService.FormattingEnabled = true;
-            this.listBoxService.Location = new System.Drawing.Point(17, 65);
-            this.listBoxService.Name = "listBoxService";
-            this.listBoxService.Size = new System.Drawing.Size(434, 395);
-            this.listBoxService.TabIndex = 0;
+            this.cboRoom.BackColor = System.Drawing.Color.Transparent;
+            this.cboRoom.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboRoom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboRoom.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboRoom.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboRoom.FocusedState.Parent = this.cboRoom;
+            this.cboRoom.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboRoom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cboRoom.HoverState.Parent = this.cboRoom;
+            this.cboRoom.ItemHeight = 30;
+            this.cboRoom.Items.AddRange(new object[] {
+            "ac",
+            "non-ac"});
+            this.cboRoom.ItemsAppearance.Parent = this.cboRoom;
+            this.cboRoom.Location = new System.Drawing.Point(595, 65);
+            this.cboRoom.Name = "cboRoom";
+            this.cboRoom.ShadowDecoration.Parent = this.cboRoom;
+            this.cboRoom.Size = new System.Drawing.Size(576, 36);
+            this.cboRoom.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
+            this.cboRoom.TabIndex = 66;
             // 
-            // label3
+            // label4
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(34, 19);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 25);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Dịch vụ";
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(590, 19);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(280, 25);
+            this.label4.TabIndex = 65;
+            this.label4.Text = "Các phòng đang được sử dụng";
             // 
             // guna2Button1
             // 
@@ -344,38 +364,23 @@
             this.guna2Button1.Text = "Đăng ký dịch vụ";
             this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
-            // label4
+            // label3
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(590, 19);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(280, 25);
-            this.label4.TabIndex = 65;
-            this.label4.Text = "Các phòng đang được sử dụng";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(34, 19);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 25);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Dịch vụ";
             // 
-            // cboRoom
+            // listBoxService
             // 
-            this.cboRoom.BackColor = System.Drawing.Color.Transparent;
-            this.cboRoom.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cboRoom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboRoom.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cboRoom.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cboRoom.FocusedState.Parent = this.cboRoom;
-            this.cboRoom.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cboRoom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cboRoom.HoverState.Parent = this.cboRoom;
-            this.cboRoom.ItemHeight = 30;
-            this.cboRoom.Items.AddRange(new object[] {
-            "ac",
-            "non-ac"});
-            this.cboRoom.ItemsAppearance.Parent = this.cboRoom;
-            this.cboRoom.Location = new System.Drawing.Point(595, 65);
-            this.cboRoom.Name = "cboRoom";
-            this.cboRoom.ShadowDecoration.Parent = this.cboRoom;
-            this.cboRoom.Size = new System.Drawing.Size(576, 36);
-            this.cboRoom.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
-            this.cboRoom.TabIndex = 66;
+            this.listBoxService.FormattingEnabled = true;
+            this.listBoxService.Location = new System.Drawing.Point(17, 65);
+            this.listBoxService.Name = "listBoxService";
+            this.listBoxService.Size = new System.Drawing.Size(434, 395);
+            this.listBoxService.TabIndex = 0;
             // 
             // Service
             // 

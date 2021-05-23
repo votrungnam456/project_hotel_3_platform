@@ -135,5 +135,69 @@ namespace Project_Hotel_Winform.All_User_Control
                 loadCboBox();
             }
         }
+
+        private async void btnDelService_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Bạn có muốn xoá dịch vụ này ??", "Xoá dịch vụ", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                string ID_DV = GridViewDichVu.CurrentRow.Cells[0].Value.ToString();
+                var returnData = api.deleteAPI("service/" + ID_DV);
+                var result = await Task.WhenAll(returnData);
+                var convertData = JsonConvert.DeserializeObject<returnData>(result[0]);
+                if (int.Parse(convertData.data) == 0)
+                {
+                    MessageBox.Show("Có lỗi trong quá trình xử lý vui lòng thử lại!!");
+                }
+                else if (int.Parse(convertData.data) == 1)
+                {
+                    MessageBox.Show("Xoá dịch vụ thành công");
+                }
+                loadService();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
+
+
+
+
+        }
+
+        private async void btnUpdateService_Click(object sender, EventArgs e)
+        {
+            if (GridViewDichVu.CurrentRow.Cells[0].Value.ToString() == null)
+            {
+                MessageBox.Show("Vui lòng chọn dịch vụ để sửa thông tin");
+                return;
+            }
+            if (txtNameService.Text == "" || txtPriceService.Text == "")
+            {
+                MessageBox.Show("Thông tin dịch vụ không được để trống");
+                return;
+            }
+            string tenDV = txtNameService.Text;
+            string Gia = txtPriceService.Text;
+            string ID_DV = GridViewDichVu.CurrentRow.Cells[0].Value.ToString();
+
+            Dictionary<string, string> values = new Dictionary<string, string>
+            {
+                { "TenDV",tenDV},
+                { "Gia",Gia},
+            };
+            var returnData = api.putAPI("service/" + ID_DV,values);
+            var result = await Task.WhenAll(returnData);
+            var convertData = JsonConvert.DeserializeObject<returnData>(result[0]);
+            if (int.Parse(convertData.data) == 0)
+            {
+                MessageBox.Show("Có lỗi trong quá trình xử lý vui lòng thử lại!!");
+            }
+            else if (int.Parse(convertData.data) == 1)
+            {
+                MessageBox.Show("Sửa dịch vụ thành công");
+            }
+            loadService();
+        }
     }
 }

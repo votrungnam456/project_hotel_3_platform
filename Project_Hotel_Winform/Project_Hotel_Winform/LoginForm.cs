@@ -66,11 +66,7 @@ namespace Project_Hotel_Winform
             Quyen1 = lstReturnDataLogin[0].Quyen;
             TenNV1 = lstReturnDataLogin[0].TenNV;
             CoQuyen1 = lstReturnDataLogin[0].CoQuyen;
-            Dashboard ds = new Dashboard();
-            ds.NameUserLogin = TenNV1;
-            ds.CoQuyen = CoQuyen1;
-            ds.Quyen = Quyen1;
-            ds.ID_NV = ID_NV1;
+            Dashboard ds = new Dashboard(TenNV1,Quyen1,ID_NV1,CoQuyen1);
             ds.Show();
             this.Hide();
         }

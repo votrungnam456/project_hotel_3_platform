@@ -120,7 +120,7 @@
             this.btnEmployees.ShadowDecoration.Parent = this.btnEmployees;
             this.btnEmployees.Size = new System.Drawing.Size(239, 85);
             this.btnEmployees.TabIndex = 4;
-            this.btnEmployees.Tag = "0";
+            this.btnEmployees.Tag = "0,1";
             this.btnEmployees.Text = "Nhân viên";
             this.btnEmployees.Click += new System.EventHandler(this.btnEmployees_Click);
             // 
@@ -212,7 +212,7 @@
             this.btnAdd.ShadowDecoration.Parent = this.btnAdd;
             this.btnAdd.Size = new System.Drawing.Size(236, 85);
             this.btnAdd.TabIndex = 0;
-            this.btnAdd.Tag = "0,1";
+            this.btnAdd.Tag = "0";
             this.btnAdd.Text = "Thêm phòng";
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -291,9 +291,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(204, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 17);
+            this.label1.Size = new System.Drawing.Size(66, 24);
             this.label1.TabIndex = 4;
             this.label1.Text = "label1";
             // 

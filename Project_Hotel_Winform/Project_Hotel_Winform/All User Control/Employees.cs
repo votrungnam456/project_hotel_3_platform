@@ -13,6 +13,14 @@ namespace Project_Hotel_Winform.All_User_Control
 {
     public partial class Employees : UserControl
     {
+        private string nameUserLogin;
+        private string quyen;
+        private string iD_NV;
+        private int coQuyen;
+        public string NameUserLogin { get => nameUserLogin; set => nameUserLogin = value; }
+        public string Quyen { get => quyen; set => quyen = value; }
+        public string ID_NV { get => iD_NV; set => iD_NV = value; }
+        public int CoQuyen { get => coQuyen; set => coQuyen = value; }
         ConnectAPI api = new ConnectAPI();
         List<Employee> lstEmployees;
         List<Decentralization> lstPQ;
@@ -23,7 +31,32 @@ namespace Project_Hotel_Winform.All_User_Control
             cboGender.Items.Add("Nữ");
             loadcboBoxPhanQuyen();
         }
+        public Employees(string NameUser, string Quyen, string ID_NV, int CoQuyen)
+        {
+            NameUserLogin = NameUser;
+            this.Quyen = Quyen;
+            this.ID_NV = ID_NV;
+            this.CoQuyen = CoQuyen;
+            InitializeComponent();
+            cboGender.Items.Add("Nam");
+            cboGender.Items.Add("Nữ");
+            loadcboBoxPhanQuyen();
+            phanQuyen();
+        }
 
+        public void phanQuyen()
+        {
+            foreach(Control x in tabControl1.Controls)
+            {
+                if(x is TabPage)
+                {
+                    if (!x.Tag.ToString().Contains(CoQuyen.ToString()))
+                    {
+                        x.Enabled = false;
+                    }
+                }
+            }
+        }
         public async void loadcboBoxPhanQuyen()
         {
             lstPQ = new List<Decentralization>();
@@ -45,15 +78,19 @@ namespace Project_Hotel_Winform.All_User_Control
                 MessageBox.Show("Thông tin của nhân viên mới không được để trống");
                 return;
             }
+            if(!txtEmail.Text.Contains("@") || !txtEmail.Text.Contains(".com"))
+            {
+                MessageBox.Show("Email không đúng định dạng");
+                return;
+            }
             string name = txtName.Text.ToString();
             string CMND = txtCMND.Text.ToString();
             string SDT = txtSDT.Text.ToString();
             string gender = cboGender.SelectedItem.ToString();
-            string email = txtEmail.Text.ToString();
+            string email = txtEmail.Text.ToString().ToLower();
             string pwd = txtPassword.Text.ToString();
             string phanQuyen = cboPhanQuyen.SelectedValue.ToString();
             string address = txtAddress.Text.ToString();
-            //MessageBox.Show(name + CMND+ SDT+ gender+ email+ pwd+ phanQuyen+ address);
             Dictionary<string, string> values = new Dictionary<string, string>
             {
                 { "TenNV",name},

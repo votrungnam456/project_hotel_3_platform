@@ -24,6 +24,41 @@ namespace Project_Hotel_Winform
         public Dashboard()
         {
             InitializeComponent();
+
+        }
+        public Dashboard(string NameUser,string Quyen,string ID_NV,int CoQuyen)
+        {
+            NameUserLogin = NameUser;
+            this.Quyen = Quyen;
+            this.ID_NV = ID_NV;
+            this.CoQuyen = CoQuyen;
+            InitializeComponent();
+            label1.Text = "Xin chào " + Quyen + " " + NameUser;
+            PhanQuyen();
+        }
+        public void PhanQuyen()
+        {
+            foreach(Control x in this.Controls)
+            {
+                if (x is Guna.UI2.WinForms.Guna2Button)
+                {
+                    if (!x.Tag.ToString().Contains(CoQuyen.ToString()))
+                    {
+                        x.Enabled = false;
+                    }
+                }
+            }
+            
+            foreach(Control x in panel1.Controls)
+            {
+                if(x is Guna.UI2.WinForms.Guna2Button) 
+                {
+                    if (!x.Tag.ToString().Contains(CoQuyen.ToString()))
+                    {
+                        x.Enabled = false;
+                    }
+                }
+            }
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -83,7 +118,7 @@ namespace Project_Hotel_Winform
             panelMoving.Size = new Size(199, 5);
             panelMoving.Left = btnEmployees.Left;
             panel3.Controls.Clear();
-            Employees employees = new Employees();
+            Employees employees = new Employees(NameUserLogin,Quyen,ID_NV,CoQuyen);
             employees.Size = new Size(1575, 798);
             panel3.Controls.Add(employees);
         }
