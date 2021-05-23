@@ -6,28 +6,23 @@ const { Int } = require('mssql');
 class Service {
     static async listService(req) {
         try {
-            let result = await queryBuilder('dichvu').select();
+            let result = await queryBuilder('dichvu').select().where("Enable",1);
             return result;
         } catch (e) {
             console.log(e);
             return e
         }
     }
-    // static async getCustomerService(req){
-    //     try {
-    //         let params = req.body;
-    //         let Email = params.Email;
-    //         let MatKhau = params.MatKhau;
-    //         let result = await queryBuilder('khachhang').where({
-    //             "Email":Email,
-    //             "MatKhau":MatKhau
-    //         }).first();
-    //         return result;
-    //     } catch (e) {
-    //         console.log(e);
-    //         return e
-    //     }
-    // }
+    static async deleteService(req){
+        try {
+            let ID_DV = req.params.ID_DV;
+            await queryBuilder('dichvu').update("Enable", 0).where("ID_DV",ID_DV);
+            return 1;
+        } catch (e) {
+            console.log(e);
+            return 0;
+        }
+    }
     static async createService(req){
         try {
             let params = req.body;
@@ -41,7 +36,8 @@ class Service {
             let dataInsert = {
                 ID_DV : uuid.v4(),
                 TenDV : tenDichVu,
-                Gia :gia
+                Gia :gia,
+                Enable:1
             }
 
             await queryBuilder('dichvu').insert(dataInsert);
@@ -51,27 +47,21 @@ class Service {
             return -1;
         }
     }
-    // static async updateCustomerService(req){
-    //     try {
+    static async updateService(req){
+        try {
             
-    //         let params = req.body;
-    //         let ID_KH = params.ID_KH;
-    //         let dataUpdate = {
-    //             TenKH: params.TenKH || null,
-    //             GTinh: params.GTinh || null,
-    //             CMND: params.CMND || null,
-    //             Dchi: params.Dchi || null,
-    //             QTich: params.QTich || null,
-    //             SoDT:params.SoDT || null,
-    //             Email:params.Email || null,
-    //             MatKhau:params.MatKhau || null
-    //         }
-    //         await queryBuilder('khachhang').where("ID_KH", ID_KH).update(dataUpdate);
-    //         return "Cập nhật thông tin khách hàng thành công";
-    //     } catch (e) {
-    //         console.log(e);
-    //         return e
-    //     }
-    // }
+            let params = req.body;
+            let ID_DV = req.params.ID_DV;
+            let dataUpdate = {
+                TenDV:params.TenDV,
+                Gia :params.Gia
+            }
+            await queryBuilder('dichvu').where("ID_DV", ID_DV).update(dataUpdate);
+            return 1;
+        } catch (e) {
+            console.log(e);
+            return 0;
+        }
+    }
 }
 module.exports = Service

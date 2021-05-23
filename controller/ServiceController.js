@@ -97,25 +97,25 @@ class ServiceController {
             });
         }
     }
-    // static async updateRoom(req, res, next){
-    //     try {
-    //         let data = await RoomsService.updateRoomService(req);
-    //         res.status(200).json({
-    //             status: "SUCCESS",
-    //             errors:null,
-    //            data
-    //         });
-    //     } catch (e) {
-    //         res.status(200).json({
-    //             status: "FAIL",
-    //             errors: [{
-    //                 code: 1000,
-    //                 message: "Server Error"
-    //             }],
-    //             data: null
-    //         });
-    //     }
-    // }    
+    static async updateServiceController(req, res, next){
+        try {
+            let data = await Service.updateService(req);
+            res.status(200).json({
+                status: "SUCCESS",
+                errors:null,
+               data
+            });
+        } catch (e) {
+            res.status(200).json({
+                status: "FAIL",
+                errors: [{
+                    code: 1000,
+                    message: "Server Error"
+                }],
+                data: null
+            });
+        }
+    }    
     // static async checkInRoom(req, res, next){
     //     try {
     //         let data = await RoomsService.checkInRoomService(req);
@@ -173,24 +173,24 @@ class ServiceController {
     //         });
     //     }
     // }
-    // static async now(req, res, next){
-    //     try {
-    //         let data = await RoomsService.now(req);
-    //         res.status(200).json({
-    //             status: "SUCCESS",
-    //             errors:null,
-    //            data
-    //         });
-    //     } catch (e) {
-    //         res.status(200).json({
-    //             status: "FAIL",
-    //             errors: [{
-    //                 code: 1000,
-    //                 message: "Server Error"
-    //             }],
-    //             data: null
-    //         });
-    //     }
-    // }
+    static async deleteServiceController(req, res, next){
+        try {
+            let data = await Service.deleteService(req);
+            res.status(200).json({
+                status: "SUCCESS",
+                errors:null,
+               data
+            });
+        } catch (e) {
+            res.status(200).json({
+                status: "FAIL",
+                errors: [{
+                    code: 1000,
+                    message: "Server Error"
+                }],
+                data: null
+            });
+        }
+    }
 }
 module.exports = ServiceController

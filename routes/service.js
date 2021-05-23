@@ -6,6 +6,6 @@ router.get('/list', serviceController.listServiceController);
 // // router.get('/:MaPhong', CustomersController.getItem);
 router.post('/create', serviceController.createServiceController);
 // router.post('/createNumber', BookingController.createBookingRoomNumber);
-// router.put('/:MaPhong', BookingController.updateCustomer);
-// router.delete('/:MaPDK', BookingController.deleteBooking);
+router.put('/:ID_DV', serviceController.updateServiceController);
+router.delete('/:ID_DV', serviceController.deleteServiceController);
 module.exports = router;
