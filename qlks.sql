@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2021 at 01:38 PM
+-- Generation Time: May 23, 2021 at 04:34 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -30,20 +30,19 @@ SET time_zone = "+00:00";
 CREATE TABLE `dichvu` (
   `ID_DV` char(50) NOT NULL,
   `TenDV` varchar(50) DEFAULT NULL,
-  `Gia` int(11) DEFAULT NULL
+  `Gia` int(11) DEFAULT NULL,
+  `Enable` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `hoadondatphong`
+-- Dumping data for table `dichvu`
 --
 
-CREATE TABLE `hoadondatphong` (
-  `MaHDDP` char(50) NOT NULL,
-  `MaPDK` char(50) DEFAULT NULL,
-  `NgayLap` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `dichvu` (`ID_DV`, `TenDV`, `Gia`, `Enable`) VALUES
+('110eff4b-c703-44f0-b427-f3d9e74c2ccc', 'Dịch vụ đặt taxi', 25000, 1),
+('26573b47-8af6-4047-8e6e-d8da984c3fb7', 'Ăn Sáng', 50000, 1),
+('3561fc18-0136-4502-a9ce-3fdf157414f4', 'Dịch vụ karaoke', 100000, 0),
+('71010692-ac69-49f3-8619-cad583acaaad', 'Dịch vụ đặt vé máy bay, tour du lịch', 20000, 1);
 
 -- --------------------------------------------------------
 
@@ -54,8 +53,18 @@ CREATE TABLE `hoadondatphong` (
 CREATE TABLE `hoadondichvu` (
   `ID_DV` char(50) NOT NULL,
   `MaPDK` char(50) NOT NULL,
-  `NgayLap` date DEFAULT NULL
+  `NgayLap` date DEFAULT NULL,
+  `GiaDichVu` int(11) NOT NULL,
+  `IDHDDV` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `hoadondichvu`
+--
+
+INSERT INTO `hoadondichvu` (`ID_DV`, `MaPDK`, `NgayLap`, `GiaDichVu`, `IDHDDV`) VALUES
+('110eff4b-c703-44f0-b427-f3d9e74c2ccc', 'bab699ac-d953-4e95-9ad8-4bf90181acd6', '2021-05-21', 20000, '72bebad7-6233-4d85-b302-84dda38098f5'),
+('3561fc18-0136-4502-a9ce-3fdf157414f4', 'bab699ac-d953-4e95-9ad8-4bf90181acd6', '2021-05-21', 100000, '298e9a05-4333-49a8-809b-34b90718be41');
 
 -- --------------------------------------------------------
 
@@ -82,6 +91,7 @@ CREATE TABLE `khachhang` (
 INSERT INTO `khachhang` (`ID_KH`, `TenKH`, `Gtinh`, `Cmnd`, `Dchi`, `Qtich`, `Sodt`, `Email`, `MatKhau`) VALUES
 ('5a2d1014-2d11-4e47-8', 'Võ Trung Nghĩa', 'Nam', '026066167', '38/3 Nguyễn Trọng Trí, Phường An Lạc A, Q. BT', 'Việt Nam', '0703197183', 'votrungnam456@gmail.com', 'Konachan12'),
 ('601bd552-3922-4892-9', 'Cao Quang Sơn', 'Nam', '123456789', 'TP.HCM', 'Việt Nam', '0908123456', 'votrungnam2015@gmail.com', '123456789'),
+('a583ff83-be30-4a5b-b3bd-4d0ea894f4e2', 'Tina', 'Nữ', '123151623', '34/5', 'Hàn Quốc', '123121256', 'tina@gmail.com', '123'),
 ('f1600c1f-5f0d-4827-9', 'Võ Trung Nam', 'Nam', '026066168', '38/3 Nguyễn Trọng Trí, P. An Lạc A. Q. BT', 'Việt Nam', '0703197183', 'votrungnam2013@gmail.com', '123456789');
 
 -- --------------------------------------------------------
@@ -120,6 +130,14 @@ CREATE TABLE `nhanvien` (
   `Sodt` char(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `nhanvien`
+--
+
+INSERT INTO `nhanvien` (`ID_NV`, `TenNV`, `Gtinh`, `Cmnd`, `Dchi`, `Sodt`) VALUES
+('a65175b6-3e81-46af-85ea-b65b570197da', 'Huỳnh Văn B', 'Nam', '123456989', '38/3', '0703197184'),
+('f8def17c-b3ab-47b4-a88d-0f0580ec6ddf', 'Huỳnh Văn A', 'Nam', '123456987', '38/3', '0703197184');
+
 -- --------------------------------------------------------
 
 --
@@ -131,6 +149,14 @@ CREATE TABLE `phanquyen` (
   `TenQuyen` varchar(20) DEFAULT NULL,
   `CoQuyen` tinyint(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `phanquyen`
+--
+
+INSERT INTO `phanquyen` (`ID_Quyen`, `TenQuyen`, `CoQuyen`) VALUES
+('PQ01', 'Quản lý', 0),
+('PQ03', 'Nhân viên', 1);
 
 -- --------------------------------------------------------
 
@@ -144,18 +170,23 @@ CREATE TABLE `phieu_dang_ky` (
   `Ngaydi` date DEFAULT NULL,
   `Chuthich` varchar(100) DEFAULT NULL,
   `Maphong` char(50) DEFAULT NULL,
-  `ID_KH` char(50) DEFAULT NULL
+  `ID_KH` char(50) DEFAULT NULL,
+  `GiaPhong` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `phieu_dang_ky`
 --
 
-INSERT INTO `phieu_dang_ky` (`MaPDK`, `Ngayden`, `Ngaydi`, `Chuthich`, `Maphong`, `ID_KH`) VALUES
-('181c2374-6041-4c34-80a5-457819b9a5a0', '2021-05-17', NULL, 'test', 'P101', '601bd552-3922-4892-9'),
-('24182a6a-742a-444f-a2ae-fc7de27ee93e', '2021-05-14', '2021-05-14', 'Test Form', 'P102', '5a2d1014-2d11-4e47-8'),
-('298bd336-471b-4a97-996b-f17aae7cb21b', '2021-05-14', '2021-05-15', '', 'P106', '5a2d1014-2d11-4e47-8'),
-('546a73ad-cee1-4c3b-bece-3f4bb3925174', '2021-05-20', NULL, 'test 3', 'P105', '601bd552-3922-4892-9');
+INSERT INTO `phieu_dang_ky` (`MaPDK`, `Ngayden`, `Ngaydi`, `Chuthich`, `Maphong`, `ID_KH`, `GiaPhong`) VALUES
+('00005291-4bfc-4a6a-89f9-446091676e37', '2021-05-20', '2021-05-20', '', 'P108', '5a2d1014-2d11-4e47-8', 130000),
+('48b3f91a-ce18-4c9e-84b5-d91122557b2d', '2021-05-19', NULL, 'Test 2', 'P204', '601bd552-3922-4892-9', 1000000),
+('6c1fd42e-be14-4933-8c8f-b2e882c8d86a', '2021-05-20', '2021-05-20', '', 'P107', '5a2d1014-2d11-4e47-8', 130000),
+('81d12206-7b0f-4263-a2ad-9c4ae68b7ccf', '2021-05-19', NULL, 'Test 2', 'P103', '601bd552-3922-4892-9', 1000000),
+('9c0d20ea-c4ca-4df4-9877-6018764adc82', '2021-05-21', '2021-05-21', '', 'P201', '5a2d1014-2d11-4e47-8', 100000),
+('bab699ac-d953-4e95-9ad8-4bf90181acd6', '2021-05-17', NULL, 'Test ', 'P101', '601bd552-3922-4892-9', 100000),
+('ca029ec8-b8d0-446c-9fcd-714804a9b3b3', '2021-05-20', '2021-05-20', '', 'P107', '5a2d1014-2d11-4e47-8', 130000),
+('d1602bf5-8771-4bf7-9016-66a1534f0c8c', '2021-05-20', '2021-05-20', 'test', 'P106', 'f1600c1f-5f0d-4827-9', 120000);
 
 -- --------------------------------------------------------
 
@@ -194,19 +225,19 @@ CREATE TABLE `phong` (
 --
 
 INSERT INTO `phong` (`Maphong`, `Tenphong`, `Mota`, `MaKP`, `Gia`, `TinhTrang`, `MaPDK`) VALUES
-('P101', 'Phòng P101', 'Đầy đủ thiết bị, có wifi', 'KP01', 100000, 1, '181c2374-6041-4c34-80a5-457819b9a5a0'),
-('P102', 'Phòng P102', 'Đầy đủ thiết bị, có wifi', 'KP02', 150000, 2, '24182a6a-742a-444f-a2ae-fc7de27ee93e'),
-('P103', 'Phòng 103', 'Đầy đủ thiết bị, có hồ bơi riêng', 'KP04', 1000000, 0, NULL),
+('P101', 'Phòng P101', 'Đầy đủ thiết bị, có wifi', 'KP01', 100000, 2, 'bab699ac-d953-4e95-9ad8-4bf90181acd6'),
+('P102', 'Phòng P102', 'Đầy đủ thiết bị, có wifi', 'KP02', 150000, 0, NULL),
+('P103', 'Phòng 103', 'Đầy đủ thiết bị, có hồ bơi riêng', 'KP04', 1000000, 1, '81d12206-7b0f-4263-a2ad-9c4ae68b7ccf'),
 ('P104', 'Phòng 104', 'Đầy đủ thiết bị, phòng hướng ra biểng', 'KP03', 500000, 0, NULL),
-('P105', 'Phòng 105', 'Nội thất phương tây, hiện đại', 'KP01', 120000, 1, '546a73ad-cee1-4c3b-bece-3f4bb3925174'),
-('P106', 'Phòng 106', 'Nội thất phương tây, hiện đại', 'KP01', 120000, 2, '298bd336-471b-4a97-996b-f17aae7cb21b'),
-('P107', 'Phòng 107', 'Nội thất phương tây, cổ', 'KP02', 130000, 0, NULL),
-('P108', 'Phòng 108', 'Nội thất phương tây, cổ', 'KP02', 130000, 0, NULL),
+('P105', 'Phòng 105', 'Nội thất phương tây, hiện đại', 'KP01', 120000, 0, NULL),
+('P106', 'Phòng 106', 'Nội thất phương tây, hiện đại', 'KP01', 120000, 1, 'd1602bf5-8771-4bf7-9016-66a1534f0c8c'),
+('P107', 'Phòng 107', 'Nội thất phương tây, cổ', 'KP02', 130000, 1, 'ca029ec8-b8d0-446c-9fcd-714804a9b3b3'),
+('P108', 'Phòng 108', 'Nội thất phương tây, cổ', 'KP02', 130000, 2, '00005291-4bfc-4a6a-89f9-446091676e37'),
 ('P109', 'Phòng P109', 'Hướng ra biển, có ban công rộng, đầy đủ tiện nghi', 'KP03', 550000, 0, NULL),
-('P201', 'Phòng 201', 'Đầy đủ thiết bị, có wifi', 'KP02', 100000, 0, NULL),
+('P201', 'Phòng 201', 'Đầy đủ thiết bị, có wifi', 'KP02', 100000, 2, '9c0d20ea-c4ca-4df4-9877-6018764adc82'),
 ('P202', 'Phòng 202', 'Đầy đủ thiết bị, có wifi', 'KP02', 100000, 0, NULL),
 ('P203', 'Phòng 203', 'Đầy đủ thiết bị, có wifi', 'KP03', 1000000, 0, NULL),
-('P204', 'Phòng 204', 'Đầy đủ thiết bị, có wifi', 'KP04', 1000000, 0, NULL);
+('P204', 'Phòng 204', 'Đầy đủ thiết bị, có wifi', 'KP04', 1000000, 2, '48b3f91a-ce18-4c9e-84b5-d91122557b2d');
 
 -- --------------------------------------------------------
 
@@ -222,6 +253,14 @@ CREATE TABLE `taikhoan_nhanvien` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Dumping data for table `taikhoan_nhanvien`
+--
+
+INSERT INTO `taikhoan_nhanvien` (`ID_NV`, `Email`, `MatKhau`, `ID_Quyen`) VALUES
+('a65175b6-3e81-46af-85ea-b65b570197da', 'votrungnam@gmail.com', '123', 'PQ01'),
+('f8def17c-b3ab-47b4-a88d-0f0580ec6ddf', 'votrungnam456@gmail.com', '123', 'PQ03');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -230,13 +269,6 @@ CREATE TABLE `taikhoan_nhanvien` (
 --
 ALTER TABLE `dichvu`
   ADD PRIMARY KEY (`ID_DV`);
-
---
--- Indexes for table `hoadondatphong`
---
-ALTER TABLE `hoadondatphong`
-  ADD PRIMARY KEY (`MaHDDP`),
-  ADD KEY `FK_HoaDonDatPhong_PhieuDK` (`MaPDK`);
 
 --
 -- Indexes for table `hoadondichvu`
@@ -304,12 +336,6 @@ ALTER TABLE `taikhoan_nhanvien`
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `hoadondatphong`
---
-ALTER TABLE `hoadondatphong`
-  ADD CONSTRAINT `FK_HoaDonDatPhong_PhieuDK` FOREIGN KEY (`MaPDK`) REFERENCES `phieu_dang_ky` (`MaPDK`);
 
 --
 -- Constraints for table `hoadondichvu`
