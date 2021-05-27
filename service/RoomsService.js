@@ -3,6 +3,7 @@ const queryBuilder = require('../config/database');
 const uuid = require('uuid');
 const { DateTime } = require('mssql');
 const date = require('date-and-time');
+
 class RoomService {
     static async listRoomService(req) {
         try {
@@ -96,14 +97,14 @@ class RoomService {
             if(check == null){
                 return 0;
             }
-            let dataInsert = {
+            let dataUpdate = {
                 Tenphong: params.Tenphong,
                 Mota: params.Mota,
                 MaKP: params.MaKP,
                 Gia: params.Gia,
                 TinhTrang: parseInt(params.TinhTrang)
             }
-            await queryBuilder('phong').where("MaPhong", MaPhong).update(dataInsert);
+            await queryBuilder('phong').where("MaPhong", MaPhong).update(dataUpdate);
             return 1;
         } catch (e) {
             console.log(e);
@@ -157,8 +158,8 @@ class RoomService {
     static async now(req){
         try {
             let params = req.body;
-            let today = new Date();
-            let now = new Date("2021-5-21");
+            // let today = new Date();
+
             // now = now.toISOString().split("T")[0]
 
             // let NgayDen = await queryBuilder('phieu_dang_ky').select("Ngayden").where("MaPDK","24182a6a-742a-444f-a2ae-fc7de27ee93e").first();
@@ -179,22 +180,33 @@ class RoomService {
             // let gia = params.Gia;
 
 
-           let check = await queryBuilder('phong').select('MaPDK').havingRaw("MaPDK IS NOT ?", [null]);
-           let arrUser = []
-           for(let i = 0 ; i< check.length ; i++){
-                let checkZ = await queryBuilder('phieu_dang_ky').select('ID_KH').where('MaPDK',check[i]["MaPDK"]).first();
-                arrUser.push(checkZ['ID_KH'])
+        //    let check = await queryBuilder('phong').select('MaPDK').havingRaw("MaPDK IS NOT ?", [null]);
+        //    let arrUser = []
+        //    for(let i = 0 ; i< check.length ; i++){
+        //         let checkZ = await queryBuilder('phieu_dang_ky').select('ID_KH').where('MaPDK',check[i]["MaPDK"]).first();
+        //         arrUser.push(checkZ['ID_KH'])
 
-           }
-           let uniqueValues = [...new Set(arrUser)];
-           let lastResult = [];
-           for(let i = 0 ; i< uniqueValues.length ; i++){
-               let query = await queryBuilder('khachhang').where('ID_KH',uniqueValues[i]).first();
-               lastResult.push(query);
-           }
-            return lastResult;
+        //    }
+        //    let uniqueValues = [...new Set(arrUser)];
+        //    let lastResult = [];
+        //    for(let i = 0 ; i< uniqueValues.length ; i++){
+        //        let query = await queryBuilder('khachhang').where('ID_KH',uniqueValues[i]).first();
+        //        lastResult.push(query);
+        //    }
+            // let now = new Date("2021-5-21");
+            // let d = new Date("2021-5-27")
+            // let TienPhong = date.subtract(d,now).toDays();
+            // return TienPhong;
 
-
+            // let result = await queryBuilder('hoadondichvu').where("MaPDK","bab699ac-d953-4e95-9ad8-4bf90181acd");
+            // let tien = 0;
+            // result.forEach(hoadon => {
+            //     tien +=hoadon["GiaDichVu"]
+            // });
+            let today = new Date();
+            let now = new Date(today.getFullYear()+'-'+(today.getMonth()+1)+'-'+(today.getDate()+1));
+            now = now.toISOString().split("T")[0]
+            return now;
         // let check = await queryBuilder('phong').select('MaPDK').havingRaw("MaPDK IS NOT ?", [null]);
         // let arrUser = []
         // for(let i = 0 ; i< check.length ; i++){

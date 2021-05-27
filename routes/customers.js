@@ -6,5 +6,5 @@ router.get('/list', CustomersController.list);
 router.get('/listExist', CustomersController.listExist);
 router.post('/user', CustomersController.getCustomer);
 router.post('/create', CustomersController.createCustomer);
-router.put('/:MaKH', CustomersController.updateCustomer);
+router.put('/:ID_KH', CustomersController.updateCustomer);
 module.exports = router;

@@ -83,7 +83,7 @@ class RoomService {
         try {
             
             let params = req.body;
-            let ID_KH = params.ID_KH;
+            let ID_KH = req.params.ID_KH;
             let dataUpdate = {
                 TenKH: params.TenKH || null,
                 GTinh: params.GTinh || null,
@@ -95,10 +95,10 @@ class RoomService {
                 MatKhau:params.MatKhau || null
             }
             await queryBuilder('khachhang').where("ID_KH", ID_KH).update(dataUpdate);
-            return "Cập nhật thông tin khách hàng thành công";
+            return 1;
         } catch (e) {
             console.log(e);
-            return e
+            return 0;
         }
     }
 }
