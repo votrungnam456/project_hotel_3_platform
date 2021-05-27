@@ -10,9 +10,10 @@ namespace Project_Hotel_Winform
     public class ConnectAPI
     {
         HttpClient client = new HttpClient();
+        string url = "http://localhost:4444/";
         public async Task<string> getAPI(string pathname)
         {
-            var response = await client.GetAsync("http://localhost:4444/" + pathname);
+            var response = await client.GetAsync(url + pathname);
             var responseString = await response.Content.ReadAsStringAsync();
             return responseString;
         }
@@ -20,7 +21,7 @@ namespace Project_Hotel_Winform
         {
             var content = new FormUrlEncodedContent(param);
 
-            var response = await client.PostAsync("http://localhost:4444/" + pathname, content);
+            var response = await client.PostAsync(url + pathname, content);
             var responseString = await response.Content.ReadAsStringAsync();
             return responseString;
         }
@@ -28,7 +29,7 @@ namespace Project_Hotel_Winform
         {
             var content = new FormUrlEncodedContent(param);
 
-            var response = await client.PutAsync("http://localhost:4444/" + pathname, content);
+            var response = await client.PutAsync(url + pathname, content);
             var responseString = await response.Content.ReadAsStringAsync();
             return responseString;
         }
@@ -36,7 +37,7 @@ namespace Project_Hotel_Winform
         {
             //var content = new FormUrlEncodedContent(param);
 
-            var response = await client.DeleteAsync("http://localhost:4444/" + pathname);
+            var response = await client.DeleteAsync(url + pathname);
             var responseString = await response.Content.ReadAsStringAsync();
             return responseString;
         }

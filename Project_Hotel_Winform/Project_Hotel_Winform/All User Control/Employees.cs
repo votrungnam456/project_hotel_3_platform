@@ -22,7 +22,7 @@ namespace Project_Hotel_Winform.All_User_Control
         public string ID_NV { get => iD_NV; set => iD_NV = value; }
         public int CoQuyen { get => coQuyen; set => coQuyen = value; }
         ConnectAPI api = new ConnectAPI();
-        List<Employee> lstEmployees;
+        List<Employee> ListEmployees;
         List<Decentralization> lstPQ;
         public Employees()
         {
@@ -43,7 +43,18 @@ namespace Project_Hotel_Winform.All_User_Control
             loadcboBoxPhanQuyen();
             phanQuyen();
         }
-
+        public async void loadEmployees()
+        {
+            ListEmployees = new List<Employee>();
+            var returnData = api.getAPI("employees/list");
+            var result = await Task.WhenAll(returnData);
+            var data = JsonConvert.DeserializeObject<listEmployees>(result[0]);
+            foreach (Employee item in data.data)
+            {
+                ListEmployees.Add(item);
+            }
+            GridViewEmployees.DataSource = ListEmployees;
+        }
         public void phanQuyen()
         {
             foreach(Control x in tabControl1.Controls)
@@ -144,6 +155,11 @@ namespace Project_Hotel_Winform.All_User_Control
         }
 
         private void txtCMND_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GridViewThuePhong_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

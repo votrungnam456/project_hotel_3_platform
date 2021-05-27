@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using Project_Hotel_Winform.Model;
+using System.Globalization;
 
 namespace Project_Hotel_Winform.All_User_Control
 {
@@ -21,6 +22,9 @@ namespace Project_Hotel_Winform.All_User_Control
         List<checkInRoom> listNhanPhong = new List<checkInRoom>();
         List<checkOutRoom> listTraPhong = new List<checkOutRoom>();
 
+        private string iD_NV;
+
+        public string ID_NV { get => iD_NV; set => iD_NV = value; }
         public CheckOut()
         {
             InitializeComponent();
@@ -32,6 +36,19 @@ namespace Project_Hotel_Winform.All_User_Control
             loadNhanPhong();
             loadTraPhong();
             
+        }
+        public CheckOut(string id_nv)
+        {
+            ID_NV = id_nv;
+            InitializeComponent();
+            disableTextBox();
+            loadRooms();
+            loadCboboxCustomers();
+            string now = DateTime.Now.ToString("MM/dd/yyyy");
+            dateTimeCheckOut.MinDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            loadNhanPhong();
+            loadTraPhong();
+
         }
         public void disableTextBox()
         {
@@ -52,6 +69,7 @@ namespace Project_Hotel_Winform.All_User_Control
             var data = JsonConvert.DeserializeObject<listCheckInRoom>(result[0]);
             foreach (checkInRoom item in data.data)
             {
+                item.NgayDen = DateTime.ParseExact(item.NgayDen.AddDays(1).ToString("dd/MM/yyyy"), "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 listNhanPhong.Add(item);
             }
             
@@ -71,8 +89,8 @@ namespace Project_Hotel_Winform.All_User_Control
             }
 
             GridViewCheckOut.DataSource = listTraPhong;
-            GridViewCheckOut.Columns[0].Visible = false;
-            GridViewCheckOut.Columns[5].Visible = false;
+            //GridViewCheckOut.Columns[0].Visible = false;
+            //GridViewCheckOut.Columns[5].Visible = false;
         }
         public async void loadRooms() {
             
@@ -316,7 +334,7 @@ namespace Project_Hotel_Winform.All_User_Control
 
         private void GridViewCheckOut_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (GridViewCheckOut.CurrentRow.Cells[0].Value.ToString() != null)
+            if (GridViewCheckOut.CurrentRow.Cells[0].Value.ToString() == null)
             {
                 txtPhongCheckOut.Text = "";
                 txtKieuPhongCheckOut.Text = "";
@@ -338,36 +356,37 @@ namespace Project_Hotel_Winform.All_User_Control
 
         private async void guna2Button2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Chua lam");
-            //if (GridViewCheckOut.CurrentRow.Cells[0].Value.ToString() != null)
-            //{
-            //    string MaPhong = GridViewCheckInRoom.CurrentRow.Cells[0].Value.ToString();
-            //    string PhieuDangKy = GridViewCheckInRoom.CurrentRow.Cells[5].Value.ToString();
-            //    Dictionary<string, string> values = new Dictionary<string, string>
-            //    {
-            //        {"MaPhong",MaPhong},
-            //        {"MaPDK",PhieuDangKy}
-            //    };
-            //    var returnData = api.putAPI("rooms/checkOut/" + MaPhong, values);
-            //    var result = await Task.WhenAll(returnData);
-            //    var convertData = JsonConvert.DeserializeObject<returnData>(result[0]);
-            //    if (int.Parse(convertData.data) == 0)
-            //    {
-            //        MessageBox.Show("Mã phòng không tồn tại");
-            //    }
-            //    else if (int.Parse(convertData.data) == 1)
-            //    {
-            //        MessageBox.Show("Trả phòng thành công");
-            //    }
-            //    loadNhanPhong();
-            //    loadRooms();
-            //    loadTraPhong();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Vui lòng chọn phòng để trả");
-            //    return;
-            //}
+            //MessageBox.Show("Chua lam");
+            if (GridViewCheckOut.CurrentRow.Cells[0].Value.ToString() != null)
+            {
+                string MaPhong = GridViewCheckOut.CurrentRow.Cells[0].Value.ToString();
+                string PhieuDangKy = GridViewCheckOut.CurrentRow.Cells[5].Value.ToString();
+                Dictionary<string, string> values = new Dictionary<string, string>
+                {
+                    {"MaPhong",MaPhong},
+                    {"MaPDK",PhieuDangKy},
+                    {"ID_NV",ID_NV}
+                };
+                var returnData = api.postAPI("paying/createPaying", values);
+                var result = await Task.WhenAll(returnData);
+                var convertData = JsonConvert.DeserializeObject<returnData>(result[0]);
+                if (int.Parse(convertData.data) == 0)
+                {
+                    MessageBox.Show("Lỗi trong quá trình xử lý, vui lòng thử lại !!");
+                }
+                else if (int.Parse(convertData.data) == 1)
+                {
+                    MessageBox.Show("Trả phòng thành công");
+                }
+                loadNhanPhong();
+                loadRooms();
+                loadTraPhong();
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn phòng để trả");
+                return;
+            }
         }
     }
 }

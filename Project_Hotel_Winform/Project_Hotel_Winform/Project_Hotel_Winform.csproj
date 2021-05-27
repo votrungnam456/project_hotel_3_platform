@@ -118,11 +118,17 @@
     <Compile Include="Model\Customers.cs" />
     <Compile Include="Model\Decentralization.cs" />
     <Compile Include="Model\Employee.cs" />
+    <Compile Include="Model\historyBill.cs" />
+    <Compile Include="Model\historyBookingRoom.cs" />
+    <Compile Include="Model\historyService.cs" />
     <Compile Include="Model\listCheckInRoom.cs" />
     <Compile Include="Model\listChectOutRoom.cs" />
     <Compile Include="Model\listCustomers.cs" />
     <Compile Include="Model\listDecentralization.cs" />
     <Compile Include="Model\listEmployees.cs" />
+    <Compile Include="Model\listHistoryBill.cs" />
+    <Compile Include="Model\listHistoryBookingRoom.cs" />
+    <Compile Include="Model\listHistoryService.cs" />
     <Compile Include="Model\listRooms.cs" />
     <Compile Include="Model\listServices.cs" />
     <Compile Include="Model\listTypeRooms.cs" />

@@ -52,6 +52,7 @@
             this.guna2Elipse7 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Elipse8 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Elipse9 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -279,7 +280,7 @@
             this.btnHistory.HoverState.Parent = this.btnHistory;
             this.btnHistory.Image = ((System.Drawing.Image)(resources.GetObject("btnHistory.Image")));
             this.btnHistory.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnHistory.Location = new System.Drawing.Point(1673, 1);
+            this.btnHistory.Location = new System.Drawing.Point(1584, 1);
             this.btnHistory.Name = "btnHistory";
             this.btnHistory.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.btnHistory.ShadowDecoration.Parent = this.btnHistory;
@@ -292,11 +293,12 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(204, 9);
+            this.label1.Location = new System.Drawing.Point(333, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(66, 24);
             this.label1.TabIndex = 4;
             this.label1.Text = "label1";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // guna2Elipse3
             // 
@@ -326,12 +328,32 @@
             // 
             this.guna2Elipse9.BorderRadius = 30;
             // 
+            // guna2CircleButton1
+            // 
+            this.guna2CircleButton1.CheckedState.Parent = this.guna2CircleButton1;
+            this.guna2CircleButton1.CustomImages.Parent = this.guna2CircleButton1;
+            this.guna2CircleButton1.FillColor = System.Drawing.Color.Empty;
+            this.guna2CircleButton1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2CircleButton1.ForeColor = System.Drawing.Color.White;
+            this.guna2CircleButton1.HoverState.Parent = this.guna2CircleButton1;
+            this.guna2CircleButton1.ImageSize = new System.Drawing.Size(30, 30);
+            this.guna2CircleButton1.Location = new System.Drawing.Point(1631, 1);
+            this.guna2CircleButton1.Name = "guna2CircleButton1";
+            this.guna2CircleButton1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.guna2CircleButton1.ShadowDecoration.Parent = this.guna2CircleButton1;
+            this.guna2CircleButton1.Size = new System.Drawing.Size(83, 36);
+            this.guna2CircleButton1.TabIndex = 9;
+            this.guna2CircleButton1.Tag = "0,1";
+            this.guna2CircleButton1.Text = "Đăng xuất";
+            this.guna2CircleButton1.Click += new System.EventHandler(this.guna2CircleButton1_Click_1);
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
             this.ClientSize = new System.Drawing.Size(1820, 908);
+            this.Controls.Add(this.guna2CircleButton1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnHistory);
@@ -374,5 +396,6 @@
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse9;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel3;
+        private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton1;
     }
 }

@@ -96,8 +96,17 @@ namespace Project_Hotel_Winform
             panelMoving.Size = new Size(199, 5);
             panelMoving.Left = btnCheckOut.Left;
             panel3.Controls.Clear();
-            CheckOut checkOut = new CheckOut();
-            checkOut.Size = new Size(1575, 798);
+            CheckOut checkOut;
+            if (ID_NV == "")
+            {
+                checkOut = new CheckOut();
+                checkOut.Size = new Size(1575, 798);
+            }
+            else
+            {
+                checkOut = new CheckOut(ID_NV);
+                checkOut.Size = new Size(1575, 798);
+            }
             panel3.Controls.Add(checkOut);
         }
 
@@ -159,8 +168,16 @@ namespace Project_Hotel_Winform
             panel3.Controls.Add(service);
         }
 
+        private void guna2CircleButton1_Click_1(object sender, EventArgs e)
+        {
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
+            this.Hide();
+        }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
 
-
+        }
     }
 }

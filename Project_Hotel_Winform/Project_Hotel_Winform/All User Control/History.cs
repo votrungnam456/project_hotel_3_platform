@@ -7,17 +7,79 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Newtonsoft.Json;
+using Project_Hotel_Winform.Model;
+using System.Globalization;
 
 namespace Project_Hotel_Winform.All_User_Control
 {
     public partial class History : UserControl
     {
+        ConnectAPI api = new ConnectAPI();
+        List<historyBookingRoom> lstHistoryBookingRoom;
+        List<historyService> lsHhistoryServices;
+        List<historyBill> lstHistoryBills;
         public History()
         {
             InitializeComponent();
+            loadLichSuThuePhong();
+            loadLichSuDichVu();
+            loadHoaDonThanhToan();
         }
 
+        public async void loadLichSuThuePhong()
+        {
+            lstHistoryBookingRoom = new List<historyBookingRoom>();
+            var returnData = api.getAPI("history/historyBookingRoom");
+            var result = await Task.WhenAll(returnData);
+            MessageBox.Show(result[0]);
+            //setting để jsonconvert nhận null
+            var settings = new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                MissingMemberHandling = MissingMemberHandling.Ignore
+            };
+            var data = JsonConvert.DeserializeObject<listHistoryBookingRoom>(result[0], settings);
+            foreach (historyBookingRoom item in data.data)
+            {
+
+                item.Ngayden = DateTime.ParseExact(item.Ngayden.AddDays(1).ToString("dd/MM/yyyy"),"dd/MM/yyyy", CultureInfo.InvariantCulture);
+                item.Ngaydi = DateTime.ParseExact(item.Ngaydi.AddDays(1).ToString("dd/MM/yyyy"), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                lstHistoryBookingRoom.Add(item);
+            }
+
+            GridViewThuePhong.DataSource = lstHistoryBookingRoom;
+        }
+        public async void loadLichSuDichVu()
+        {
+            lsHhistoryServices = new List<historyService>();
+            var returnData = api.getAPI("history/historyService");
+            var result = await Task.WhenAll(returnData);
+
+            var data = JsonConvert.DeserializeObject<listHistoryService>(result[0]);
+            foreach (historyService item in data.data)
+            {
+                item.NgayLap = DateTime.ParseExact(item.NgayLap.AddDays(1).ToString("dd/MM/yyyy"), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                lsHhistoryServices.Add(item);
+            }
+
+            GridViewService.DataSource = lsHhistoryServices;
+        }
+        public async void loadHoaDonThanhToan()
+        {
+            lstHistoryBills = new List<historyBill>();
+            var returnData = api.getAPI("history/historyBill");
+            var result = await Task.WhenAll(returnData);
+
+            var data = JsonConvert.DeserializeObject<listHistoryBill>(result[0]);
+            foreach (historyBill item in data.data)
+            {
+                item.NgayThanhToan = DateTime.ParseExact(item.NgayThanhToan.AddDays(1).ToString("dd/MM/yyyy"), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                lstHistoryBills.Add(item);
+            }
+
+            GridViewBill.DataSource = lstHistoryBills;
+        }
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -29,6 +91,21 @@ namespace Project_Hotel_Winform.All_User_Control
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2DataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void GridViewBill_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void GridViewService_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

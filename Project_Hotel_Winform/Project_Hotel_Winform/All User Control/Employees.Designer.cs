@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.txtAddress = new Guna.UI2.WinForms.Guna2TextBox();
@@ -50,8 +53,11 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label12 = new System.Windows.Forms.Label();
+            this.GridViewEmployees = new Guna.UI2.WinForms.Guna2DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GridViewEmployees)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -386,13 +392,14 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.GridViewEmployees);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(1194, 506);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Tag = "0,1";
-            this.tabPage2.Text = "Chi tiết nhân viên";
+            this.tabPage2.Text = "Danh sách nhân viên";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // tabPage3
@@ -416,6 +423,66 @@
             this.label12.TabIndex = 28;
             this.label12.Text = "Nhân viên";
             // 
+            // GridViewEmployees
+            // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.GridViewEmployees.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.GridViewEmployees.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.GridViewEmployees.BackgroundColor = System.Drawing.Color.White;
+            this.GridViewEmployees.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.GridViewEmployees.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.GridViewEmployees.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridViewEmployees.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.GridViewEmployees.ColumnHeadersHeight = 4;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.GridViewEmployees.DefaultCellStyle = dataGridViewCellStyle3;
+            this.GridViewEmployees.EnableHeadersVisualStyles = false;
+            this.GridViewEmployees.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.GridViewEmployees.Location = new System.Drawing.Point(0, 0);
+            this.GridViewEmployees.Name = "GridViewEmployees";
+            this.GridViewEmployees.RowHeadersVisible = false;
+            this.GridViewEmployees.RowHeadersWidth = 51;
+            this.GridViewEmployees.RowTemplate.Height = 24;
+            this.GridViewEmployees.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.GridViewEmployees.Size = new System.Drawing.Size(1188, 503);
+            this.GridViewEmployees.TabIndex = 43;
+            this.GridViewEmployees.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
+            this.GridViewEmployees.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.GridViewEmployees.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.GridViewEmployees.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.GridViewEmployees.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.GridViewEmployees.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.GridViewEmployees.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.GridViewEmployees.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.GridViewEmployees.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.GridViewEmployees.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.GridViewEmployees.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            this.GridViewEmployees.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.GridViewEmployees.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.GridViewEmployees.ThemeStyle.HeaderStyle.Height = 4;
+            this.GridViewEmployees.ThemeStyle.ReadOnly = false;
+            this.GridViewEmployees.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.GridViewEmployees.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.GridViewEmployees.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            this.GridViewEmployees.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.GridViewEmployees.ThemeStyle.RowsStyle.Height = 24;
+            this.GridViewEmployees.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.GridViewEmployees.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.GridViewEmployees.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewThuePhong_CellContentClick);
+            // 
             // Employees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -428,6 +495,8 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.GridViewEmployees)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -457,5 +526,6 @@
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2TextBox txtAddress;
         private System.Windows.Forms.Label label2;
+        private Guna.UI2.WinForms.Guna2DataGridView GridViewEmployees;
     }
 }
