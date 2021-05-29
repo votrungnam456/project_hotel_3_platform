@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label10 = new System.Windows.Forms.Label();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.txtPhongCheckOut = new Guna.UI2.WinForms.Guna2TextBox();
@@ -192,30 +192,30 @@
             // 
             // GridViewCheckOut
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.GridViewCheckOut.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            this.GridViewCheckOut.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.GridViewCheckOut.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.GridViewCheckOut.BackgroundColor = System.Drawing.Color.White;
             this.GridViewCheckOut.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridViewCheckOut.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.GridViewCheckOut.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridViewCheckOut.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridViewCheckOut.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.GridViewCheckOut.ColumnHeadersHeight = 4;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.GridViewCheckOut.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.GridViewCheckOut.DefaultCellStyle = dataGridViewCellStyle9;
             this.GridViewCheckOut.EnableHeadersVisualStyles = false;
             this.GridViewCheckOut.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.GridViewCheckOut.Location = new System.Drawing.Point(9, 91);
@@ -292,7 +292,7 @@
             this.tabControl2.Location = new System.Drawing.Point(16, 86);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(1503, 657);
+            this.tabControl2.Size = new System.Drawing.Size(1541, 657);
             this.tabControl2.TabIndex = 70;
             // 
             // tabPage4
@@ -338,14 +338,14 @@
             this.txtChuThich.FocusedState.Parent = this.txtChuThich;
             this.txtChuThich.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtChuThich.HoverState.Parent = this.txtChuThich;
-            this.txtChuThich.Location = new System.Drawing.Point(794, 564);
+            this.txtChuThich.Location = new System.Drawing.Point(974, 564);
             this.txtChuThich.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtChuThich.Name = "txtChuThich";
             this.txtChuThich.PasswordChar = '\0';
             this.txtChuThich.PlaceholderText = "";
             this.txtChuThich.SelectedText = "";
             this.txtChuThich.ShadowDecoration.Parent = this.txtChuThich;
-            this.txtChuThich.Size = new System.Drawing.Size(259, 36);
+            this.txtChuThich.Size = new System.Drawing.Size(324, 36);
             this.txtChuThich.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txtChuThich.TabIndex = 40;
             // 
@@ -353,7 +353,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(790, 514);
+            this.label7.Location = new System.Drawing.Point(970, 514);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(77, 19);
             this.label7.TabIndex = 39;
@@ -364,12 +364,12 @@
             this.dateTimeCheckOut.CheckedState.Parent = this.dateTimeCheckOut;
             this.dateTimeCheckOut.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.dateTimeCheckOut.HoverState.Parent = this.dateTimeCheckOut;
-            this.dateTimeCheckOut.Location = new System.Drawing.Point(6, 556);
+            this.dateTimeCheckOut.Location = new System.Drawing.Point(28, 556);
             this.dateTimeCheckOut.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dateTimeCheckOut.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dateTimeCheckOut.Name = "dateTimeCheckOut";
             this.dateTimeCheckOut.ShadowDecoration.Parent = this.dateTimeCheckOut;
-            this.dateTimeCheckOut.Size = new System.Drawing.Size(205, 44);
+            this.dateTimeCheckOut.Size = new System.Drawing.Size(233, 44);
             this.dateTimeCheckOut.TabIndex = 38;
             this.dateTimeCheckOut.Value = new System.DateTime(2021, 5, 15, 14, 48, 27, 349);
             // 
@@ -386,14 +386,14 @@
             this.txtDay.FocusedState.Parent = this.txtDay;
             this.txtDay.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtDay.HoverState.Parent = this.txtDay;
-            this.txtDay.Location = new System.Drawing.Point(245, 564);
+            this.txtDay.Location = new System.Drawing.Point(276, 564);
             this.txtDay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtDay.Name = "txtDay";
             this.txtDay.PasswordChar = '\0';
             this.txtDay.PlaceholderText = "";
             this.txtDay.SelectedText = "";
             this.txtDay.ShadowDecoration.Parent = this.txtDay;
-            this.txtDay.Size = new System.Drawing.Size(259, 36);
+            this.txtDay.Size = new System.Drawing.Size(304, 36);
             this.txtDay.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txtDay.TabIndex = 37;
             this.txtDay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDay_KeyPress);
@@ -411,10 +411,10 @@
             this.cboCustomer.HoverState.Parent = this.cboCustomer;
             this.cboCustomer.ItemHeight = 30;
             this.cboCustomer.ItemsAppearance.Parent = this.cboCustomer;
-            this.cboCustomer.Location = new System.Drawing.Point(511, 564);
+            this.cboCustomer.Location = new System.Drawing.Point(590, 564);
             this.cboCustomer.Name = "cboCustomer";
             this.cboCustomer.ShadowDecoration.Parent = this.cboCustomer;
-            this.cboCustomer.Size = new System.Drawing.Size(266, 36);
+            this.cboCustomer.Size = new System.Drawing.Size(368, 36);
             this.cboCustomer.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.cboCustomer.TabIndex = 36;
             // 
@@ -422,7 +422,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(507, 514);
+            this.label6.Location = new System.Drawing.Point(586, 514);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(95, 19);
             this.label6.TabIndex = 35;
@@ -433,7 +433,7 @@
             this.guna2Panel1.Location = new System.Drawing.Point(6, 6);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
-            this.guna2Panel1.Size = new System.Drawing.Size(1292, 481);
+            this.guna2Panel1.Size = new System.Drawing.Size(1483, 481);
             this.guna2Panel1.TabIndex = 34;
             this.guna2Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
             // 
@@ -452,7 +452,7 @@
             this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button1.ForeColor = System.Drawing.Color.Black;
             this.guna2Button1.HoverState.Parent = this.guna2Button1;
-            this.guna2Button1.Location = new System.Drawing.Point(1083, 564);
+            this.guna2Button1.Location = new System.Drawing.Point(1323, 552);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.ShadowDecoration.Parent = this.guna2Button1;
             this.guna2Button1.Size = new System.Drawing.Size(149, 48);
@@ -464,7 +464,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(241, 514);
+            this.label12.Location = new System.Drawing.Point(272, 514);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(126, 19);
             this.label12.TabIndex = 31;
@@ -595,7 +595,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1495, 628);
+            this.tabPage1.Size = new System.Drawing.Size(1533, 628);
             this.tabPage1.TabIndex = 3;
             this.tabPage1.Text = "Nhận phòng";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -604,7 +604,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(1038, 451);
+            this.label17.Location = new System.Drawing.Point(1038, 429);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(46, 19);
             this.label17.TabIndex = 104;
@@ -623,14 +623,14 @@
             this.txtEmail.FocusedState.Parent = this.txtEmail;
             this.txtEmail.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtEmail.HoverState.Parent = this.txtEmail;
-            this.txtEmail.Location = new System.Drawing.Point(1042, 495);
+            this.txtEmail.Location = new System.Drawing.Point(1042, 452);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.PasswordChar = '\0';
             this.txtEmail.PlaceholderText = "";
             this.txtEmail.SelectedText = "";
             this.txtEmail.ShadowDecoration.Parent = this.txtEmail;
-            this.txtEmail.Size = new System.Drawing.Size(432, 36);
+            this.txtEmail.Size = new System.Drawing.Size(474, 50);
             this.txtEmail.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txtEmail.TabIndex = 103;
             // 
@@ -647,14 +647,14 @@
             this.txtSDT.FocusedState.Parent = this.txtSDT;
             this.txtSDT.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtSDT.HoverState.Parent = this.txtSDT;
-            this.txtSDT.Location = new System.Drawing.Point(1042, 585);
+            this.txtSDT.Location = new System.Drawing.Point(1042, 555);
             this.txtSDT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtSDT.Name = "txtSDT";
             this.txtSDT.PasswordChar = '\0';
             this.txtSDT.PlaceholderText = "";
             this.txtSDT.SelectedText = "";
             this.txtSDT.ShadowDecoration.Parent = this.txtSDT;
-            this.txtSDT.Size = new System.Drawing.Size(191, 36);
+            this.txtSDT.Size = new System.Drawing.Size(305, 46);
             this.txtSDT.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txtSDT.TabIndex = 102;
             // 
@@ -662,7 +662,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(1038, 550);
+            this.label16.Location = new System.Drawing.Point(1038, 532);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(96, 19);
             this.label16.TabIndex = 101;
@@ -681,7 +681,7 @@
             this.txtCMND.FocusedState.Parent = this.txtCMND;
             this.txtCMND.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCMND.HoverState.Parent = this.txtCMND;
-            this.txtCMND.Location = new System.Drawing.Point(1270, 382);
+            this.txtCMND.Location = new System.Drawing.Point(1325, 364);
             this.txtCMND.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtCMND.Name = "txtCMND";
             this.txtCMND.PasswordChar = '\0';
@@ -696,7 +696,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(1266, 332);
+            this.label15.Location = new System.Drawing.Point(1324, 315);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(53, 19);
             this.label15.TabIndex = 99;
@@ -715,14 +715,14 @@
             this.txtGia.FocusedState.Parent = this.txtGia;
             this.txtGia.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtGia.HoverState.Parent = this.txtGia;
-            this.txtGia.Location = new System.Drawing.Point(1042, 382);
+            this.txtGia.Location = new System.Drawing.Point(1042, 364);
             this.txtGia.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtGia.Name = "txtGia";
             this.txtGia.PasswordChar = '\0';
             this.txtGia.PlaceholderText = "";
             this.txtGia.SelectedText = "";
             this.txtGia.ShadowDecoration.Parent = this.txtGia;
-            this.txtGia.Size = new System.Drawing.Size(191, 36);
+            this.txtGia.Size = new System.Drawing.Size(242, 36);
             this.txtGia.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txtGia.TabIndex = 98;
             // 
@@ -730,7 +730,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(1038, 332);
+            this.label14.Location = new System.Drawing.Point(1038, 315);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(34, 19);
             this.label14.TabIndex = 97;
@@ -749,7 +749,7 @@
             this.txtLoaiPhong.FocusedState.Parent = this.txtLoaiPhong;
             this.txtLoaiPhong.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtLoaiPhong.HoverState.Parent = this.txtLoaiPhong;
-            this.txtLoaiPhong.Location = new System.Drawing.Point(1270, 129);
+            this.txtLoaiPhong.Location = new System.Drawing.Point(1325, 129);
             this.txtLoaiPhong.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtLoaiPhong.Name = "txtLoaiPhong";
             this.txtLoaiPhong.PasswordChar = '\0';
@@ -764,7 +764,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(1266, 79);
+            this.label13.Location = new System.Drawing.Point(1321, 79);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(85, 19);
             this.label13.TabIndex = 95;
@@ -790,7 +790,7 @@
             this.txtName.PlaceholderText = "";
             this.txtName.SelectedText = "";
             this.txtName.ShadowDecoration.Parent = this.txtName;
-            this.txtName.Size = new System.Drawing.Size(432, 36);
+            this.txtName.Size = new System.Drawing.Size(474, 36);
             this.txtName.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txtName.TabIndex = 94;
             // 
@@ -824,7 +824,7 @@
             this.txtPhong.PlaceholderText = "";
             this.txtPhong.SelectedText = "";
             this.txtPhong.ShadowDecoration.Parent = this.txtPhong;
-            this.txtPhong.Size = new System.Drawing.Size(191, 36);
+            this.txtPhong.Size = new System.Drawing.Size(257, 36);
             this.txtPhong.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txtPhong.TabIndex = 92;
             // 
@@ -877,30 +877,30 @@
             // 
             this.GridViewCheckInRoom.AllowUserToAddRows = false;
             this.GridViewCheckInRoom.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.GridViewCheckInRoom.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
+            this.GridViewCheckInRoom.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
             this.GridViewCheckInRoom.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.GridViewCheckInRoom.BackgroundColor = System.Drawing.Color.White;
             this.GridViewCheckInRoom.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridViewCheckInRoom.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.GridViewCheckInRoom.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridViewCheckInRoom.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridViewCheckInRoom.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.GridViewCheckInRoom.ColumnHeadersHeight = 4;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.GridViewCheckInRoom.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.GridViewCheckInRoom.DefaultCellStyle = dataGridViewCellStyle12;
             this.GridViewCheckInRoom.EnableHeadersVisualStyles = false;
             this.GridViewCheckInRoom.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.GridViewCheckInRoom.Location = new System.Drawing.Point(6, 81);
@@ -951,7 +951,7 @@
             this.txtNhanPhong.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNhanPhong.ForeColor = System.Drawing.Color.Black;
             this.txtNhanPhong.HoverState.Parent = this.txtNhanPhong;
-            this.txtNhanPhong.Location = new System.Drawing.Point(1340, 577);
+            this.txtNhanPhong.Location = new System.Drawing.Point(1367, 553);
             this.txtNhanPhong.Name = "txtNhanPhong";
             this.txtNhanPhong.ShadowDecoration.Parent = this.txtNhanPhong;
             this.txtNhanPhong.Size = new System.Drawing.Size(149, 48);

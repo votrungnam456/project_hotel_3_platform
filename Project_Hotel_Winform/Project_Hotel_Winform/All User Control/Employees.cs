@@ -42,6 +42,7 @@ namespace Project_Hotel_Winform.All_User_Control
             cboGender.Items.Add("Nữ");
             loadcboBoxPhanQuyen();
             phanQuyen();
+            loadEmployees();
         }
         public async void loadEmployees()
         {
@@ -54,19 +55,21 @@ namespace Project_Hotel_Winform.All_User_Control
                 ListEmployees.Add(item);
             }
             GridViewEmployees.DataSource = ListEmployees;
+            GridViewEmployees.Columns[0].Visible = false;
+            GridViewEmployees.Columns[8].Visible = false;
         }
         public void phanQuyen()
         {
-            foreach(Control x in tabControl1.Controls)
-            {
-                if(x is TabPage)
-                {
-                    if (!x.Tag.ToString().Contains(CoQuyen.ToString()))
-                    {
-                        x.Enabled = false;
-                    }
-                }
-            }
+            //foreach (Control x in Employees.)
+            //{
+            //    if (x is TabPage)
+            //    {
+            //        if (!x.Tag.ToString().Contains(CoQuyen.ToString()))
+            //        {
+            //            x.Enabled = false;
+            //        }
+            //    }
+            //}
         }
         public async void loadcboBoxPhanQuyen()
         {
@@ -162,6 +165,107 @@ namespace Project_Hotel_Winform.All_User_Control
         private void GridViewThuePhong_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void GridViewEmployees_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (GridViewEmployees.CurrentRow.Cells[0].Value.ToString() == null)
+            {
+                txtName.Text = "";
+                txtAddress.Text = "";
+                txtCMND.Text = "";
+                txtEmail.Text = "";
+                txtPassword.Text = "";
+                txtSDT.Text = "";
+            }
+            else
+            {               
+                txtName.Text = GridViewEmployees.CurrentRow.Cells[1].Value.ToString();
+                cboGender.SelectedItem = GridViewEmployees.CurrentRow.Cells[2].Value.ToString();
+                txtCMND.Text = GridViewEmployees.CurrentRow.Cells[3].Value.ToString();
+                txtAddress.Text = GridViewEmployees.CurrentRow.Cells[4].Value.ToString();
+                txtSDT.Text = GridViewEmployees.CurrentRow.Cells[5].Value.ToString();
+                txtEmail.Text = GridViewEmployees.CurrentRow.Cells[6].Value.ToString();
+                txtPassword.Text = GridViewEmployees.CurrentRow.Cells[7].Value.ToString();
+                cboPhanQuyen.SelectedValue = GridViewEmployees.CurrentRow.Cells[8].Value.ToString();
+            }
+        }
+
+        private async void buttonDelEmp_Click(object sender, EventArgs e)
+        {
+            if (GridViewEmployees.CurrentRow.Cells[0].Value.ToString() == null)
+            {
+                MessageBox.Show("Vui lòng chọn nhân viên để xoá");
+                return;
+            }
+            DialogResult dialogResult = MessageBox.Show("Bạn có muốn xoá nhân viên này ??", "Xoá dịch vụ", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                string idnv = GridViewEmployees.CurrentRow.Cells[0].Value.ToString();
+                if (idnv.Equals(ID_NV))
+                {
+                    MessageBox.Show("Bạn không thể xoá nhân viên này, do tài khoản nhân viên này đang đăng nhập !!");
+                    return;
+                }
+                var returnData = api.deleteAPI("employees/" + idnv);
+                var result = await Task.WhenAll(returnData);
+                var data = JsonConvert.DeserializeObject<returnData>(result[0]);
+                if (int.Parse(data.data) == 1)
+                {
+                    MessageBox.Show("Xoá nhân viên thành công");
+                }
+                else
+                {
+                    MessageBox.Show("Có lỗi trong quá trình xử lý");
+                }
+                loadEmployees();
+            }
+        }
+
+        private async void buttonUpdateEmp_Click(object sender, EventArgs e)
+        {
+            if (GridViewEmployees.CurrentRow.Cells[0].Value.ToString() == null)
+            {
+                MessageBox.Show("Hãy chọn nhân viên để sửa thông tin");
+                return;
+            }
+            if (txtName.Text == "" || txtCMND.Text == "" || txtSDT.Text == "" || txtEmail.Text == "" || txtPassword.Text == "" || txtAddress.Text == "" || cboGender.SelectedItem == null)
+            {
+                MessageBox.Show("Thông tin nhân viên không được để trống");
+                return;
+            }
+            string ID_NV = GridViewEmployees.CurrentRow.Cells[0].Value.ToString();
+            string name = txtName.Text;
+            string gender = cboGender.SelectedItem.ToString();
+            string email = txtEmail.Text;
+            string pwd = txtPassword.Text;
+            string sdt = txtSDT.Text;
+            string cmnd = txtCMND.Text;
+            string PQ = cboPhanQuyen.SelectedValue.ToString();
+            string address = txtAddress.Text;
+            Dictionary<string, string> values = new Dictionary<string, string>
+            {
+                { "TenNV",name},
+                { "GTinh",gender},
+                { "Email",email},
+                { "MatKhau",pwd},
+                { "SoDT",sdt},
+                { "CMND",cmnd},
+                { "DChi",address},
+                { "ID_Quyen",PQ},
+            };
+            var returnData = api.putAPI("employees/" + ID_NV, values);
+            var result = await Task.WhenAll(returnData);
+            var convertData = JsonConvert.DeserializeObject<returnData>(result[0]);
+            if (int.Parse(convertData.data) == 0)
+            {
+                MessageBox.Show("Có lỗi trong quá trình xử lý vui lòng thử lại!!");
+            }
+            else if (int.Parse(convertData.data) == 1)
+            {
+                MessageBox.Show("Cập nhật thông tin nhân viên thành công");
+            }
+            loadEmployees();
         }
     }
 }
