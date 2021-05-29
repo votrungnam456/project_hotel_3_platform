@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 23, 2021 at 04:34 PM
+-- Generation Time: May 29, 2021 at 07:56 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -90,8 +90,8 @@ CREATE TABLE `khachhang` (
 
 INSERT INTO `khachhang` (`ID_KH`, `TenKH`, `Gtinh`, `Cmnd`, `Dchi`, `Qtich`, `Sodt`, `Email`, `MatKhau`) VALUES
 ('5a2d1014-2d11-4e47-8', 'Võ Trung Nghĩa', 'Nam', '026066167', '38/3 Nguyễn Trọng Trí, Phường An Lạc A, Q. BT', 'Việt Nam', '0703197183', 'votrungnam456@gmail.com', 'Konachan12'),
-('601bd552-3922-4892-9', 'Cao Quang Sơn', 'Nam', '123456789', 'TP.HCM', 'Việt Nam', '0908123456', 'votrungnam2015@gmail.com', '123456789'),
-('a583ff83-be30-4a5b-b3bd-4d0ea894f4e2', 'Tina', 'Nữ', '123151623', '34/5', 'Hàn Quốc', '123121256', 'tina@gmail.com', '123'),
+('601bd552-3922-4892-9', 'Võ Trung Niên', 'Nam', '123456789', 'TP.HCM', 'Việt Nam', '0908123456', 'votrungnam2015@gmail.com', '123456789'),
+('a583ff83-be30-4a5b-b3bd-4d0ea894f4e2', 'Trần Thị Tina', 'Nữ', '123151623', '34/5', 'Hàn Quốc', '123121256', 'tina@gmail.com', '123'),
 ('f1600c1f-5f0d-4827-9', 'Võ Trung Nam', 'Nam', '026066168', '38/3 Nguyễn Trọng Trí, P. An Lạc A. Q. BT', 'Việt Nam', '0703197183', 'votrungnam2013@gmail.com', '123456789');
 
 -- --------------------------------------------------------
@@ -127,16 +127,17 @@ CREATE TABLE `nhanvien` (
   `Gtinh` varchar(10) DEFAULT NULL,
   `Cmnd` char(10) DEFAULT NULL,
   `Dchi` varchar(50) DEFAULT NULL,
-  `Sodt` char(11) DEFAULT NULL
+  `Sodt` char(11) DEFAULT NULL,
+  `Enable` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `nhanvien`
 --
 
-INSERT INTO `nhanvien` (`ID_NV`, `TenNV`, `Gtinh`, `Cmnd`, `Dchi`, `Sodt`) VALUES
-('a65175b6-3e81-46af-85ea-b65b570197da', 'Huỳnh Văn B', 'Nam', '123456989', '38/3', '0703197184'),
-('f8def17c-b3ab-47b4-a88d-0f0580ec6ddf', 'Huỳnh Văn A', 'Nam', '123456987', '38/3', '0703197184');
+INSERT INTO `nhanvien` (`ID_NV`, `TenNV`, `Gtinh`, `Cmnd`, `Dchi`, `Sodt`, `Enable`) VALUES
+('a65175b6-3e81-46af-85ea-b65b570197da', 'Huỳnh Văn B', 'Nam', '123456989', '38/3', '0703197184', 1),
+('f8def17c-b3ab-47b4-a88d-0f0580ec6ddf', 'Huỳnh Văn CC', 'Nam', '123456987', '38/3', '0703197184', 1);
 
 -- --------------------------------------------------------
 
@@ -179,7 +180,7 @@ CREATE TABLE `phieu_dang_ky` (
 --
 
 INSERT INTO `phieu_dang_ky` (`MaPDK`, `Ngayden`, `Ngaydi`, `Chuthich`, `Maphong`, `ID_KH`, `GiaPhong`) VALUES
-('00005291-4bfc-4a6a-89f9-446091676e37', '2021-05-20', '2021-05-20', '', 'P108', '5a2d1014-2d11-4e47-8', 130000),
+('00005291-4bfc-4a6a-89f9-446091676e37', '2021-05-20', '2021-05-27', '', 'P108', '5a2d1014-2d11-4e47-8', 130000),
 ('48b3f91a-ce18-4c9e-84b5-d91122557b2d', '2021-05-19', NULL, 'Test 2', 'P204', '601bd552-3922-4892-9', 1000000),
 ('6c1fd42e-be14-4933-8c8f-b2e882c8d86a', '2021-05-20', '2021-05-20', '', 'P107', '5a2d1014-2d11-4e47-8', 130000),
 ('81d12206-7b0f-4263-a2ad-9c4ae68b7ccf', '2021-05-19', NULL, 'Test 2', 'P103', '601bd552-3922-4892-9', 1000000),
@@ -204,6 +205,24 @@ CREATE TABLE `phieu_thanh_toan` (
   `ID_NV` char(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `phieu_thanh_toan`
+--
+
+INSERT INTO `phieu_thanh_toan` (`MaPTT`, `MaPDK`, `TienThuePhong`, `TienDichVu`, `TongTien`, `NgayThanhToan`, `ID_NV`) VALUES
+('01', '81d12206-7b0f-4263-a2ad-9c4ae68b7ccf', 10000, 20000, 30000, '2021-05-27', 'a65175b6-3e81-46af-85ea-b65b570197da'),
+('09e615a9-3a7d-4cba-bc25-5362b729525c', 'bab699ac-d953-4e95-9ad8-4bf90181acd6', 1100000, 120000, 1220000, '2021-05-27', 'a65175b6-3e81-46af-85ea-b65b570197da');
+
+--
+-- Triggers `phieu_thanh_toan`
+--
+DELIMITER $$
+CREATE TRIGGER `trigger_TongTien` BEFORE INSERT ON `phieu_thanh_toan` FOR EACH ROW BEGIN
+	SET NEW.TongTien := NEW.TienThuePhong + NEW.TienDichVu;
+END
+$$
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
@@ -225,7 +244,7 @@ CREATE TABLE `phong` (
 --
 
 INSERT INTO `phong` (`Maphong`, `Tenphong`, `Mota`, `MaKP`, `Gia`, `TinhTrang`, `MaPDK`) VALUES
-('P101', 'Phòng P101', 'Đầy đủ thiết bị, có wifi', 'KP01', 100000, 2, 'bab699ac-d953-4e95-9ad8-4bf90181acd6'),
+('P101', 'Phòng P101', 'Đầy đủ thiết bị, có wifi', 'KP01', 100000, 0, NULL),
 ('P102', 'Phòng P102', 'Đầy đủ thiết bị, có wifi', 'KP02', 150000, 0, NULL),
 ('P103', 'Phòng 103', 'Đầy đủ thiết bị, có hồ bơi riêng', 'KP04', 1000000, 1, '81d12206-7b0f-4263-a2ad-9c4ae68b7ccf'),
 ('P104', 'Phòng 104', 'Đầy đủ thiết bị, phòng hướng ra biểng', 'KP03', 500000, 0, NULL),
@@ -234,6 +253,7 @@ INSERT INTO `phong` (`Maphong`, `Tenphong`, `Mota`, `MaKP`, `Gia`, `TinhTrang`, 
 ('P107', 'Phòng 107', 'Nội thất phương tây, cổ', 'KP02', 130000, 1, 'ca029ec8-b8d0-446c-9fcd-714804a9b3b3'),
 ('P108', 'Phòng 108', 'Nội thất phương tây, cổ', 'KP02', 130000, 2, '00005291-4bfc-4a6a-89f9-446091676e37'),
 ('P109', 'Phòng P109', 'Hướng ra biển, có ban công rộng, đầy đủ tiện nghi', 'KP03', 550000, 0, NULL),
+('P111', 'Phòng 111', 'Nội thất phương tây, hiện đại', 'KP01', 120000, 0, NULL),
 ('P201', 'Phòng 201', 'Đầy đủ thiết bị, có wifi', 'KP02', 100000, 2, '9c0d20ea-c4ca-4df4-9877-6018764adc82'),
 ('P202', 'Phòng 202', 'Đầy đủ thiết bị, có wifi', 'KP02', 100000, 0, NULL),
 ('P203', 'Phòng 203', 'Đầy đủ thiết bị, có wifi', 'KP03', 1000000, 0, NULL),
@@ -258,7 +278,7 @@ CREATE TABLE `taikhoan_nhanvien` (
 
 INSERT INTO `taikhoan_nhanvien` (`ID_NV`, `Email`, `MatKhau`, `ID_Quyen`) VALUES
 ('a65175b6-3e81-46af-85ea-b65b570197da', 'votrungnam@gmail.com', '123', 'PQ01'),
-('f8def17c-b3ab-47b4-a88d-0f0580ec6ddf', 'votrungnam456@gmail.com', '123', 'PQ03');
+('f8def17c-b3ab-47b4-a88d-0f0580ec6ddf', 'votrungnam456@gmail.com', '123', 'PQ01');
 
 --
 -- Indexes for dumped tables
