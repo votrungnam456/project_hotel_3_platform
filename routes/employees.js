@@ -7,6 +7,6 @@ router.get('/list', employeesController.listEmployeesController);
 router.get('/decentralization', employeesController.listDecentralizationController);
 router.post('/create', employeesController.createEmployeesController);
 router.post('/user', employeesController.loginEmployeesController);
-// router.put('/:MaPhong', BookingController.updateCustomer);
-// router.delete('/:MaPDK', BookingController.deleteBooking);
+router.put('/:ID_NV', employeesController.updateEmployeesController);
+router.delete('/:ID_NV', employeesController.deleteEmployeesController);
 module.exports = router;

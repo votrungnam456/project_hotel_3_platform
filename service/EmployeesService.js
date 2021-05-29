@@ -5,7 +5,9 @@ const date = require('date-and-time');
 class EmployeesService {
     static async listEmployeesService(req) {
         try {
-            let result = await queryBuilder().select('*').from('nhanvien').join('taikhoan_nhanvien',{'nhanvien.ID_NV':'taikhoan_nhanvien.ID_NV'});
+            let result = await queryBuilder().select('*').from('nhanvien').
+                                join('taikhoan_nhanvien',{'nhanvien.ID_NV':'taikhoan_nhanvien.ID_NV'}).
+                                join('phanquyen',{'phanquyen.ID_Quyen':'taikhoan_nhanvien.ID_Quyen'}).where('Enable',1);
             return result;
         } catch (e) {
             console.log(e);
@@ -79,9 +81,11 @@ class EmployeesService {
             let params = req.body;
             let email = params.Email
             let pwd = params.pwd
-            let check = await queryBuilder('taikhoan_nhanvien').where({
+            let check = await queryBuilder('taikhoan_nhanvien').join('nhanvien',{'nhanvien.ID_NV':'taikhoan_nhanvien.ID_NV'})
+            .where({
                 Email:email,
-                MatKhau:pwd
+                MatKhau:pwd,
+                Enable:1
             }).first();
             if(check == null){
                 return [{
@@ -106,27 +110,39 @@ class EmployeesService {
             return -1;
         }
     }
-    // static async updateCustomerService(req){
-    //     try {
-            
-    //         let params = req.body;
-    //         let ID_KH = params.ID_KH;
-    //         let dataUpdate = {
-    //             TenKH: params.TenKH || null,
-    //             GTinh: params.GTinh || null,
-    //             CMND: params.CMND || null,
-    //             Dchi: params.Dchi || null,
-    //             QTich: params.QTich || null,
-    //             SoDT:params.SoDT || null,
-    //             Email:params.Email || null,
-    //             MatKhau:params.MatKhau || null
-    //         }
-    //         await queryBuilder('khachhang').where("ID_KH", ID_KH).update(dataUpdate);
-    //         return "Cập nhật thông tin khách hàng thành công";
-    //     } catch (e) {
-    //         console.log(e);
-    //         return e
-    //     }
-    // }
+    static async deleteEmployeesService(req){
+        try {
+            let ID_NV = req.params.ID_NV;
+            await queryBuilder('nhanvien').where("ID_NV",ID_NV).update('Enable',0);
+            return 1;
+        } catch (e) {
+            console.log(e);
+            return 0;
+        }
+    }
+    static async updateEmployeesService(req){
+        try {
+            let ID_NV = req.params.ID_NV;
+            let params = req.body;
+            let dataUpdateEmp = {
+                TenNV:params.TenNV,
+                Gtinh:params.GTinh,
+                Cmnd:params.CMND,
+                Dchi:params.DChi,
+                Sodt:params.SoDT,
+            }
+            let dataUpdateEmpAccount = {
+                Email:params.Email,
+                MatKhau:params.MatKhau,
+                ID_Quyen:params.ID_Quyen
+            }
+            await queryBuilder('nhanvien').where("ID_NV", ID_NV).update(dataUpdateEmp);
+            await queryBuilder('taikhoan_nhanvien').where("ID_NV", ID_NV).update(dataUpdateEmpAccount);
+            return 1;
+        } catch (e) {
+            console.log(e);
+            return 0;
+        }
+    }
 }
 module.exports = EmployeesService
