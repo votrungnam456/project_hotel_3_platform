@@ -75,7 +75,25 @@ class CustomersController {
             });
         }
     }
-
+    static async changePwdCustomer(req, res, next){
+        try {
+            let data = await CustomersService.changePwdCustomerService(req);
+            res.status(200).json({
+                status: "SUCCESS",
+                errors:null,
+                data
+            });
+        } catch (e) {
+            res.status(200).json({
+                status: "FAIL",
+                errors: [{
+                    code: 1000,
+                    message: "Server Error"
+                }],
+                data: null
+            });
+        }
+    }
     static async updateCustomer(req, res, next){
         try {
             let data = await CustomersService.updateCustomerService(req);

@@ -37,14 +37,17 @@ class RoomService {
             let params = req.body;
             let Email = params.Email;
             let MatKhau = params.MatKhau;
-            let result = await queryBuilder('khachhang').where({
+            let result = await queryBuilder('khachhang').select('khachhang.ID_KH','khachhang.TenKH','khachhang.Gtinh','khachhang.Cmnd','khachhang.Dchi','khachhang.Qtich','khachhang.Sodt','khachhang.Email').where({
                 "Email":Email,
                 "MatKhau":MatKhau
             }).first();
-            return result;
+            if(result != null){
+                return result;
+            }
+            else{return 0}
         } catch (e) {
             console.log(e);
-            return e
+            return e;
         }
     }
     static async createCustomerService(req){
@@ -77,6 +80,31 @@ class RoomService {
         } catch (e) {
             console.log(e);
             return e
+        }
+    }
+    
+    static async changePwdCustomerService(req){
+        try {
+            
+            let params = req.body;
+            let ID_KH = req.params.ID_KH;
+            let oldPwd = params.oldPwd;
+            let check = await queryBuilder('khachhang').where({
+                "ID_KH":ID_KH,
+                "MatKhau":oldPwd
+            }).first();
+            if(check == null){
+                return 0;
+            }
+            let dataChangePwd = {
+                MatKhau:params.newPwd
+            }
+            await queryBuilder('khachhang').where("ID_KH", ID_KH).update(dataChangePwd);
+            return 1;
+
+        } catch (e) {
+            console.log(e);
+            return 0;
         }
     }
     static async updateCustomerService(req){
