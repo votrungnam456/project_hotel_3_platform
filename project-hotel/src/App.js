@@ -6,6 +6,7 @@ import routes from './routes'
 import './App.css';
 import Login from './components/login/login'
 import Logout from './components/login/logout';
+import ChangePwd from './components/customer/ChangePwd'
 class App extends Component {
   constructor(props){
     super(props)
@@ -34,6 +35,7 @@ class App extends Component {
           <Switch>
             <Route path="/login" exact={true} component={({history})=><Login userFunc={this.userFunc} history={history}></Login>}></Route>
             <Route path="/logout" exact={true} component={({history})=><Logout userFunc={this.userFunc} history={history}></Logout>}></Route>
+            <Route path="/changePwd" exact={true} component={({history})=><ChangePwd userFunc={this.userFunc} history={history}></ChangePwd>}></Route>
             {this.setRoutes(routes)}
 
           </Switch>

@@ -81,13 +81,15 @@ class Header extends Component {
                          <span className="icon-bar" />
                          <span className="icon-bar" />
                     </button>
-                    <a className="navbar-brand" href="index.php"><img src="images/logo.png" alt="holiday crown" /></a>
+                    <Link className="navbar-brand" to="/"><img src="images/logo.png" alt="holiday crown" /></Link>
                     </div>
                     {/* Collect the nav links, forms, and other content for toggling */}
                     <div className="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                     <ul className="nav navbar-nav">        
                          {this.showMenu(menus)}
+                         {user != null ? <MenuLink label={"Đổi mật khẩu"} to="/changePwd" exact="true"></MenuLink> : ""}
                          <MenuLink  label={user == null ? "Đăng nhập" : "Đăng xuất"} to={user == null ? "/login" : "/logout"} exact="true"></MenuLink>
+                         
                     </ul>
                     </div>{/* Wnavbar-collapse */}
                </div>{/* container-fluid */}

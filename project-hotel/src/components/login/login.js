@@ -7,6 +7,7 @@ class login extends Component {
           this.state = {
                email: "",
                pwd: "",
+               message:3
           }
      }
      onChange = (ev) => {
@@ -22,22 +23,27 @@ class login extends Component {
           let userFunc = (user) => {
                this.props.userFunc(user)
           }
-          let { history,location } = this.props
+          let { history } = this.props
           ev.preventDefault();
           let { pwd, email } = this.state;
           axios.post('http://localhost:4444/customers/user', {
                Email: email,
                MatKhau: pwd
           })
-               .then(function (response) {
-                    if (response.data.data == null) {
+               .then(response => {
+                    console.log(response.data.data)
+                    if (response.data.data == 0) {
+                         this.setState({
+                              message:1
+                         })
+               
                     }
                     else {
                          localStorage.setItem('user', JSON.stringify(response.data.data));
                          userFunc({
                               user: JSON.stringify(response.data.data)
                          })
-                         history.push("/");  
+                         history.push("/");
                     }
                })
                .catch(function (error) {
@@ -45,7 +51,7 @@ class login extends Component {
                });
      }
      render() {
-          
+          let {message} = this.state
           return (
                <div style={{ height: "80vh" }} className="container">
                     <div className="login-form">
@@ -66,6 +72,7 @@ class login extends Component {
                                    </div>
                               </form>
                               <div className="line" />
+                              <p style={{color:"red"}}>{message == 1 ? 'Tài khoản hoặc mật khẩu sai' : ''}</p>
                               <div className="sign-up-btn">
                                    <p id="sign-up">Bạn chưa có tài khoản?|<Link to="/register">đăng ký</Link> ngay</p>
                               </div>

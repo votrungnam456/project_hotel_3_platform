@@ -53,7 +53,7 @@ class Info extends Component {
           }
           let dateIn = new Date(checkIn);
           let date = new Date();
-          let now = new Date(date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate());
+          let now = new Date(date.getFullYear()+'-'+(date.getMonth()+1)+'-'+(date.getDate()+1));
           if(+now > +dateIn){
                this.setState({
                     error:1
