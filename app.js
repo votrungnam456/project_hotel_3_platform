@@ -9,7 +9,8 @@ let payingRouter = require('./routes/paying');
 let serviceRouter = require('./routes/service');
 let employeesRouter = require('./routes/employees');
 let historyRouter = require('./routes/history');
-// app.use(cors);
+let aprioriRouter = require('./routes/apriori');
+
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
@@ -29,4 +30,5 @@ app.use('/paying',cors(),payingRouter);
 app.use('/service',cors(),serviceRouter);
 app.use('/employees',cors(),employeesRouter);
 app.use('/history',cors(),historyRouter);
+app.use('/apriori',cors(),aprioriRouter);
 module.exports = app;
