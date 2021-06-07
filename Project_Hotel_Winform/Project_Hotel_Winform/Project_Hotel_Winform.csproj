@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Project_Hotel_Winform</RootNamespace>
     <AssemblyName>Project_Hotel_Winform</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,6 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="All, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Cotur.DataMining.1.2.0\lib\netstandard2.0\All.dll</HintPath>
+    </Reference>
+    <Reference Include="Association, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Cotur.DataMining.Association.1.2.0\lib\netstandard2.0\Association.dll</HintPath>
+    </Reference>
     <Reference Include="Guna.UI2">
       <HintPath>..\..\..\Hotel Management\Guna.UI2.dll</HintPath>
     </Reference>
@@ -56,6 +63,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="All User Control\Apriori.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="All User Control\Apriori.Designer.cs">
+      <DependentUpon>Apriori.cs</DependentUpon>
+    </Compile>
     <Compile Include="All User Control\CheckOut.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -98,6 +111,7 @@
     <Compile Include="All User Control\Service.Designer.cs">
       <DependentUpon>Service.cs</DependentUpon>
     </Compile>
+    <Compile Include="AprioriAlgorithm.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="ConnectAPI.cs" />
     <Compile Include="Dashboard.cs">
@@ -113,6 +127,8 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\AprioriData.cs" />
+    <Compile Include="Model\AprioriFieldName.cs" />
     <Compile Include="Model\checkInRoom.cs" />
     <Compile Include="Model\checkOutRoom.cs" />
     <Compile Include="Model\Customers.cs" />
@@ -121,6 +137,7 @@
     <Compile Include="Model\historyBill.cs" />
     <Compile Include="Model\historyBookingRoom.cs" />
     <Compile Include="Model\historyService.cs" />
+    <Compile Include="Model\listAprioriData.cs" />
     <Compile Include="Model\listCheckInRoom.cs" />
     <Compile Include="Model\listChectOutRoom.cs" />
     <Compile Include="Model\listCustomers.cs" />
@@ -140,6 +157,9 @@
     <Compile Include="Model\UserLogin.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="All User Control\Apriori.resx">
+      <DependentUpon>Apriori.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="All User Control\CheckOut.resx">
       <DependentUpon>CheckOut.cs</DependentUpon>
     </EmbeddedResource>
@@ -175,6 +195,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

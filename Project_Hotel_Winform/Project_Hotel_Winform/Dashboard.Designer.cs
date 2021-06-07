@@ -53,6 +53,7 @@
             this.guna2Elipse8 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Elipse9 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.btnTuVan = new Guna.UI2.WinForms.Guna2CircleButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -347,12 +348,32 @@
             this.guna2CircleButton1.Text = "Đăng xuất";
             this.guna2CircleButton1.Click += new System.EventHandler(this.guna2CircleButton1_Click_1);
             // 
+            // btnTuVan
+            // 
+            this.btnTuVan.CheckedState.Parent = this.btnTuVan;
+            this.btnTuVan.CustomImages.Parent = this.btnTuVan;
+            this.btnTuVan.FillColor = System.Drawing.Color.Empty;
+            this.btnTuVan.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnTuVan.ForeColor = System.Drawing.Color.White;
+            this.btnTuVan.HoverState.Parent = this.btnTuVan;
+            this.btnTuVan.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnTuVan.Location = new System.Drawing.Point(1435, 1);
+            this.btnTuVan.Name = "btnTuVan";
+            this.btnTuVan.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.btnTuVan.ShadowDecoration.Parent = this.btnTuVan;
+            this.btnTuVan.Size = new System.Drawing.Size(143, 36);
+            this.btnTuVan.TabIndex = 10;
+            this.btnTuVan.Tag = "0,1";
+            this.btnTuVan.Text = "Tư vấn khách hàng";
+            this.btnTuVan.Click += new System.EventHandler(this.btnTuVan_Click);
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
             this.ClientSize = new System.Drawing.Size(1820, 908);
+            this.Controls.Add(this.btnTuVan);
             this.Controls.Add(this.guna2CircleButton1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label1);
@@ -397,5 +418,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel3;
         private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton1;
+        private Guna.UI2.WinForms.Guna2CircleButton btnTuVan;
     }
 }

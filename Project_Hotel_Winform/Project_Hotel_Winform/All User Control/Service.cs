@@ -107,6 +107,7 @@ namespace Project_Hotel_Winform.All_User_Control
 
         private async void guna2Button1_Click(object sender, EventArgs e)
         {
+            int check = 0, count = 0;
             string maPDK = cboRoom.SelectedValue.ToString();
             if(listBoxService.CheckedItems.Count == 0)
             {
@@ -115,6 +116,7 @@ namespace Project_Hotel_Winform.All_User_Control
             }
             foreach(Services a in listBoxService.CheckedItems){
                 //MessageBox.Show(a.ID_DV.ToString());
+                count++;
                 Dictionary<string, string> values = new Dictionary<string, string>
                 {
                     { "ID_DV",a.ID_DV.ToString()},
@@ -123,13 +125,21 @@ namespace Project_Hotel_Winform.All_User_Control
                 var returnData = api.postAPI("paying/createPayingService", values);
                 var result = await Task.WhenAll(returnData);
                 var convertData = JsonConvert.DeserializeObject<returnData>(result[0]);
-                if (int.Parse(convertData.data) == 0)
+                //if (int.Parse(convertData.data) == 0)
+                //{
+                    
+                //}
+                if (int.Parse(convertData.data) == 1)
                 {
-                    MessageBox.Show("Có lỗi trong quá trình xử lý, vui lòng thử lại");
+                    check++;                  
                 }
-                else if (int.Parse(convertData.data) == 1)
+                if(check == count)
                 {
                     MessageBox.Show("Đăng ký dịch vụ thành công");
+                }
+                else
+                {
+                    MessageBox.Show("Có lỗi trong quá trình xử lý, vui lòng thử lại");
                 }
                 loadService();
                 loadCboBox();

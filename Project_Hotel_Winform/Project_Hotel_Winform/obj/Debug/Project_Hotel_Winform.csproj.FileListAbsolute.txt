@@ -23,3 +23,6 @@ C:\Users\DELL\Documents\School\ungdungthongminh\project_hotel_3_platform_winform
 C:\Users\DELL\Documents\School\ungdungthongminh\project_hotel_3_platform_winform\Project_Hotel_Winform\Project_Hotel_Winform\obj\Debug\Project_Hotel_Winform.pdb
 C:\Users\DELL\Documents\School\ungdungthongminh\project_hotel_3_platform_winform\Project_Hotel_Winform\Project_Hotel_Winform\obj\Debug\Project_Hotel_Winform.All_User_Control.CustomersDetails.resources
 C:\Users\DELL\Documents\School\ungdungthongminh\project_hotel_3_platform_winform\Project_Hotel_Winform\Project_Hotel_Winform\obj\Debug\Project_Hotel_Winform.csprojAssemblyReference.cache
+C:\Users\DELL\Documents\School\ungdungthongminh\project_hotel_3_platform_winform\Project_Hotel_Winform\Project_Hotel_Winform\bin\Debug\All.dll
+C:\Users\DELL\Documents\School\ungdungthongminh\project_hotel_3_platform_winform\Project_Hotel_Winform\Project_Hotel_Winform\bin\Debug\Association.dll
+C:\Users\DELL\Documents\School\ungdungthongminh\project_hotel_3_platform_winform\Project_Hotel_Winform\Project_Hotel_Winform\obj\Debug\Project_Hotel_Winform.All_User_Control.Apriori.resources
