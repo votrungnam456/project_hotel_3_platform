@@ -206,7 +206,6 @@ namespace Project_Hotel_Winform.All_User_Control
             string checkOut = dateTimeCheckOut.Value.AddDays(dayStay).ToString("yyyy-MM-dd");
             string id_KH = cboCustomer.SelectedValue.ToString();
 
-            MessageBox.Show(checkOut, checkIn);
             string chuThich;
             if (txtChuThich.Text != "")
             {

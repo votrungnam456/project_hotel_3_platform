@@ -184,7 +184,7 @@ namespace Project_Hotel_Winform
         {
             panelMoving.Visible = false;
             panel3.Controls.Clear();
-            Apriori apriori = new Apriori();
+            AprioriForm apriori = new AprioriForm();
             apriori.Size = new Size(1575, 798);
             panel3.Controls.Add(apriori);
         }

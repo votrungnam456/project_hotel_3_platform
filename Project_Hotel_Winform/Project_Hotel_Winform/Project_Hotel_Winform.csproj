@@ -63,11 +63,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="All User Control\Apriori.cs">
+    <Compile Include="All User Control\AprioriForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="All User Control\Apriori.Designer.cs">
-      <DependentUpon>Apriori.cs</DependentUpon>
+    <Compile Include="All User Control\AprioriForm.Designer.cs">
+      <DependentUpon>AprioriForm.cs</DependentUpon>
     </Compile>
     <Compile Include="All User Control\CheckOut.cs">
       <SubType>UserControl</SubType>
@@ -157,8 +157,8 @@
     <Compile Include="Model\UserLogin.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="All User Control\Apriori.resx">
-      <DependentUpon>Apriori.cs</DependentUpon>
+    <EmbeddedResource Include="All User Control\AprioriForm.resx">
+      <DependentUpon>AprioriForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="All User Control\CheckOut.resx">
       <DependentUpon>CheckOut.cs</DependentUpon>
@@ -213,6 +213,26 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icon\room.png" />
+    <Content Include="icon\add room.png" />
+    <Content Include="icon\cancel_25px.png" />
+    <Content Include="icon\cancel_50px.png" />
+    <Content Include="icon\check out.png" />
+    <Content Include="icon\Check out_50px.png" />
+    <Content Include="icon\circular loading.gif" />
+    <Content Include="icon\customer Details.png" />
+    <Content Include="icon\customer registration.png" />
+    <Content Include="icon\Employee.png" />
+    <Content Include="icon\employee_50px.png" />
+    <Content Include="icon\Guna.UI2.dll" />
+    <Content Include="icon\history-icon-0.png" />
+    <Content Include="icon\lock_25px.png" />
+    <Content Include="icon\login image.jpg" />
+    <Content Include="icon\login.gif" />
+    <Content Include="icon\minimize_window_25pxdf.png" />
+    <Content Include="icon\user_25px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

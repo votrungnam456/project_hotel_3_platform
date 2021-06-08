@@ -32,7 +32,6 @@ namespace Project_Hotel_Winform.All_User_Control
             lstHistoryBookingRoom = new List<historyBookingRoom>();
             var returnData = api.getAPI("history/historyBookingRoom");
             var result = await Task.WhenAll(returnData);
-            MessageBox.Show(result[0]);
             //setting để jsonconvert nhận null
             var settings = new JsonSerializerSettings
             {
@@ -64,6 +63,7 @@ namespace Project_Hotel_Winform.All_User_Control
             }
 
             GridViewService.DataSource = lsHhistoryServices;
+            GridViewService.Columns[0].Visible = false;
         }
         public async void loadHoaDonThanhToan()
         {
@@ -79,6 +79,9 @@ namespace Project_Hotel_Winform.All_User_Control
             }
 
             GridViewBill.DataSource = lstHistoryBills;
+            GridViewBill.Columns[0].Visible = false;
+            GridViewBill.Columns[1].Visible = false;
+            GridViewBill.Columns[7].Visible = false;
         }
         private void label1_Click(object sender, EventArgs e)
         {
