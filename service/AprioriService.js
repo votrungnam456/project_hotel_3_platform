@@ -24,8 +24,10 @@ class AprioriService {
                 };
                 for (let j = 0; j < getData.length; j++) {
                     if (getData[j]["MaPDK"] == arrZ[i]) {
-                        newObj.TenDV += getData[j]["TenDV"] + " ; "
-                        newObj.TenKP = getData[j]["TenKP"]
+                        if (!newObj.TenDV.includes(getData[j]["TenDV"])) {
+                            newObj.TenDV += getData[j]["TenDV"] + " ; "
+                            newObj.TenKP = getData[j]["TenKP"]
+                        }
                     }
                 }
                 arrResult.push(newObj);
