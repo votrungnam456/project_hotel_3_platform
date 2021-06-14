@@ -13,16 +13,38 @@ namespace Project_Hotel_Winform.All_User_Control
 {
     public partial class Service : UserControl
     {
+        private userOn user = new userOn();
         List<Services> lstServices;
         ConnectAPI api = new ConnectAPI();
         List<checkOutRoom> lstCheckOutRoom;
+        List<Button> listButtons;
         public Service()
         {
             InitializeComponent();
             loadService();
-            loadCboBox();
+            loadRooms();
+        }
+        public Service(userOn user)
+        {
+            this.user = user;
+            InitializeComponent();
+            loadService();
+            loadRooms();
+            phanQuyen();
         }
 
+        public void phanQuyen()
+        {
+            foreach(Control control in tabControl1.Controls)
+            {
+                if (!control.Tag.ToString().Contains(user.CoQuyen.ToString()))
+                {
+                    control.Enabled = false;
+                }
+                //MessageBox.Show(control.ToString());
+            }
+            
+        }
         public async void loadService()
         {
             lstServices = new List<Services>();
@@ -40,20 +62,45 @@ namespace Project_Hotel_Winform.All_User_Control
             GridViewDichVu.Columns[0].Visible = false;
         }
 
-        public async void loadCboBox()
+        public async void loadRooms()
         {
-            lstCheckOutRoom = new List<checkOutRoom>();
+            listButtons = new List<Button>();
+            flowPanelRoomsUsing.Controls.Clear();
+            //lstCheckOutRoom = new List<checkOutRoom>();
             var returnData = api.getAPI("rooms/listCheckout");
             var result = await Task.WhenAll(returnData);
             var data = JsonConvert.DeserializeObject<listChectOutRoom>(result[0]);
             foreach (checkOutRoom item in data.data)
             {
-                lstCheckOutRoom.Add(item);
+                Button button = new Button();
+                button.BackColor = Color.White;
+                button.Tag = item.MaPDK;
+                button.Text = item.Tenphong;
+                button.Height = 100;
+                button.Width = 100;
+                button.Click += Button_Click;
+                listButtons.Add(button);
+                flowPanelRoomsUsing.Controls.Add(button);
+                //lstCheckOutRoom.Add(item);
             }
-            cboRoom.DataSource = lstCheckOutRoom;
-            cboRoom.DisplayMember = "Tenphong";
-            cboRoom.ValueMember = "MaPDK";
+            //cboRoom.DataSource = lstCheckOutRoom;
+            //cboRoom.DisplayMember = "Tenphong";
+            //cboRoom.ValueMember = "MaPDK";
         }
+
+        private void Button_Click(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            if (button.BackColor == Color.White)
+            {
+                button.BackColor = Color.SkyBlue;
+            }
+            else if (button.BackColor == Color.SkyBlue)
+            {
+                button.BackColor = Color.White;
+            }
+        }
+
         private void label7_Click(object sender, EventArgs e)
         {
 
@@ -107,42 +154,51 @@ namespace Project_Hotel_Winform.All_User_Control
 
         private async void guna2Button1_Click(object sender, EventArgs e)
         {
-            int check = 0, count = 0;
-            string maPDK = cboRoom.SelectedValue.ToString();
-            if(listBoxService.CheckedItems.Count == 0)
+            try
             {
-                MessageBox.Show("Vui lòng chọn dịch vụ để đăng ký");
-                return;
-            }
-            foreach(Services a in listBoxService.CheckedItems){
-                //MessageBox.Show(a.ID_DV.ToString());
-                count++;
-                Dictionary<string, string> values = new Dictionary<string, string>
+                int count = 0;
+                if (listBoxService.CheckedItems.Count == 0)
                 {
-                    { "ID_DV",a.ID_DV.ToString()},
-                    { "MaPDK",maPDK},
-                };
-                var returnData = api.postAPI("paying/createPayingService", values);
-                var result = await Task.WhenAll(returnData);
-                var convertData = JsonConvert.DeserializeObject<returnData>(result[0]);
-                //if (int.Parse(convertData.data) == 0)
-                //{
-                    
-                //}
-                if (int.Parse(convertData.data) == 1)
-                {
-                    check++;                  
+                    MessageBox.Show("Vui lòng chọn dịch vụ để đăng ký");
+                    return;
                 }
-                if(check == count)
+                foreach (Button button in listButtons)
+                {
+                    if (button.BackColor == Color.SkyBlue)
+                    {
+                        count++;
+                        foreach (Services service in listBoxService.CheckedItems)
+                        {
+                            Dictionary<string, string> values = new Dictionary<string, string>
+                            {
+                                { "ID_DV",service.ID_DV.ToString()},
+                                { "MaPDK",button.Tag.ToString()},
+                            };
+                            var returnData = api.postAPI("paying/createPayingService", values);
+                            var result = await Task.WhenAll(returnData);
+                            var convertData = JsonConvert.DeserializeObject<returnData>(result[0]);
+                            if (int.Parse(convertData.data) == 0)
+                            {
+                                MessageBox.Show("Có lỗi trong quá trình xử lý vui lòng thử lại!!");
+                                return;
+                            }
+                            loadService();
+                            loadRooms();
+                        }
+                    }
+                }
+                if (count > 0)
                 {
                     MessageBox.Show("Đăng ký dịch vụ thành công");
                 }
                 else
                 {
-                    MessageBox.Show("Có lỗi trong quá trình xử lý, vui lòng thử lại");
+                    MessageBox.Show("Vui lòng chọn phòng để đăng ký");
                 }
-                loadService();
-                loadCboBox();
+            }
+            catch
+            {
+                MessageBox.Show("Có lỗi trong quá trình xử lý!");
             }
         }
 

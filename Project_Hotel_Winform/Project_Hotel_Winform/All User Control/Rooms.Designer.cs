@@ -1,6 +1,6 @@
 ﻿namespace Project_Hotel_Winform.All_User_Control
 {
-    partial class CheckOut
+    partial class Rooms
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label10 = new System.Windows.Forms.Label();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.txtPhongCheckOut = new Guna.UI2.WinForms.Guna2TextBox();
@@ -41,7 +41,7 @@
             this.txtTenKHCheckOut = new Guna.UI2.WinForms.Guna2TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.GridViewCheckOut = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.guna2TextBox3 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtSearchCheckOut = new Guna.UI2.WinForms.Guna2TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -52,16 +52,16 @@
             this.txtDay = new Guna.UI2.WinForms.Guna2TextBox();
             this.cboCustomer = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.label12 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.btnSearchCheckOut = new Guna.UI2.WinForms.Guna2Button();
             this.txtCMNDCheckOut = new Guna.UI2.WinForms.Guna2TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.txtKieuPhongCheckOut = new Guna.UI2.WinForms.Guna2TextBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnSearchCheckIn = new Guna.UI2.WinForms.Guna2Button();
             this.label17 = new System.Windows.Forms.Label();
             this.txtEmail = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtSDT = new Guna.UI2.WinForms.Guna2TextBox();
@@ -76,16 +76,16 @@
             this.label11 = new System.Windows.Forms.Label();
             this.txtPhong = new Guna.UI2.WinForms.Guna2TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.guna2TextBox4 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.GridViewCheckInRoom = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.txtSearchCheckIn = new Guna.UI2.WinForms.Guna2TextBox();
+            this.GridViewCheckIn = new Guna.UI2.WinForms.Guna2DataGridView();
             this.txtNhanPhong = new Guna.UI2.WinForms.Guna2Button();
+            this.flowPanelRooms = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.GridViewCheckOut)).BeginInit();
             this.tabControl2.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GridViewCheckInRoom)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridViewCheckIn)).BeginInit();
             this.SuspendLayout();
             // 
             // label10
@@ -192,30 +192,30 @@
             // 
             // GridViewCheckOut
             // 
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            this.GridViewCheckOut.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
+            this.GridViewCheckOut.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
             this.GridViewCheckOut.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.GridViewCheckOut.BackgroundColor = System.Drawing.Color.White;
             this.GridViewCheckOut.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridViewCheckOut.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.GridViewCheckOut.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridViewCheckOut.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridViewCheckOut.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.GridViewCheckOut.ColumnHeadersHeight = 4;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.GridViewCheckOut.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.GridViewCheckOut.DefaultCellStyle = dataGridViewCellStyle15;
             this.GridViewCheckOut.EnableHeadersVisualStyles = false;
             this.GridViewCheckOut.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.GridViewCheckOut.Location = new System.Drawing.Point(9, 91);
@@ -250,29 +250,29 @@
             this.GridViewCheckOut.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.GridViewCheckOut.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewCheckOut_CellClick);
             // 
-            // guna2TextBox3
+            // txtSearchCheckOut
             // 
-            this.guna2TextBox3.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox3.DefaultText = "";
-            this.guna2TextBox3.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox3.DisabledState.Parent = this.guna2TextBox3;
-            this.guna2TextBox3.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox3.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox3.FocusedState.Parent = this.guna2TextBox3;
-            this.guna2TextBox3.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox3.HoverState.Parent = this.guna2TextBox3;
-            this.guna2TextBox3.Location = new System.Drawing.Point(284, 23);
-            this.guna2TextBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.guna2TextBox3.Name = "guna2TextBox3";
-            this.guna2TextBox3.PasswordChar = '\0';
-            this.guna2TextBox3.PlaceholderText = "";
-            this.guna2TextBox3.SelectedText = "";
-            this.guna2TextBox3.ShadowDecoration.Parent = this.guna2TextBox3;
-            this.guna2TextBox3.Size = new System.Drawing.Size(338, 44);
-            this.guna2TextBox3.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
-            this.guna2TextBox3.TabIndex = 79;
+            this.txtSearchCheckOut.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtSearchCheckOut.DefaultText = "";
+            this.txtSearchCheckOut.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtSearchCheckOut.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtSearchCheckOut.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtSearchCheckOut.DisabledState.Parent = this.txtSearchCheckOut;
+            this.txtSearchCheckOut.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtSearchCheckOut.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtSearchCheckOut.FocusedState.Parent = this.txtSearchCheckOut;
+            this.txtSearchCheckOut.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtSearchCheckOut.HoverState.Parent = this.txtSearchCheckOut;
+            this.txtSearchCheckOut.Location = new System.Drawing.Point(284, 23);
+            this.txtSearchCheckOut.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSearchCheckOut.Name = "txtSearchCheckOut";
+            this.txtSearchCheckOut.PasswordChar = '\0';
+            this.txtSearchCheckOut.PlaceholderText = "";
+            this.txtSearchCheckOut.SelectedText = "";
+            this.txtSearchCheckOut.ShadowDecoration.Parent = this.txtSearchCheckOut;
+            this.txtSearchCheckOut.Size = new System.Drawing.Size(338, 44);
+            this.txtSearchCheckOut.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
+            this.txtSearchCheckOut.TabIndex = 79;
             // 
             // label4
             // 
@@ -297,6 +297,7 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.flowPanelRooms);
             this.tabPage4.Controls.Add(this.label8);
             this.tabPage4.Controls.Add(this.txtChuThich);
             this.tabPage4.Controls.Add(this.label7);
@@ -304,13 +305,12 @@
             this.tabPage4.Controls.Add(this.txtDay);
             this.tabPage4.Controls.Add(this.cboCustomer);
             this.tabPage4.Controls.Add(this.label6);
-            this.tabPage4.Controls.Add(this.guna2Panel1);
             this.tabPage4.Controls.Add(this.guna2Button1);
             this.tabPage4.Controls.Add(this.label12);
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1495, 628);
+            this.tabPage4.Size = new System.Drawing.Size(1533, 628);
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "Đặt phòng";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -428,15 +428,6 @@
             this.label6.TabIndex = 35;
             this.label6.Text = "Khách hàng";
             // 
-            // guna2Panel1
-            // 
-            this.guna2Panel1.Location = new System.Drawing.Point(6, 6);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
-            this.guna2Panel1.Size = new System.Drawing.Size(1483, 481);
-            this.guna2Panel1.TabIndex = 34;
-            this.guna2Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
-            // 
             // guna2Button1
             // 
             this.guna2Button1.BorderRadius = 20;
@@ -473,26 +464,50 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.btnSearchCheckOut);
             this.tabPage5.Controls.Add(this.txtCMNDCheckOut);
             this.tabPage5.Controls.Add(this.label19);
             this.tabPage5.Controls.Add(this.txtKieuPhongCheckOut);
             this.tabPage5.Controls.Add(this.label18);
-            this.tabPage5.Controls.Add(this.label5);
             this.tabPage5.Controls.Add(this.guna2Button2);
             this.tabPage5.Controls.Add(this.txtPhongCheckOut);
             this.tabPage5.Controls.Add(this.label2);
             this.tabPage5.Controls.Add(this.txtTenKHCheckOut);
             this.tabPage5.Controls.Add(this.label3);
             this.tabPage5.Controls.Add(this.GridViewCheckOut);
-            this.tabPage5.Controls.Add(this.guna2TextBox3);
+            this.tabPage5.Controls.Add(this.txtSearchCheckOut);
             this.tabPage5.Controls.Add(this.label4);
             this.tabPage5.Location = new System.Drawing.Point(4, 25);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(1495, 628);
+            this.tabPage5.Size = new System.Drawing.Size(1533, 628);
             this.tabPage5.TabIndex = 2;
             this.tabPage5.Text = "Trả phòng";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // btnSearchCheckOut
+            // 
+            this.btnSearchCheckOut.BorderRadius = 20;
+            this.btnSearchCheckOut.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+            this.btnSearchCheckOut.BorderThickness = 1;
+            this.btnSearchCheckOut.CheckedState.BorderColor = System.Drawing.Color.White;
+            this.btnSearchCheckOut.CheckedState.CustomBorderColor = System.Drawing.Color.White;
+            this.btnSearchCheckOut.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(221)))));
+            this.btnSearchCheckOut.CheckedState.ForeColor = System.Drawing.Color.White;
+            this.btnSearchCheckOut.CheckedState.Parent = this.btnSearchCheckOut;
+            this.btnSearchCheckOut.CustomImages.Parent = this.btnSearchCheckOut;
+            this.btnSearchCheckOut.FillColor = System.Drawing.Color.White;
+            this.btnSearchCheckOut.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchCheckOut.ForeColor = System.Drawing.Color.Black;
+            this.btnSearchCheckOut.HoverState.Parent = this.btnSearchCheckOut;
+            this.btnSearchCheckOut.Location = new System.Drawing.Point(641, 37);
+            this.btnSearchCheckOut.Name = "btnSearchCheckOut";
+            this.btnSearchCheckOut.ShadowDecoration.Parent = this.btnSearchCheckOut;
+            this.btnSearchCheckOut.Size = new System.Drawing.Size(123, 41);
+            this.btnSearchCheckOut.TabIndex = 93;
+            this.btnSearchCheckOut.Tag = "0";
+            this.btnSearchCheckOut.Text = "Tìm kiếm";
+            this.btnSearchCheckOut.Click += new System.EventHandler(this.btnSearchCheckOut_Click);
             // 
             // txtCMNDCheckOut
             // 
@@ -562,18 +577,9 @@
             this.label18.TabIndex = 89;
             this.label18.Text = "Kiểu Phòng";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(193, 37);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 19);
-            this.label5.TabIndex = 88;
-            this.label5.Text = "Tìm kiếm";
-            // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnSearchCheckIn);
             this.tabPage1.Controls.Add(this.label17);
             this.tabPage1.Controls.Add(this.txtEmail);
             this.tabPage1.Controls.Add(this.txtSDT);
@@ -588,9 +594,8 @@
             this.tabPage1.Controls.Add(this.label11);
             this.tabPage1.Controls.Add(this.txtPhong);
             this.tabPage1.Controls.Add(this.label9);
-            this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Controls.Add(this.guna2TextBox4);
-            this.tabPage1.Controls.Add(this.GridViewCheckInRoom);
+            this.tabPage1.Controls.Add(this.txtSearchCheckIn);
+            this.tabPage1.Controls.Add(this.GridViewCheckIn);
             this.tabPage1.Controls.Add(this.txtNhanPhong);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
@@ -599,6 +604,30 @@
             this.tabPage1.TabIndex = 3;
             this.tabPage1.Text = "Nhận phòng";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnSearchCheckIn
+            // 
+            this.btnSearchCheckIn.BorderRadius = 20;
+            this.btnSearchCheckIn.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+            this.btnSearchCheckIn.BorderThickness = 1;
+            this.btnSearchCheckIn.CheckedState.BorderColor = System.Drawing.Color.White;
+            this.btnSearchCheckIn.CheckedState.CustomBorderColor = System.Drawing.Color.White;
+            this.btnSearchCheckIn.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(221)))));
+            this.btnSearchCheckIn.CheckedState.ForeColor = System.Drawing.Color.White;
+            this.btnSearchCheckIn.CheckedState.Parent = this.btnSearchCheckIn;
+            this.btnSearchCheckIn.CustomImages.Parent = this.btnSearchCheckIn;
+            this.btnSearchCheckIn.FillColor = System.Drawing.Color.White;
+            this.btnSearchCheckIn.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchCheckIn.ForeColor = System.Drawing.Color.Black;
+            this.btnSearchCheckIn.HoverState.Parent = this.btnSearchCheckIn;
+            this.btnSearchCheckIn.Location = new System.Drawing.Point(579, 20);
+            this.btnSearchCheckIn.Name = "btnSearchCheckIn";
+            this.btnSearchCheckIn.ShadowDecoration.Parent = this.btnSearchCheckIn;
+            this.btnSearchCheckIn.Size = new System.Drawing.Size(123, 41);
+            this.btnSearchCheckIn.TabIndex = 105;
+            this.btnSearchCheckIn.Tag = "0";
+            this.btnSearchCheckIn.Text = "Tìm kiếm";
+            this.btnSearchCheckIn.Click += new System.EventHandler(this.btnSearchCheckIn_Click);
             // 
             // label17
             // 
@@ -838,103 +867,93 @@
             this.label9.TabIndex = 91;
             this.label9.Text = "Phòng";
             // 
-            // label1
+            // txtSearchCheckIn
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(6, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 19);
-            this.label1.TabIndex = 90;
-            this.label1.Text = "Tìm kiếm";
+            this.txtSearchCheckIn.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtSearchCheckIn.DefaultText = "";
+            this.txtSearchCheckIn.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtSearchCheckIn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtSearchCheckIn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtSearchCheckIn.DisabledState.Parent = this.txtSearchCheckIn;
+            this.txtSearchCheckIn.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtSearchCheckIn.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtSearchCheckIn.FocusedState.Parent = this.txtSearchCheckIn;
+            this.txtSearchCheckIn.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtSearchCheckIn.HoverState.Parent = this.txtSearchCheckIn;
+            this.txtSearchCheckIn.Location = new System.Drawing.Point(212, 17);
+            this.txtSearchCheckIn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSearchCheckIn.Name = "txtSearchCheckIn";
+            this.txtSearchCheckIn.PasswordChar = '\0';
+            this.txtSearchCheckIn.PlaceholderText = "";
+            this.txtSearchCheckIn.SelectedText = "";
+            this.txtSearchCheckIn.ShadowDecoration.Parent = this.txtSearchCheckIn;
+            this.txtSearchCheckIn.Size = new System.Drawing.Size(338, 44);
+            this.txtSearchCheckIn.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
+            this.txtSearchCheckIn.TabIndex = 89;
+            this.txtSearchCheckIn.TextChanged += new System.EventHandler(this.guna2TextBox4_TextChanged);
             // 
-            // guna2TextBox4
+            // GridViewCheckIn
             // 
-            this.guna2TextBox4.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox4.DefaultText = "";
-            this.guna2TextBox4.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox4.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox4.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox4.DisabledState.Parent = this.guna2TextBox4;
-            this.guna2TextBox4.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox4.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox4.FocusedState.Parent = this.guna2TextBox4;
-            this.guna2TextBox4.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox4.HoverState.Parent = this.guna2TextBox4;
-            this.guna2TextBox4.Location = new System.Drawing.Point(91, 7);
-            this.guna2TextBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.guna2TextBox4.Name = "guna2TextBox4";
-            this.guna2TextBox4.PasswordChar = '\0';
-            this.guna2TextBox4.PlaceholderText = "";
-            this.guna2TextBox4.SelectedText = "";
-            this.guna2TextBox4.ShadowDecoration.Parent = this.guna2TextBox4;
-            this.guna2TextBox4.Size = new System.Drawing.Size(338, 44);
-            this.guna2TextBox4.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
-            this.guna2TextBox4.TabIndex = 89;
-            this.guna2TextBox4.TextChanged += new System.EventHandler(this.guna2TextBox4_TextChanged);
-            // 
-            // GridViewCheckInRoom
-            // 
-            this.GridViewCheckInRoom.AllowUserToAddRows = false;
-            this.GridViewCheckInRoom.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
-            this.GridViewCheckInRoom.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
-            this.GridViewCheckInRoom.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.GridViewCheckInRoom.BackgroundColor = System.Drawing.Color.White;
-            this.GridViewCheckInRoom.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.GridViewCheckInRoom.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.GridViewCheckInRoom.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridViewCheckInRoom.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
-            this.GridViewCheckInRoom.ColumnHeadersHeight = 4;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.GridViewCheckInRoom.DefaultCellStyle = dataGridViewCellStyle12;
-            this.GridViewCheckInRoom.EnableHeadersVisualStyles = false;
-            this.GridViewCheckInRoom.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.GridViewCheckInRoom.Location = new System.Drawing.Point(6, 81);
-            this.GridViewCheckInRoom.Name = "GridViewCheckInRoom";
-            this.GridViewCheckInRoom.ReadOnly = true;
-            this.GridViewCheckInRoom.RowHeadersVisible = false;
-            this.GridViewCheckInRoom.RowHeadersWidth = 51;
-            this.GridViewCheckInRoom.RowTemplate.Height = 24;
-            this.GridViewCheckInRoom.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.GridViewCheckInRoom.Size = new System.Drawing.Size(1007, 532);
-            this.GridViewCheckInRoom.TabIndex = 81;
-            this.GridViewCheckInRoom.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
-            this.GridViewCheckInRoom.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.GridViewCheckInRoom.ThemeStyle.AlternatingRowsStyle.Font = null;
-            this.GridViewCheckInRoom.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
-            this.GridViewCheckInRoom.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
-            this.GridViewCheckInRoom.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.GridViewCheckInRoom.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.GridViewCheckInRoom.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.GridViewCheckInRoom.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.GridViewCheckInRoom.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.GridViewCheckInRoom.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            this.GridViewCheckInRoom.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.GridViewCheckInRoom.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.GridViewCheckInRoom.ThemeStyle.HeaderStyle.Height = 4;
-            this.GridViewCheckInRoom.ThemeStyle.ReadOnly = true;
-            this.GridViewCheckInRoom.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.GridViewCheckInRoom.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.GridViewCheckInRoom.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            this.GridViewCheckInRoom.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.GridViewCheckInRoom.ThemeStyle.RowsStyle.Height = 24;
-            this.GridViewCheckInRoom.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.GridViewCheckInRoom.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.GridViewCheckInRoom.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewCheckInRoom_CellClick);
+            this.GridViewCheckIn.AllowUserToAddRows = false;
+            this.GridViewCheckIn.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
+            this.GridViewCheckIn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
+            this.GridViewCheckIn.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.GridViewCheckIn.BackgroundColor = System.Drawing.Color.White;
+            this.GridViewCheckIn.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.GridViewCheckIn.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.GridViewCheckIn.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridViewCheckIn.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            this.GridViewCheckIn.ColumnHeadersHeight = 4;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.GridViewCheckIn.DefaultCellStyle = dataGridViewCellStyle18;
+            this.GridViewCheckIn.EnableHeadersVisualStyles = false;
+            this.GridViewCheckIn.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.GridViewCheckIn.Location = new System.Drawing.Point(6, 81);
+            this.GridViewCheckIn.Name = "GridViewCheckIn";
+            this.GridViewCheckIn.ReadOnly = true;
+            this.GridViewCheckIn.RowHeadersVisible = false;
+            this.GridViewCheckIn.RowHeadersWidth = 51;
+            this.GridViewCheckIn.RowTemplate.Height = 24;
+            this.GridViewCheckIn.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.GridViewCheckIn.Size = new System.Drawing.Size(1007, 532);
+            this.GridViewCheckIn.TabIndex = 81;
+            this.GridViewCheckIn.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
+            this.GridViewCheckIn.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.GridViewCheckIn.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.GridViewCheckIn.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.GridViewCheckIn.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.GridViewCheckIn.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.GridViewCheckIn.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.GridViewCheckIn.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.GridViewCheckIn.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.GridViewCheckIn.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.GridViewCheckIn.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            this.GridViewCheckIn.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.GridViewCheckIn.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.GridViewCheckIn.ThemeStyle.HeaderStyle.Height = 4;
+            this.GridViewCheckIn.ThemeStyle.ReadOnly = true;
+            this.GridViewCheckIn.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.GridViewCheckIn.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.GridViewCheckIn.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            this.GridViewCheckIn.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.GridViewCheckIn.ThemeStyle.RowsStyle.Height = 24;
+            this.GridViewCheckIn.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.GridViewCheckIn.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.GridViewCheckIn.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewCheckInRoom_CellClick);
             // 
             // txtNhanPhong
             // 
@@ -959,14 +978,21 @@
             this.txtNhanPhong.Text = "Nhận phòng";
             this.txtNhanPhong.Click += new System.EventHandler(this.txtNhanPhong_Click);
             // 
-            // CheckOut
+            // flowPanelRooms
+            // 
+            this.flowPanelRooms.Location = new System.Drawing.Point(6, 6);
+            this.flowPanelRooms.Name = "flowPanelRooms";
+            this.flowPanelRooms.Size = new System.Drawing.Size(1521, 481);
+            this.flowPanelRooms.TabIndex = 42;
+            // 
+            // Rooms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.tabControl2);
             this.Controls.Add(this.label10);
-            this.Name = "CheckOut";
+            this.Name = "Rooms";
             this.Size = new System.Drawing.Size(1560, 752);
             ((System.ComponentModel.ISupportInitialize)(this.GridViewCheckOut)).EndInit();
             this.tabControl2.ResumeLayout(false);
@@ -976,7 +1002,7 @@
             this.tabPage5.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GridViewCheckInRoom)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridViewCheckIn)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -991,15 +1017,13 @@
         private Guna.UI2.WinForms.Guna2TextBox txtTenKHCheckOut;
         private System.Windows.Forms.Label label3;
         private Guna.UI2.WinForms.Guna2DataGridView GridViewCheckOut;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox3;
+        private Guna.UI2.WinForms.Guna2TextBox txtSearchCheckOut;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TabControl tabControl2;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.Label label5;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private System.Windows.Forms.Label label12;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2ComboBox cboCustomer;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TabPage tabPage1;
@@ -1009,9 +1033,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private Guna.UI2.WinForms.Guna2Button txtNhanPhong;
-        private Guna.UI2.WinForms.Guna2DataGridView GridViewCheckInRoom;
-        private System.Windows.Forms.Label label1;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox4;
+        private Guna.UI2.WinForms.Guna2DataGridView GridViewCheckIn;
+        private Guna.UI2.WinForms.Guna2TextBox txtSearchCheckIn;
         private System.Windows.Forms.Label label17;
         private Guna.UI2.WinForms.Guna2TextBox txtEmail;
         private Guna.UI2.WinForms.Guna2TextBox txtSDT;
@@ -1030,5 +1053,8 @@
         private System.Windows.Forms.Label label19;
         private Guna.UI2.WinForms.Guna2TextBox txtKieuPhongCheckOut;
         private System.Windows.Forms.Label label18;
+        private Guna.UI2.WinForms.Guna2Button btnSearchCheckOut;
+        private Guna.UI2.WinForms.Guna2Button btnSearchCheckIn;
+        private System.Windows.Forms.FlowLayoutPanel flowPanelRooms;
     }
 }

@@ -14,7 +14,7 @@ namespace Project_Hotel_Winform
     public partial class LoginForm : Form
     {
         ConnectAPI api = new ConnectAPI();
-        List<UserLogin> lstReturnDataLogin = new List<UserLogin>();
+        private userOn user;
         private string ID_NV, Quyen, TenNV;
         int CoQuyen;
 
@@ -40,7 +40,7 @@ namespace Project_Hotel_Winform
 
         private async void btnLogin_Click(object sender, EventArgs e)
         {
-            lstReturnDataLogin = new List<UserLogin>();
+            user = new userOn();
             string email = txtUser.Text;
             string pwd = txtPwd.Text;
             Dictionary<string, string> values = new Dictionary<string, string>
@@ -51,22 +51,16 @@ namespace Project_Hotel_Winform
             var returnData = api.postAPI("employees/user", values);
             var result = await Task.WhenAll(returnData);
             var convertData = JsonConvert.DeserializeObject<returnDataLogin>(result[0]);
-
-            foreach (UserLogin user in convertData.data)
+            if(convertData.data[0].ID_NV.Equals("-1"))
             {
-                lstReturnDataLogin.Add(user);
-
-            }
-            if (lstReturnDataLogin[0].checkError == 0)
-            {
-                MessageBox.Show("Sai email hoặc mật khẩu");
+                MessageBox.Show("Email hoặc mật khẩu sai");
                 return;
             }
-            ID_NV1 =  lstReturnDataLogin[0].ID_NV;
-            Quyen1 = lstReturnDataLogin[0].Quyen;
-            TenNV1 = lstReturnDataLogin[0].TenNV;
-            CoQuyen1 = lstReturnDataLogin[0].CoQuyen;
-            Dashboard ds = new Dashboard(TenNV1,Quyen1,ID_NV1,CoQuyen1);
+            user.ID_NV = convertData.data[0].ID_NV;
+            user.Quyen = convertData.data[0].Quyen;
+            user.NameUserLogin = convertData.data[0].TenNV;
+            user.CoQuyen = convertData.data[0].CoQuyen;
+            Dashboard ds = new Dashboard(user);
             ds.Show();
             this.Hide();
         }

@@ -69,11 +69,11 @@
     <Compile Include="All User Control\AprioriForm.Designer.cs">
       <DependentUpon>AprioriForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="All User Control\CheckOut.cs">
+    <Compile Include="All User Control\Rooms.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="All User Control\CheckOut.Designer.cs">
-      <DependentUpon>CheckOut.cs</DependentUpon>
+    <Compile Include="All User Control\Rooms.Designer.cs">
+      <DependentUpon>Rooms.cs</DependentUpon>
     </Compile>
     <Compile Include="All User Control\CustomersDetails.cs">
       <SubType>UserControl</SubType>
@@ -154,14 +154,15 @@
     <Compile Include="Model\Room.cs" />
     <Compile Include="Model\Services.cs" />
     <Compile Include="Model\typeRoom.cs" />
-    <Compile Include="Model\UserLogin.cs" />
+    <Compile Include="Model\userLogin.cs" />
+    <Compile Include="Model\userOn.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="All User Control\AprioriForm.resx">
       <DependentUpon>AprioriForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="All User Control\CheckOut.resx">
-      <DependentUpon>CheckOut.cs</DependentUpon>
+    <EmbeddedResource Include="All User Control\Rooms.resx">
+      <DependentUpon>Rooms.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="All User Control\CustomersDetails.resx">
       <DependentUpon>CustomersDetails.cs</DependentUpon>

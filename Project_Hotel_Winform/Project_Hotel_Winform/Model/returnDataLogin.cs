@@ -8,8 +8,8 @@ namespace Project_Hotel_Winform.Model
 {
     public class returnDataLogin
     {
-        List<UserLogin> Data = new List<UserLogin>();
+        List<userLogin> Data = new List<userLogin>();
 
-        public List<UserLogin> data { get => Data; set => Data = value; }
+        public List<userLogin> data { get => Data; set => Data = value; }
     }
 }

@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -43,11 +43,11 @@
             this.txtNameService = new Guna.UI2.WinForms.Guna2TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.cboRoom = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.label3 = new System.Windows.Forms.Label();
             this.listBoxService = new System.Windows.Forms.CheckedListBox();
+            this.flowPanelRoomsUsing = new System.Windows.Forms.FlowLayoutPanel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridViewDichVu)).BeginInit();
@@ -89,6 +89,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(1194, 506);
             this.tabPage1.TabIndex = 0;
+            this.tabPage1.Tag = "0";
             this.tabPage1.Text = "Quản lý dịch vụ";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
@@ -142,30 +143,30 @@
             // 
             // GridViewDichVu
             // 
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            this.GridViewDichVu.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.GridViewDichVu.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.GridViewDichVu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.GridViewDichVu.BackgroundColor = System.Drawing.Color.White;
             this.GridViewDichVu.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridViewDichVu.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.GridViewDichVu.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridViewDichVu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridViewDichVu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.GridViewDichVu.ColumnHeadersHeight = 4;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.GridViewDichVu.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.GridViewDichVu.DefaultCellStyle = dataGridViewCellStyle6;
             this.GridViewDichVu.EnableHeadersVisualStyles = false;
             this.GridViewDichVu.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.GridViewDichVu.Location = new System.Drawing.Point(3, 6);
@@ -295,7 +296,7 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.cboRoom);
+            this.tabPage2.Controls.Add(this.flowPanelRoomsUsing);
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.guna2Button1);
             this.tabPage2.Controls.Add(this.label3);
@@ -305,31 +306,9 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(1194, 506);
             this.tabPage2.TabIndex = 1;
+            this.tabPage2.Tag = "0,1";
             this.tabPage2.Text = "Đăng ký dịch vụ";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // cboRoom
-            // 
-            this.cboRoom.BackColor = System.Drawing.Color.Transparent;
-            this.cboRoom.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cboRoom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboRoom.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cboRoom.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cboRoom.FocusedState.Parent = this.cboRoom;
-            this.cboRoom.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cboRoom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cboRoom.HoverState.Parent = this.cboRoom;
-            this.cboRoom.ItemHeight = 30;
-            this.cboRoom.Items.AddRange(new object[] {
-            "ac",
-            "non-ac"});
-            this.cboRoom.ItemsAppearance.Parent = this.cboRoom;
-            this.cboRoom.Location = new System.Drawing.Point(595, 65);
-            this.cboRoom.Name = "cboRoom";
-            this.cboRoom.ShadowDecoration.Parent = this.cboRoom;
-            this.cboRoom.Size = new System.Drawing.Size(576, 36);
-            this.cboRoom.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
-            this.cboRoom.TabIndex = 66;
             // 
             // label4
             // 
@@ -356,7 +335,7 @@
             this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button1.ForeColor = System.Drawing.Color.Black;
             this.guna2Button1.HoverState.Parent = this.guna2Button1;
-            this.guna2Button1.Location = new System.Drawing.Point(1022, 412);
+            this.guna2Button1.Location = new System.Drawing.Point(1027, 452);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.ShadowDecoration.Parent = this.guna2Button1;
             this.guna2Button1.Size = new System.Drawing.Size(149, 48);
@@ -379,8 +358,15 @@
             this.listBoxService.FormattingEnabled = true;
             this.listBoxService.Location = new System.Drawing.Point(17, 65);
             this.listBoxService.Name = "listBoxService";
-            this.listBoxService.Size = new System.Drawing.Size(434, 395);
+            this.listBoxService.Size = new System.Drawing.Size(528, 395);
             this.listBoxService.TabIndex = 0;
+            // 
+            // flowPanelRoomsUsing
+            // 
+            this.flowPanelRoomsUsing.Location = new System.Drawing.Point(595, 65);
+            this.flowPanelRoomsUsing.Name = "flowPanelRoomsUsing";
+            this.flowPanelRoomsUsing.Size = new System.Drawing.Size(581, 381);
+            this.flowPanelRoomsUsing.TabIndex = 67;
             // 
             // Service
             // 
@@ -420,6 +406,6 @@
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private Guna.UI2.WinForms.Guna2ComboBox cboRoom;
+        private System.Windows.Forms.FlowLayoutPanel flowPanelRoomsUsing;
     }
 }

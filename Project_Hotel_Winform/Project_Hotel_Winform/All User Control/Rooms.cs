@@ -13,7 +13,7 @@ using System.Globalization;
 
 namespace Project_Hotel_Winform.All_User_Control
 {
-    public partial class CheckOut : UserControl
+    public partial class Rooms : UserControl
     {
         ConnectAPI api = new ConnectAPI();
         List<Room> listRooms = new List<Room>();
@@ -25,7 +25,7 @@ namespace Project_Hotel_Winform.All_User_Control
         private string iD_NV;
 
         public string ID_NV { get => iD_NV; set => iD_NV = value; }
-        public CheckOut()
+        public Rooms()
         {
             InitializeComponent();
             disableTextBox();
@@ -35,9 +35,9 @@ namespace Project_Hotel_Winform.All_User_Control
             dateTimeCheckOut.MinDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
             loadNhanPhong();
             loadTraPhong();
-            
+
         }
-        public CheckOut(string id_nv)
+        public Rooms(string id_nv)
         {
             ID_NV = id_nv;
             InitializeComponent();
@@ -52,9 +52,9 @@ namespace Project_Hotel_Winform.All_User_Control
         }
         public void disableTextBox()
         {
-            foreach(Control x in tabPage1.Controls)
+            foreach (Control x in tabPage1.Controls)
             {
-                if(x.GetType() == typeof(TextBox))
+                if (x.GetType() == typeof(TextBox))
                 {
                     x.Enabled = false;
                     MessageBox.Show("true");
@@ -69,13 +69,13 @@ namespace Project_Hotel_Winform.All_User_Control
             var data = JsonConvert.DeserializeObject<listCheckInRoom>(result[0]);
             foreach (checkInRoom item in data.data)
             {
-                item.NgayDen = DateTime.ParseExact(item.NgayDen.AddDays(1).ToString("dd/MM/yyyy"), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                item.NgayDen = DateTime.ParseExact(item.NgayDen.ToString("dd/MM/yyyy"), "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 listNhanPhong.Add(item);
             }
-            
-            GridViewCheckInRoom.DataSource = listNhanPhong;
-            GridViewCheckInRoom.Columns[0].Visible = false;
-            
+
+            GridViewCheckIn.DataSource = listNhanPhong;
+            GridViewCheckIn.Columns[0].Visible = false;
+
         }
         public async void loadTraPhong()
         {
@@ -92,10 +92,12 @@ namespace Project_Hotel_Winform.All_User_Control
             //GridViewCheckOut.Columns[0].Visible = false;
             //GridViewCheckOut.Columns[5].Visible = false;
         }
-        public async void loadRooms() {
-            
-            guna2Panel1.Controls.Clear();
+        public async void loadRooms()
+        {
+
+            flowPanelRooms.Controls.Clear();
             listRooms = new List<Room>();
+            lstbtn = new List<Button>();
             var returnData = api.getAPI("rooms/list");
             var result = await Task.WhenAll(returnData);
             var data = JsonConvert.DeserializeObject<listRooms>(result[0]);
@@ -103,22 +105,19 @@ namespace Project_Hotel_Winform.All_User_Control
             {
                 listRooms.Add(item);
             }
-            int j = 0;
-            int count = 0;
+
             for (int i = 0; i < listRooms.Count; i++)
             {
                 Button myButton = new Button();
                 myButton.Tag = listRooms[i].MaPhong;
-                myButton.Text = listRooms[i].Tenphong+ "-" +listRooms[i].TenKP;
+                myButton.Text = listRooms[i].Tenphong + "-" + listRooms[i].TenKP;
                 myButton.Height = 100;
                 myButton.Width = 100;
-                myButton.Left = count * 100;
-                myButton.Top = 100 * j;
-                if(int.Parse(listRooms[i].TinhTrang) == 1)
+                if (int.Parse(listRooms[i].TinhTrang) == 1)
                 {
                     myButton.BackColor = Color.Yellow;
                 }
-                else if(int.Parse(listRooms[i].TinhTrang) == 2)
+                else if (int.Parse(listRooms[i].TinhTrang) == 2)
                 {
                     myButton.BackColor = Color.Red;
                 }
@@ -126,33 +125,24 @@ namespace Project_Hotel_Winform.All_User_Control
                 {
                     myButton.BackColor = Color.White;
                 }
-                count++;
-                if (i % 8 == 0 && i != 0)
-                {
-                    j++;
-                    count = 0;
-                }
-                
                 myButton.Click += myButton_Click;
-                guna2Panel1.Controls.Add(myButton);
+                flowPanelRooms.Controls.Add(myButton);
                 lstbtn.Add(myButton);
-            }
-            //////////////////////////////////////////
-            ///            
+            }     
         }
 
         void myButton_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            if(button.BackColor == Color.White)
+            if (button.BackColor == Color.White)
             {
                 button.BackColor = Color.SkyBlue;
             }
-            else if(button.BackColor == Color.SkyBlue)
+            else if (button.BackColor == Color.SkyBlue)
             {
                 button.BackColor = Color.White;
-            }    
-            else if(button.BackColor == Color.Yellow)
+            }
+            else if (button.BackColor == Color.Yellow)
             {
                 MessageBox.Show("Phòng này đã được đặt");
             }
@@ -192,18 +182,18 @@ namespace Project_Hotel_Winform.All_User_Control
 
         private async void guna2Button1_Click(object sender, EventArgs e)
         {
-            string checkIn = dateTimeCheckOut.Value.ToString("yyyy-MM-dd");
+            string checkIn = dateTimeCheckOut.Value.AddDays(1).ToString("yyyy-MM-dd");
             int dayStay;
             if (txtDay.Text != "")
             {
-               
+
                 dayStay = int.Parse(txtDay.Text);
             }
             else
             {
                 dayStay = 0;
             }
-            string checkOut = dateTimeCheckOut.Value.AddDays(dayStay).ToString("yyyy-MM-dd");
+            string checkOut = dateTimeCheckOut.Value.AddDays(dayStay+1).ToString("yyyy-MM-dd");
             string id_KH = cboCustomer.SelectedValue.ToString();
 
             string chuThich;
@@ -237,6 +227,7 @@ namespace Project_Hotel_Winform.All_User_Control
                     {
                         check = true;
                     }
+                    btn.BackColor = Color.SkyBlue;
                 }
             }
             if (check)
@@ -251,14 +242,14 @@ namespace Project_Hotel_Winform.All_User_Control
             {
                 MessageBox.Show("Đặt phòng thất bại");
             }
-            
+
         }
 
         private void txtDay_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
                 e.Handled = true;
-            
+
         }
 
         private void label12_Click(object sender, EventArgs e)
@@ -273,9 +264,9 @@ namespace Project_Hotel_Winform.All_User_Control
 
         private async void txtNhanPhong_Click(object sender, EventArgs e)
         {
-            if(GridViewCheckInRoom.CurrentRow.Cells[0].Value.ToString() != null)
+            if (GridViewCheckIn.CurrentRow.Cells[0].Value.ToString() != null)
             {
-                string MaPhong = GridViewCheckInRoom.CurrentRow.Cells[0].Value.ToString();
+                string MaPhong = GridViewCheckIn.CurrentRow.Cells[0].Value.ToString();
                 Dictionary<string, string> values = new Dictionary<string, string>
                 {
                     {"MaPhong",MaPhong }
@@ -300,7 +291,7 @@ namespace Project_Hotel_Winform.All_User_Control
                 MessageBox.Show("Vui lòng chọn phòng để nhận");
                 return;
             }
-            
+
         }
 
         private void guna2TextBox4_TextChanged(object sender, EventArgs e)
@@ -310,13 +301,13 @@ namespace Project_Hotel_Winform.All_User_Control
 
         private void GridViewCheckInRoom_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            string phong = GridViewCheckInRoom.CurrentRow.Cells[1].Value.ToString();
-            string KieuPhong = GridViewCheckInRoom.CurrentRow.Cells[3].Value.ToString();
-            string TenKH = GridViewCheckInRoom.CurrentRow.Cells[4].Value.ToString();
-            string price = GridViewCheckInRoom.CurrentRow.Cells[2].Value.ToString();
-            string email = GridViewCheckInRoom.CurrentRow.Cells[6].Value.ToString();
-            string CMND = GridViewCheckInRoom.CurrentRow.Cells[5].Value.ToString();
-            string SoDT = GridViewCheckInRoom.CurrentRow.Cells[7].Value.ToString();
+            string phong = GridViewCheckIn.CurrentRow.Cells[1].Value.ToString();
+            string KieuPhong = GridViewCheckIn.CurrentRow.Cells[3].Value.ToString();
+            string TenKH = GridViewCheckIn.CurrentRow.Cells[4].Value.ToString();
+            string price = GridViewCheckIn.CurrentRow.Cells[2].Value.ToString();
+            string email = GridViewCheckIn.CurrentRow.Cells[6].Value.ToString();
+            string CMND = GridViewCheckIn.CurrentRow.Cells[5].Value.ToString();
+            string SoDT = GridViewCheckIn.CurrentRow.Cells[7].Value.ToString();
             txtPhong.Text = phong;
             txtName.Text = TenKH;
             txtLoaiPhong.Text = KieuPhong;
@@ -385,6 +376,84 @@ namespace Project_Hotel_Winform.All_User_Control
             {
                 MessageBox.Show("Vui lòng chọn phòng để trả");
                 return;
+            }
+        }
+
+        private async void btnSearchCheckIn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                listNhanPhong = new List<checkInRoom>();
+                GridViewCheckIn.Columns.Clear();
+                if (txtSearchCheckIn.Text.Trim() == "")
+                {
+                    loadNhanPhong();
+                }
+                else
+                {
+                    string filter = txtSearchCheckIn.Text.Trim();
+                    var returnData = api.getAPI("rooms/listCheckIn/search/" + filter);
+                    var result = await Task.WhenAll(returnData);
+                    var data = JsonConvert.DeserializeObject<listCheckInRoom>(result[0]);
+                    foreach (checkInRoom item in data.data)
+                    {
+                        if (item.MaPhong.Equals("-1"))
+                        {
+                            MessageBox.Show("Không tìm thấy khách hàng nào đã đặt phòng");
+                            loadNhanPhong();
+                            return;
+                        }
+                        item.NgayDen = DateTime.ParseExact(item.NgayDen.ToString("dd/MM/yyyy"), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                        listNhanPhong.Add(item);
+                    }
+                    GridViewCheckIn.DataSource = listNhanPhong;
+                    GridViewCheckIn.Columns[0].Visible = false;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Lỗi tìm kiếm");
+                loadNhanPhong();
+            }
+
+        }
+
+        private async void btnSearchCheckOut_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                listTraPhong = new List<checkOutRoom>();
+                GridViewCheckIn.Columns.Clear();
+                if (txtSearchCheckOut.Text.Trim() == "")
+                {
+                    loadTraPhong();
+                    
+                }
+                else
+                {
+                    string filter = txtSearchCheckOut.Text.Trim();
+                    var returnData = api.getAPI("rooms/listCheckOut/search/" + filter);
+                    var result = await Task.WhenAll(returnData);
+                    var data = JsonConvert.DeserializeObject<listChectOutRoom>(result[0]);
+                    foreach (checkOutRoom item in data.data)
+                    {
+                        if (item.MaPhong.Equals("-1"))
+                        {
+                            MessageBox.Show("Không tìm thấy khách hàng nào đang sử dụng phòng");
+                            loadTraPhong();
+                            return;
+                        }
+                        
+                        listTraPhong.Add(item);
+                    }
+                    GridViewCheckOut.DataSource = listTraPhong;
+                    GridViewCheckOut.Columns[0].Visible = false;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Lỗi tìm kiếm");
+                loadTraPhong();
             }
         }
     }

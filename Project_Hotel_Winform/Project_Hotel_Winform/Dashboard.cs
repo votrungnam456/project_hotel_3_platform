@@ -8,54 +8,44 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Project_Hotel_Winform.All_User_Control;
+using Project_Hotel_Winform.Model;
 namespace Project_Hotel_Winform
 {
     public partial class Dashboard : Form
     {
-        private string nameUserLogin;
-        private string quyen;
-        private string iD_NV;
-        private int coQuyen;
-        public string NameUserLogin { get => nameUserLogin; set => nameUserLogin = value; }
-        public string Quyen { get => quyen; set => quyen = value; }
-        public string ID_NV { get => iD_NV; set => iD_NV = value; }
-        public int CoQuyen { get => coQuyen; set => coQuyen = value; }
-
+        private userOn user = new userOn();
         public Dashboard()
         {
             InitializeComponent();
 
         }
-        public Dashboard(string NameUser,string Quyen,string ID_NV,int CoQuyen)
+        public Dashboard(userOn user)
         {
-            NameUserLogin = NameUser;
-            this.Quyen = Quyen;
-            this.ID_NV = ID_NV;
-            this.CoQuyen = CoQuyen;
+            this.user = user;
             InitializeComponent();
-            label1.Text = "Xin chào " + Quyen + " " + NameUser;
+            label1.Text = "Xin chào " + user.Quyen + " " + user.NameUserLogin;
             PhanQuyen();
         }
         public void PhanQuyen()
         {
-            foreach(Control x in this.Controls)
+            foreach(Control control in this.Controls)
             {
-                if (x is Guna.UI2.WinForms.Guna2Button)
+                if (control is Guna.UI2.WinForms.Guna2Button)
                 {
-                    if (!x.Tag.ToString().Contains(CoQuyen.ToString()))
+                    if (!control.Tag.ToString().Contains(user.CoQuyen.ToString()))
                     {
-                        x.Enabled = false;
+                        control.Enabled = false;
                     }
                 }
             }
             
-            foreach(Control x in panel1.Controls)
+            foreach(Control control in panel1.Controls)
             {
-                if(x is Guna.UI2.WinForms.Guna2Button) 
+                if(control is Guna.UI2.WinForms.Guna2Button) 
                 {
-                    if (!x.Tag.ToString().Contains(CoQuyen.ToString()))
+                    if (!control.Tag.ToString().Contains(user.CoQuyen.ToString()))
                     {
-                        x.Enabled = false;
+                        control.Enabled = false;
                     }
                 }
             }
@@ -96,15 +86,15 @@ namespace Project_Hotel_Winform
             panelMoving.Size = new Size(199, 5);
             panelMoving.Left = btnCheckOut.Left;
             panel3.Controls.Clear();
-            CheckOut checkOut;
-            if (ID_NV == "")
+            Rooms checkOut;
+            if (user.ID_NV == "")
             {
-                checkOut = new CheckOut();
+                checkOut = new Rooms();
                 checkOut.Size = new Size(1575, 798);
             }
             else
             {
-                checkOut = new CheckOut(ID_NV);
+                checkOut = new Rooms(user.ID_NV);
                 checkOut.Size = new Size(1575, 798);
             }
             panel3.Controls.Add(checkOut);
@@ -127,7 +117,7 @@ namespace Project_Hotel_Winform
             panelMoving.Size = new Size(199, 5);
             panelMoving.Left = btnEmployees.Left;
             panel3.Controls.Clear();
-            Employees employees = new Employees(NameUserLogin,Quyen,ID_NV,CoQuyen);
+            Employees employees = new Employees(user);
             employees.Size = new Size(1575, 798);
             panel3.Controls.Add(employees);
         }
@@ -163,7 +153,7 @@ namespace Project_Hotel_Winform
             panelMoving.Size = new Size(180, 5);
             panelMoving.Left = btnService.Left;
             panel3.Controls.Clear();
-            Service service = new Service();
+            Service service = new Service(user);
             service.Size = new Size(1575, 798);
             panel3.Controls.Add(service);
         }

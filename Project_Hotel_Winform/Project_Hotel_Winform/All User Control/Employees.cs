@@ -13,14 +13,7 @@ namespace Project_Hotel_Winform.All_User_Control
 {
     public partial class Employees : UserControl
     {
-        private string nameUserLogin;
-        private string quyen;
-        private string iD_NV;
-        private int coQuyen;
-        public string NameUserLogin { get => nameUserLogin; set => nameUserLogin = value; }
-        public string Quyen { get => quyen; set => quyen = value; }
-        public string ID_NV { get => iD_NV; set => iD_NV = value; }
-        public int CoQuyen { get => coQuyen; set => coQuyen = value; }
+        public userOn user = new userOn();
         ConnectAPI api = new ConnectAPI();
         List<Employee> ListEmployees;
         List<Decentralization> lstPQ;
@@ -31,12 +24,9 @@ namespace Project_Hotel_Winform.All_User_Control
             cboGender.Items.Add("Nữ");
             loadcboBoxPhanQuyen();
         }
-        public Employees(string NameUser, string Quyen, string ID_NV, int CoQuyen)
+        public Employees(userOn user)
         {
-            NameUserLogin = NameUser;
-            this.Quyen = Quyen;
-            this.ID_NV = ID_NV;
-            this.CoQuyen = CoQuyen;
+            this.user = user;
             InitializeComponent();
             cboGender.Items.Add("Nam");
             cboGender.Items.Add("Nữ");
@@ -46,30 +36,46 @@ namespace Project_Hotel_Winform.All_User_Control
         }
         public async void loadEmployees()
         {
-            ListEmployees = new List<Employee>();
-            var returnData = api.getAPI("employees/list");
-            var result = await Task.WhenAll(returnData);
-            var data = JsonConvert.DeserializeObject<listEmployees>(result[0]);
-            foreach (Employee item in data.data)
+            try
             {
-                ListEmployees.Add(item);
+                ListEmployees = new List<Employee>();
+                Task<string> initalData = null;
+                var returnData = initalData;
+                if (user.CoQuyen.ToString() == "1")
+                {
+                    returnData = api.getAPI("employees/" + user.ID_NV);
+                }
+                else
+                {
+                    returnData = api.getAPI("employees/list");
+                }
+                var result = await Task.WhenAll(returnData);
+                var data = JsonConvert.DeserializeObject<listEmployees>(result[0]);
+                foreach (Employee item in data.data)
+                {
+                    ListEmployees.Add(item);
+                }
+                GridViewEmployees.DataSource = ListEmployees;
+                GridViewEmployees.Columns[0].Visible = false;
+                GridViewEmployees.Columns[8].Visible = false;
             }
-            GridViewEmployees.DataSource = ListEmployees;
-            GridViewEmployees.Columns[0].Visible = false;
-            GridViewEmployees.Columns[8].Visible = false;
+            catch
+            {
+                MessageBox.Show("Load thông tin nhân viên thất bại");
+            }
         }
         public void phanQuyen()
         {
-            //foreach (Control x in Employees.)
-            //{
-            //    if (x is TabPage)
-            //    {
-            //        if (!x.Tag.ToString().Contains(CoQuyen.ToString()))
-            //        {
-            //            x.Enabled = false;
-            //        }
-            //    }
-            //}
+            foreach(Control control in panelEmp.Controls)
+            {
+                if (control is Guna.UI2.WinForms.Guna2Button || control is Guna.UI2.WinForms.Guna2ComboBox)
+                {
+                    if (!control.Tag.ToString().Contains(user.CoQuyen.ToString()))
+                    {
+                        control.Enabled = false;
+                    }
+                }
+            }
         }
         public async void loadcboBoxPhanQuyen()
         {
@@ -149,12 +155,7 @@ namespace Project_Hotel_Winform.All_User_Control
 
         private void txtCMND_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
-                e.Handled = true;
-            if (txtCMND.TextLength == 9 && !Char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-            }
+
         }
 
         private void txtCMND_TextChanged(object sender, EventArgs e)
@@ -202,7 +203,7 @@ namespace Project_Hotel_Winform.All_User_Control
             if (dialogResult == DialogResult.Yes)
             {
                 string idnv = GridViewEmployees.CurrentRow.Cells[0].Value.ToString();
-                if (idnv.Equals(ID_NV))
+                if (idnv.Equals(user.ID_NV))
                 {
                     MessageBox.Show("Bạn không thể xoá nhân viên này, do tài khoản nhân viên này đang đăng nhập !!");
                     return;
@@ -266,6 +267,54 @@ namespace Project_Hotel_Winform.All_User_Control
                 MessageBox.Show("Cập nhật thông tin nhân viên thành công");
             }
             loadEmployees();
+        }
+
+        private void GridViewEmployees_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void btnSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ListEmployees = new List<Employee>();
+                GridViewEmployees.Columns.Clear();
+                if (txtSearch.Text.Trim() == "")
+                {
+                    loadEmployees();
+                }
+                else
+                {
+                    string filter = txtSearch.Text.Trim();
+                    var returnData = api.getAPI("employees/search/" + filter);
+                    var result = await Task.WhenAll(returnData);
+                    var data = JsonConvert.DeserializeObject<listEmployees>(result[0]);
+                    foreach (Employee item in data.data)
+                    {
+                        if (item.ID_NV == "-1")
+                        {
+                            MessageBox.Show("Không tìm thấy nhân viên");
+                            loadEmployees();
+                            return;
+                        }
+                        ListEmployees.Add(item);
+                    }
+                    GridViewEmployees.DataSource = ListEmployees;
+                    GridViewEmployees.Columns[0].Visible = false;
+                    GridViewEmployees.Columns[8].Visible = false;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Lỗi tìm kiếm");
+                loadEmployees();
+            }
         }
     }
 }
