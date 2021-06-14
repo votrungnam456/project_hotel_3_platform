@@ -7,7 +7,7 @@ const date = require('date-and-time');
 class RoomService {
     static async listRoomService(req) {
         try {
-            let result = await queryBuilder().select('phong.MaPhong','phong.Tenphong','phong.Mota','phong.Gia','kieuphong.TenKP','Phong.MaKP','Phong.TinhTrang').from('phong').join('kieuphong', {'Phong.MaKP': 'KieuPhong.MaKP'});
+            let result = await queryBuilder().select('phong.MaPhong','phong.Tenphong','phong.Mota','phong.Gia','kieuphong.TenKP','Phong.MaKP','Phong.TinhTrang').from('phong').join('kieuphong', {'Phong.MaKP': 'KieuPhong.MaKP'}).orderBy('phong.Maphong');
             return result;
         } catch (e) {
             console.log(e);
@@ -20,21 +20,66 @@ class RoomService {
                                             from('phong').
                                             join('kieuphong', {'Phong.MaKP': 'KieuPhong.MaKP'}).
                                             join('phieu_dang_ky',{'Phong.MaPDK':'phieu_dang_ky.MaPDK'}).
-                                            join('khachhang',{'phieu_dang_ky.ID_KH':'khachhang.ID_KH'}).where('TinhTrang',1);
+                                            join('khachhang',{'phieu_dang_ky.ID_KH':'khachhang.ID_KH'}).where('TinhTrang',1).orderBy('phong.Maphong');
             return result;
         } catch (e) {
             console.log(e);
             return e
         }
     }
+    static async searchCheckInRoomService(req) {
+        try {
+            let filter = req.params.content;
+            let result = await queryBuilder().select('phong.MaPhong','phong.Tenphong','phong.Gia','kieuphong.TenKP','khachhang.TenKH','khachhang.Email','khachhang.CMND','khachhang.SoDT','phieu_dang_ky.NgayDen').
+                                            from('phong').
+                                            join('kieuphong', {'Phong.MaKP': 'KieuPhong.MaKP'}).
+                                            join('phieu_dang_ky',{'Phong.MaPDK':'phieu_dang_ky.MaPDK'}).
+                                            join('khachhang',{'phieu_dang_ky.ID_KH':'khachhang.ID_KH'}).
+                                            where('TinhTrang',1).where('khachhang.TenKH','like','%'+filter+'%').orderBy('phong.Maphong');
+            if(result.length > 0){
+                return result;
+            }
+            else{
+                return [{
+                    'MaPhong':'-1'
+                }]
+            }
+            
+        } catch (e) {
+            console.log(e);
+            return e
+        }
+    }   
     static async listCheckOutRoomService(req) {
         try {
             let result = await queryBuilder().select('phong.MaPhong','phong.Tenphong','kieuphong.TenKP','khachhang.TenKH','khachhang.CMND','phieu_dang_ky.MaPDK').
                                             from('phong').
                                             join('kieuphong', {'Phong.MaKP': 'KieuPhong.MaKP'}).
                                             join('phieu_dang_ky',{'Phong.MaPDK':'phieu_dang_ky.MaPDK'}).
-                                            join('khachhang',{'phieu_dang_ky.ID_KH':'khachhang.ID_KH'}).where('TinhTrang',2);
+                                            join('khachhang',{'phieu_dang_ky.ID_KH':'khachhang.ID_KH'}).where('TinhTrang',2).orderBy('khachhang.TenKH');
             return result;
+        } catch (e) {
+            console.log(e);
+            return e
+        }
+    }
+    static async listSearchCheckOutRoomService(req) {
+        try {
+            let filter = req.params.content;
+            let result = await queryBuilder().select('phong.MaPhong','phong.Tenphong','kieuphong.TenKP','khachhang.TenKH','khachhang.CMND','phieu_dang_ky.MaPDK').
+                                            from('phong').
+                                            join('kieuphong', {'Phong.MaKP': 'KieuPhong.MaKP'}).
+                                            join('phieu_dang_ky',{'Phong.MaPDK':'phieu_dang_ky.MaPDK'}).
+                                            join('khachhang',{'phieu_dang_ky.ID_KH':'khachhang.ID_KH'}).
+                                            where('TinhTrang',2).where('khachhang.TenKH','like','%'+filter+'%').orderBy('khachhang.TenKH');
+            if(result.length > 0){
+                return result;
+            }
+            else{
+                return [{
+                    'MaPhong':'-1'
+                }]
+            }
         } catch (e) {
             console.log(e);
             return e

@@ -4,7 +4,9 @@ const RoomsController = require('../controller/RoomsController');
 
 router.get('/list', RoomsController.list);
 router.get('/listCheckIn', RoomsController.listCheckIn);
+router.get('/listCheckIn/search/:content', RoomsController.listSearchCheckIn);
 router.get('/listCheckOut', RoomsController.listCheckOut);
+router.get('/listCheckOut/search/:content', RoomsController.listSearchCheckOut);
 router.get('/now', RoomsController.now);
 router.get('/typeRooms',RoomsController.typeRoom)
 router.get('/:MaPhong', RoomsController.getItem);

@@ -7,22 +7,45 @@ class EmployeesService {
         try {
             let result = await queryBuilder().select('*').from('nhanvien').
                                 join('taikhoan_nhanvien',{'nhanvien.ID_NV':'taikhoan_nhanvien.ID_NV'}).
-                                join('phanquyen',{'phanquyen.ID_Quyen':'taikhoan_nhanvien.ID_Quyen'}).where('Enable',1);
+                                join('phanquyen',{'phanquyen.ID_Quyen':'taikhoan_nhanvien.ID_Quyen'}).where('Enable',1).orderBy('nhanvien.ID_NV');
             return result;
         } catch (e) {
             console.log(e);
             return e
         }
     }
-    static async listAccountService(req){
+    static async searchEmployeesService(req) {
         try {
-            let params = req.body;
-            let Email = params.Email;
-            let MatKhau = params.MatKhau;
-            let result = await queryBuilder('taikhoan_nhanvien').where({
-                "Email":Email,
-                "MatKhau":MatKhau
-            }).first();
+            let filter = req.params.content;
+            let result = await queryBuilder().select('*').from('nhanvien').
+                                join('taikhoan_nhanvien',{'nhanvien.ID_NV':'taikhoan_nhanvien.ID_NV'}).
+                                join('phanquyen',{'phanquyen.ID_Quyen':'taikhoan_nhanvien.ID_Quyen'}).where('Enable',1).where('TenNV','like','%'+filter+'%').orderBy('nhanvien.ID_NV');
+            if(result.length > 0){
+                return result;
+            }                    
+            else{
+                return [{
+                    ID_NV:"-1"
+                }];
+            }
+        } catch (e) {
+            console.log(e);
+            return e
+        }
+    }
+    
+    static async getEmployeeService(req) {
+        try {
+            let ID_NV = req.params.ID_NV;
+            let result = await queryBuilder().select('*').from('nhanvien').
+                                join('taikhoan_nhanvien',{'nhanvien.ID_NV':'taikhoan_nhanvien.ID_NV'}).
+                                join('phanquyen',{'phanquyen.ID_Quyen':'taikhoan_nhanvien.ID_Quyen'})
+                                .where(
+                                    {
+                                        'nhanvien.ID_NV':ID_NV,
+                                        'Enable':1
+                                    }
+                                );
             return result;
         } catch (e) {
             console.log(e);
@@ -31,7 +54,7 @@ class EmployeesService {
     }
     static async listDecentralizationService(req){
         try {
-            let result = await queryBuilder('phanquyen').select();
+            let result = await queryBuilder('phanquyen').select('*');
             return result;
         } catch (e) {
             console.log(e);
@@ -60,6 +83,7 @@ class EmployeesService {
                 Cmnd: cmnd,
                 Dchi: params.Dchi,
                 Sodt:params.Sodt,
+                Enable:1
             }
             
             await queryBuilder('nhanvien').insert(dataInsertNV);
@@ -89,12 +113,8 @@ class EmployeesService {
             }).first();
             if(check == null){
                 return [{
-                    ID_NV:null,
-                    Quyen:null,
-                    TenNV:null,
-                    CoQuyen:null,
-                    checkError:0
-                }];
+                    ID_NV:'-1'
+                }]
             }
             let result = await queryBuilder('nhanvien').select('*').where('ID_NV',check['ID_NV']).first();
             let PG = await queryBuilder('phanquyen').where('ID_Quyen',check['ID_Quyen']).first();
@@ -103,7 +123,6 @@ class EmployeesService {
                     Quyen:PG['TenQuyen'],
                     TenNV:result['TenNV'],
                     CoQuyen:PG['CoQuyen'],
-                    checkError : 1   
                 }]
         } catch (e) {
             console.log(e);

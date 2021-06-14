@@ -20,9 +20,9 @@ class EmployeesController {
             });
         }
     }
-    static async listAccount(req, res, next) {
+    static async searchEmployeesController(req, res, next) {
         try {
-            let data = await EmployeesService.listAccountService(req);
+            let data = await EmployeesService.searchEmployeesService(req);
             res.status(200).json({
                 status: "SUCCESS",
                 errors: null,
@@ -39,6 +39,27 @@ class EmployeesController {
             });
         }
     }
+
+    static async getEmployeeController(req, res, next) {
+        try {
+            let data = await EmployeesService.getEmployeeService(req);
+            res.status(200).json({
+                status: "SUCCESS",
+                errors: null,
+               data
+            });
+        } catch (e) {
+            res.status(200).json({
+                status: "FAIL",
+                errors: [{
+                    code: 1000,
+                    message: "Server Error"
+                }],
+                data: null
+            });
+        }
+    }
+    
     static async updateEmployeesController(req, res, next) {
         try {
             let data = await EmployeesService.updateEmployeesService(req);
@@ -61,11 +82,10 @@ class EmployeesController {
     static async listDecentralizationController(req, res, next) {
         try {
             let data = await EmployeesService.listDecentralizationService(req);
-            console.log(data)
             res.status(200).json({
                 status: "SUCCESS",
                 errors: null,
-               data
+                data
             });
         } catch (e) {
             res.status(200).json({

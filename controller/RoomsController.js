@@ -39,6 +39,25 @@ class RoomsController {
             });
         }
     }
+    static async listSearchCheckIn(req, res, next){
+        try {
+            let data = await RoomsService.searchCheckInRoomService(req);
+            res.status(200).json({
+                status: "SUCCESS",
+                errors:null,
+               data
+            });
+        } catch (e) {
+            res.status(200).json({
+                status: "FAIL",
+                errors: [{
+                    code: 1000,
+                    message: "Server Error"
+                }],
+                data: null
+            });
+        }
+    }
     static async typeRoom(req, res, next) {
         try {
             let data = await RoomsService.typeRoomService(req);
@@ -173,6 +192,27 @@ class RoomsController {
             });
         }
     }
+
+    static async listSearchCheckOut(req, res, next){
+        try {
+            let data = await RoomsService.listSearchCheckOutRoomService(req);
+            res.status(200).json({
+                status: "SUCCESS",
+                errors:null,
+               data
+            });
+        } catch (e) {
+            res.status(200).json({
+                status: "FAIL",
+                errors: [{
+                    code: 1000,
+                    message: "Server Error"
+                }],
+                data: null
+            });
+        }
+    }
+    
     static async now(req, res, next){
         try {
             let data = await RoomsService.now(req);
