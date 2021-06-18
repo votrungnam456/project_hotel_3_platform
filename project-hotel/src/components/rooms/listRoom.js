@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import RoomItem from './RoomItem'
+import RoomItem from './RoomItem';
+import * as api from '../../constant/api';
 class ListRoom extends Component {
      constructor(props) {
           super(props);
@@ -9,7 +10,7 @@ class ListRoom extends Component {
           };
         }
      componentDidMount(){
-          axios.get('http://localhost:4444/rooms/list')
+          axios.get(api.BASE_API+'/rooms/list')
                .then(res=>{
                     console.log(res.data.data.result)
                     this.setState({

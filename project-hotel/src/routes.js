@@ -9,7 +9,7 @@ import Login from "./components/login/login";
 import Register from './components/login/register'
 import Logout from './components/login/logout'
 import BookingRoom from "./components/rooms/BookingRoom";
-
+import InfomationCustomer from "./components/customer/InfomationCustomer";
 const routes = [
      {
           path: '/',
@@ -31,16 +31,6 @@ const routes = [
           exact: false,
           main: () => <Gallery></Gallery>
      },
-     // {
-     //      path: '/login',
-     //      exact: true,
-     //      main: ({history, match,location}) => <Login location={location} match={match} history={history}></Login>
-     // },
-     // {
-     //      path: '/logout',
-     //      exact: true,
-     //      main: ()=><Logout></Logout>
-     // },
      {
           path: '/bookingComplete',
           exact: true,
@@ -50,6 +40,11 @@ const routes = [
           path: '/register',
           exact: true,
           main: ({history}) => <Register history={history}></Register>
+     },
+     {
+          path: '/infoCustomer',
+          exact: true,
+          main: ({history}) => <InfomationCustomer history={history}></InfomationCustomer>
      },
      {
           path: '/rooms',

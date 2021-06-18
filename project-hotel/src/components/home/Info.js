@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import * as api from '../../constant/api'
 class Info extends Component {
      constructor(props){
           super(props);
@@ -19,7 +20,7 @@ class Info extends Component {
           }
      }
      componentDidMount(){
-          axios.get('http://localhost:4444/rooms/typeRooms')
+          axios.get(api.BASE_API+'/rooms/typeRooms')
           .then(res=>{
                this.setState({
                     listkieuPhong:res.data.data
@@ -113,7 +114,6 @@ class Info extends Component {
      }
      render() {
           let {listkieuPhong,error} = this.state
-          console.log(this.state.id)
           return (
                /* reservation-information */
                <div id="information" className="spacer reserve-info ">

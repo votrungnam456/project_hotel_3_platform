@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import * as api from '../../constant/api';
 class ChangePwd extends Component {
      constructor(props){
           super(props);
@@ -39,7 +40,7 @@ class ChangePwd extends Component {
                })
                return;
           }
-          axios.put('http://localhost:4444/customers/changePassword/'+userID, {
+          axios.put(api.BASE_API+'/customers/changePassword/'+userID, {
                oldPwd,
                newPwd
           })

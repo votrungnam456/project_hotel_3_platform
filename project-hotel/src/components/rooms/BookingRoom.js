@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import * as api from '../../constant/api';
 class BookingRoom extends Component {
      constructor(props){
           super(props);
@@ -67,7 +68,7 @@ class BookingRoom extends Component {
                return;
           }
 
-          axios.post("http://localhost:4444/booking/create",{
+          axios.post(api.BASE_API+"/booking/create",{
                Ngayden: dateIn,
                Ngaydi:dateOut,
                Chuthich: this.state.ghiChu,

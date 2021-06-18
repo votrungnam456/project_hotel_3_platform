@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import {Link} from 'react-router-dom';
+import * as api from '../../constant/api'
 class RoomDetails extends Component {
      constructor(props) {
           super(props);
@@ -11,7 +12,7 @@ class RoomDetails extends Component {
      }
 
      componentDidMount(){
-          axios.get(`http://localhost:4444/rooms/${this.props.match.params.id}`)
+          axios.get(api.BASE_API+`/rooms/${this.props.match.params.id}`)
           .then(res=>{
                // console.log(res.data.data.result)
                this.setState({

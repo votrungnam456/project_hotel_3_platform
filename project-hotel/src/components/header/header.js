@@ -30,11 +30,30 @@ const menus = [
      to: "/intro",
      exact: false
      },
-    // {
-    //     name: checkUser == true ? "Đăng nhập" : "Đăng xuất",
-    //     to: checkUser == true ? "/login" : "/logout",
-    //     exact: false
-    // },
+]
+const BonusMenuNoneUser =[
+    {
+        name : "Đăng nhập",
+        to:"/login",
+        exact : true
+    },
+    {
+        name : "Đăng ký",
+        to:"/register",
+        exact : true
+    }
+]
+const BonusMenuHasUser =[
+    {
+        name : "Thông tin cá nhân",
+        to:"/infoCustomer",
+        exact : true
+    },
+    {
+        name : "Đăng xuất",
+        to:"/logout",
+        exact : true
+    }
 ]
 const MenuLink = ({ label, to, activeOnlyWhenExact }) => {
      return (
@@ -55,16 +74,6 @@ class Header extends Component {
             user:null
         }
     }
-
-    // loginFunc = (user) =>{
-    //     this.props.loginFunc(user);
-    // }
-
-    // componentDidMount(){
-    //     this.setState({
-    //         user: JSON.parse(localStorage.getItem('user'))
-    //     })
-    // }
      render() {
          let {user} = this.props
           return (
@@ -87,9 +96,17 @@ class Header extends Component {
                     <div className="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                     <ul className="nav navbar-nav">        
                          {this.showMenu(menus)}
-                         {user != null ? <MenuLink label={"Đổi mật khẩu"} to="/changePwd" exact="true"></MenuLink> : ""}
-                         <MenuLink  label={user == null ? "Đăng nhập" : "Đăng xuất"} to={user == null ? "/login" : "/logout"} exact="true"></MenuLink>
-                         
+                         {/* {user != null ? <MenuLink label={"Đổi mật khẩu"} to="/changePwd" exact="true"></MenuLink> : ""} */}
+                         {/* <MenuLink  label={user == null ? "Đăng nhập" : "Đăng xuất"} to={user == null ? "/login" : "/logout"} exact="true"></MenuLink> */}
+                         {
+                            user == null ? BonusMenuNoneUser.map((value,key)=>
+                                <MenuLink key={key} label={value.name} to={value.to} exact={value.exact}></MenuLink>
+                            ):
+                            BonusMenuHasUser.map((value,key)=>
+                                <MenuLink key={key} label={value.name} to={value.to} exact={value.exact}></MenuLink>
+                            )
+                         }
+
                     </ul>
                     </div>{/* Wnavbar-collapse */}
                </div>{/* container-fluid */}

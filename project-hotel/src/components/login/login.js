@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
+import * as api from '../../constant/api'
 class login extends Component {
      constructor(props) {
           super(props);
@@ -26,7 +27,7 @@ class login extends Component {
           let { history } = this.props
           ev.preventDefault();
           let { pwd, email } = this.state;
-          axios.post('http://localhost:4444/customers/user', {
+          axios.post(api.BASE_API + '/customers/user', {
                Email: email,
                MatKhau: pwd
           })

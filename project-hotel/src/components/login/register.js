@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import * as api from '../../constant/api';
 class register extends Component {
      constructor(props) {
           super(props);
@@ -47,7 +48,7 @@ class register extends Component {
                return;
           }
           if(pwd == ConfirmPwd){
-               axios.post('http://localhost:4444/customers/create', {
+               axios.post(api.BASE_API+'/customers/create', {
                     TenKH:name,
                     GTinh:gender,
                     CMND:cmnd,
