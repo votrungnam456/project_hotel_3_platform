@@ -54,11 +54,6 @@ namespace Project_Hotel_Winform.All_User_Control
                 listInt.Add(index);
                 for (int i = 0; i < listFieldName.Count; i++)
                 {
-                    //if (item.TenKP.Contains(listFieldName[i].ToString()))
-                    //{
-                    //    listInt.Add(i);
-                    //    continue;
-                    //}
                     if (item.TenDV.Contains(listFieldName[i].ToString()))
                     {
                         listInt.Add(i);
@@ -110,17 +105,6 @@ namespace Project_Hotel_Winform.All_User_Control
             panel1.Controls.Add(labelTrans);
             panel1.Controls.Add(transDataGridView);
             apriori.CalculateCNodes(.22f);
-
-            //foreach (List<int> b in transactions)
-            //{
-            //    string a = "";
-            //    foreach (int c in b)
-            //    {
-            //        a += c;
-            //    }
-            //    MessageBox.Show(a);
-            //}
-
 
             int tableNumber = 1;
             int j = 0;

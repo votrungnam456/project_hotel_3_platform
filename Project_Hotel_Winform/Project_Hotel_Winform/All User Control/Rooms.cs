@@ -128,27 +128,42 @@ namespace Project_Hotel_Winform.All_User_Control
                 myButton.Click += myButton_Click;
                 flowPanelRooms.Controls.Add(myButton);
                 lstbtn.Add(myButton);
-            }     
+            }
         }
 
         void myButton_Click(object sender, EventArgs e)
         {
+
             Button button = (Button)sender;
-            if (button.BackColor == Color.White)
+            if (checkBoxHuyDat.Checked)
             {
-                button.BackColor = Color.SkyBlue;
+                if (button.BackColor == Color.Yellow)
+                {
+                    button.BackColor = Color.Aqua;
+                }
+                else if (button.BackColor == Color.Aqua)
+                {
+                    button.BackColor = Color.Yellow;
+                }
             }
-            else if (button.BackColor == Color.SkyBlue)
+            else
             {
-                button.BackColor = Color.White;
-            }
-            else if (button.BackColor == Color.Yellow)
-            {
-                MessageBox.Show("Phòng này đã được đặt");
-            }
-            else if (button.BackColor == Color.Red)
-            {
-                MessageBox.Show("Phòng này đang được sử dụng");
+                if (button.BackColor == Color.White)
+                {
+                    button.BackColor = Color.SkyBlue;
+                }
+                else if (button.BackColor == Color.SkyBlue)
+                {
+                    button.BackColor = Color.White;
+                }
+                else if (button.BackColor == Color.Yellow)
+                {
+                    MessageBox.Show("Phòng này đã được đặt");
+                }
+                else if (button.BackColor == Color.Red)
+                {
+                    MessageBox.Show("Phòng này đang được sử dụng");
+                }
             }
         }
 
@@ -182,36 +197,40 @@ namespace Project_Hotel_Winform.All_User_Control
 
         private async void guna2Button1_Click(object sender, EventArgs e)
         {
-            string checkIn = dateTimeCheckOut.Value.AddDays(1).ToString("yyyy-MM-dd");
-            int dayStay;
-            if (txtDay.Text != "")
+            if (btnDatPhong.Tag.ToString() == "1")
             {
-
-                dayStay = int.Parse(txtDay.Text);
-            }
-            else
-            {
-                dayStay = 0;
-            }
-            string checkOut = dateTimeCheckOut.Value.AddDays(dayStay+1).ToString("yyyy-MM-dd");
-            string id_KH = cboCustomer.SelectedValue.ToString();
-
-            string chuThich;
-            if (txtChuThich.Text != "")
-            {
-                chuThich = txtChuThich.Text;
-            }
-            else
-            {
-                chuThich = "";
-            }
-            bool check = false;
-            foreach (Button btn in lstbtn)
-            {
-                if (btn.BackColor == Color.SkyBlue)
+                string checkIn = dateTimeCheckOut.Value.AddDays(1).ToString("yyyy-MM-dd");
+                int dayStay;
+                if (txtDay.Text != "")
                 {
-                    string maPhong = btn.Tag.ToString();
-                    Dictionary<string, string> values = new Dictionary<string, string>
+
+                    dayStay = int.Parse(txtDay.Text);
+                }
+                else
+                {
+                    dayStay = 0;
+                }
+                string checkOut = dateTimeCheckOut.Value.AddDays(dayStay + 1).ToString("yyyy-MM-dd");
+                string id_KH = cboCustomer.SelectedValue.ToString();
+
+                string chuThich;
+                if (txtChuThich.Text != "")
+                {
+                    chuThich = txtChuThich.Text;
+                }
+                else
+                {
+                    chuThich = "";
+                }
+                bool check = false;
+                int count = 0;
+                foreach (Button btn in lstbtn)
+                {
+                    if (btn.BackColor == Color.SkyBlue)
+                    {
+                        count++;
+                        string maPhong = btn.Tag.ToString();
+                        Dictionary<string, string> values = new Dictionary<string, string>
                     {
                         { "Maphong",maPhong},
                         { "Ngayden",checkIn},
@@ -220,30 +239,71 @@ namespace Project_Hotel_Winform.All_User_Control
                         { "ID_KH",id_KH},
                     };
 
-                    var returnData = api.postAPI("booking/create", values);
-                    var result = await Task.WhenAll(returnData);
-                    var convertData = JsonConvert.DeserializeObject<returnData>(result[0]);
-                    if (int.Parse(convertData.data) == 1)
-                    {
-                        check = true;
+                        var returnData = api.postAPI("booking/create", values);
+                        var result = await Task.WhenAll(returnData);
+                        var convertData = JsonConvert.DeserializeObject<returnData>(result[0]);
+                        if (int.Parse(convertData.data) == 1)
+                        {
+                            check = true;
+                            btn.BackColor = Color.SkyBlue;
+                        }
+                        
                     }
-                    btn.BackColor = Color.SkyBlue;
+                }
+                if(count == 0)
+                {
+                    MessageBox.Show("Vui lòng chọn phòng để đặt");
+                }
+                else if (check)
+                {
+                    MessageBox.Show("Đặt phòng thành công");
+
+                    loadNhanPhong();
+                    loadRooms();
+                    loadTraPhong();
+                }
+                else
+                {
+                    MessageBox.Show("Đặt phòng thất bại");
                 }
             }
-            if (check)
+            else if (btnDatPhong.Tag.ToString() == "0")
             {
-                MessageBox.Show("Đặt phòng thành công");
-
-                loadNhanPhong();
-                loadRooms();
-                loadTraPhong();
+                bool check = false;
+                int count = 0;
+                foreach (Button btn in lstbtn)
+                {
+                    if (btn.BackColor == Color.Aqua)
+                    {
+                        count++;
+                        var returnData = api.deleteAPI("rooms/cancelBooking/" + btn.Tag.ToString());
+                        var result = await Task.WhenAll(returnData);
+                        var convertData = JsonConvert.DeserializeObject<returnData>(result[0]);
+                        if (int.Parse(convertData.data) == 1)
+                        {
+                            check = true;
+                            btn.BackColor = Color.White;
+                        }
+                    }
+                }
+                if(count == 0)
+                {
+                    MessageBox.Show("Vui lòng chọn phòng để huỷ đặt");
+                }
+                else if (!check)
+                {
+                    MessageBox.Show("Có lỗi vui lòng thử lại");
+                }
+                else
+                {
+                    MessageBox.Show("Huỷ đặt phòng thành công");
+                    loadNhanPhong();
+                    loadRooms();
+                    loadTraPhong();
+                }
             }
-            else
-            {
-                MessageBox.Show("Đặt phòng thất bại");
-            }
-
         }
+   
 
         private void txtDay_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -454,6 +514,35 @@ namespace Project_Hotel_Winform.All_User_Control
             {
                 MessageBox.Show("Lỗi tìm kiếm");
                 loadTraPhong();
+            }
+        }
+
+        private void checkBoxHuyDat_Click(object sender, EventArgs e)
+        {
+            CheckBox checkBox = (CheckBox)sender;
+            if(checkBox.Checked)
+            {
+                foreach (Button button in lstbtn)
+                {
+                    if (button.BackColor == Color.SkyBlue)
+                    {
+                        button.BackColor = Color.White;
+                    }
+                }
+                btnDatPhong.Text = "Huỷ đặt phòng";
+                btnDatPhong.Tag = 0;
+            }
+            else
+            {
+                foreach(Button button in lstbtn)
+                {
+                    if(button.BackColor == Color.Aqua)
+                    {
+                        button.BackColor = Color.Yellow;
+                    }
+                }
+                btnDatPhong.Text = "Đặt phòng";
+                btnDatPhong.Tag = 1;
             }
         }
     }
