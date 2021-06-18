@@ -202,18 +202,15 @@ class RoomService {
     }
     static async cancelBookingService(req){
         try {
-            let MaPDK = req.params.MaPDK;
-            // let params = req.body;
-            // let check = await queryBuilder('phong').where("MaPhong",MaPhong).first();
-            // if(check == null){
-            //     return 0;
-            // }
-            await queryBuilder('phong').where('MaPDK',MaPDK).update({
+            let maPhong = req.params.MaPhong;
+
+            let getMaPDK = await queryBuilder('phong').select('phong.MaPDK').where('Maphong',maPhong).first();
+
+            await queryBuilder('phong').where('MaPDK',getMaPDK.MaPDK).update({
                 'TinhTrang':0,
                 'MaPDK':null
             })
-            await queryBuilder('phieu_dang_ky').where('MaPDK',MaPDK).del()
-            // await queryBuilder('phong').where("MaPhong", MaPhong).update('TinhTrang',2);
+            await queryBuilder('phieu_dang_ky').where('MaPDK',getMaPDK.MaPDK).del()
             return 1;
         } catch (e) {
             console.log(e);
