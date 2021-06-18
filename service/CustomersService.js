@@ -31,6 +31,42 @@ class RoomService {
             console.log(e);
             return e
         }
+    } 
+    static async getListBookingCustomerService(req){
+        try {
+            let ID_KH = req.params.ID_KH;
+            let roomUsing = await queryBuilder().select('*').from('phieu_dang_ky').join('phong',{'phieu_dang_ky.MaPDK':'phong.MaPDK'}).where('ID_KH',ID_KH);
+            let all = await queryBuilder().select('phieu_dang_ky.MaPDK','phieu_dang_ky.Ngayden','phieu_dang_ky.Ngaydi','phieu_dang_ky.Maphong','phieu_dang_ky.GiaPhong').from('phieu_dang_ky').where('ID_KH',ID_KH).orderBy('phieu_dang_ky.Maphong');
+            // all.forEach(PDK => {
+            //     let getTenPhong = await queryBuilder().select('Tenphong').where('Tenphong.Maphong',PDK.Maphong).first();
+            //     all.TenPhong = getTenPhong.Tenphong;
+            // });
+
+            for(let PDK of all){
+                let getTenPhong = await queryBuilder().select('phong.Tenphong').from('phong').where('Maphong',PDK.Maphong).first();
+                PDK.TenPhong = getTenPhong.Tenphong;
+            }
+            all.forEach(PDK_ALL => {
+                let check = false;
+                roomUsing.forEach(PDK_USING => {
+                    if(PDK_ALL.MaPDK == PDK_USING.MaPDK){
+                        PDK_ALL.TinhTrangPDK = PDK_USING.TinhTrang;
+                        check = true;
+                        return;
+                    }
+                });
+                if(!check){
+                    PDK_ALL.TinhTrangPDK = 0;
+                }
+            });
+
+
+
+            return all;
+        } catch (e) {
+            console.log(e);
+            return e;
+        }
     }
     static async getCustomerService(req){
         try {

@@ -18,6 +18,24 @@ class CustomersController {
             });
         }
     }
+    static async getListBookingCustomer(req, res, next) {
+        try {
+            let data = await CustomersService.getListBookingCustomerService(req);
+            res.status(200).json({
+                data
+            });
+        } catch (e) {
+            res.status(200).json({
+                status: "FAIL",
+                errors: [{
+                    code: 1000,
+                    message: "Server Error"
+                }],
+                data: null
+            });
+        }
+    }
+    
     static async listExist(req, res, next) {
         try {
             let data = await CustomersService.listCustomerExistService(req);
@@ -113,5 +131,6 @@ class CustomersController {
             });
         }
     }
+
 }
 module.exports = CustomersController

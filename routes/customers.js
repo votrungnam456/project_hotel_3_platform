@@ -4,6 +4,7 @@ const CustomersController = require('../controller/CustomersController');
 
 router.get('/list', CustomersController.list);
 router.get('/listExist', CustomersController.listExist);
+router.get('/bookingInfo/:ID_KH',CustomersController.getListBookingCustomer);
 router.post('/user', CustomersController.getCustomer);
 router.post('/create', CustomersController.createCustomer);
 router.put('/:ID_KH', CustomersController.updateCustomer);

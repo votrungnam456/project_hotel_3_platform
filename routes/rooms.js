@@ -14,5 +14,5 @@ router.post('/create', RoomsController.createRoom);
 router.put('/:MaPhong', RoomsController.updateRoom);
 router.put('/checkIn/:MaPhong', RoomsController.checkInRoom);
 router.put('/checkOut/:MaPhong', RoomsController.checkOutRoom);
-
+router.delete('/cancelBooking/:MaPDK',RoomsController.cancelBooking)
 module.exports = router;
