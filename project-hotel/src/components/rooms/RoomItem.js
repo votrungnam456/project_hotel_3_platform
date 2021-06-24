@@ -5,7 +5,6 @@ class RoomItem extends Component {
           super(props);
         }
      render() {
-          console.log(this.props.value)
           let {value} = this.props;
           return (
                     <div className="col-sm-6 wowload fadeInUp">

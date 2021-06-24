@@ -49,7 +49,7 @@ const routes = [
      {
           path: '/rooms',
           exact: true,
-          main: ({match}) => <ListRoom match={match}></ListRoom>
+          main: ({history,match}) => <ListRoom history={history} match={match}></ListRoom>
      },
      {
           path: '/rooms/:id',

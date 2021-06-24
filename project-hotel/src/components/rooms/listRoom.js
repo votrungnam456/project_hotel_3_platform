@@ -6,39 +6,68 @@ class ListRoom extends Component {
      constructor(props) {
           super(props);
           this.state = {
-            data:[]
+               dataLoad:[],
+            dataGot: [],
+            currentPage:1
           };
         }
      componentDidMount(){
           axios.get(api.BASE_API+'/rooms/list')
                .then(res=>{
-                    console.log(res.data.data.result)
                     this.setState({
-                         data:res.data.data
+                         dataGot:res.data.data
+                    }, () =>{
+                         this.setState({
+                              dataLoad:this.state.dataGot.slice(0,8)
+                         })
                     })
                })
      }
+     //load các nút phân trang
+     loadButtonPaging = (arr)  => {
+          let numberButton = Math.ceil(arr.length / 8);
+          let result = [];
+          if(numberButton <=1 ){
+               result.push(<li key={1}><a key={1}>1</a></li>)
+          }
+          else{
+               for(let i = 1 ; i <= numberButton ; i++){
+                    result.push(<li className={this.state.currentPage == i ? "active":""} key={i}><a onClick={() => this.actionPaging(i)}>{i}</a></li>)
+               }
+          }
+          return result;
+     }
+     actionPaging = (number) =>{
+          this.setState({
+               dataLoad:this.state.dataGot.slice(number*8 -8,8*number),
+               currentPage:number
+          })
+          // console.log(number*8-8)
+     }
      render() {
-          // console.log(this.state.data);
-          let {data} = this.state;
+          let {dataLoad,currentPage,dataGot} = this.state;
           return (
                <div className="container">
                     <div className="row"> 
-                         {data.map((value,index)=>{
+                         {dataLoad.length > 0 ?(
+                         dataLoad.map((value,index)=>{
                               return (
                                    <RoomItem key={index} value={value}></RoomItem>
                               )
-                         })}  
+                         })): (
+                              <div className="spinner-border" role="status">
+                                  <span className="sr-only">Loading...</span>
+                              </div>
+                          )}  
                     </div>
                     <div className="text-center">
                          <ul className="pagination">
-                              <li className="disabled"><a href="#">«</a></li>
-                              <li className="active"><a href="#">1 <span className="sr-only">(current)</span></a></li>
-                              <li><a href="#">2</a></li>
-                              <li><a href="#">3</a></li>
-                              <li><a href="#">4</a></li>
-                              <li><a href="#">5</a></li>
-                              <li><a href="#">»</a></li>
+                              {currentPage == 1 ? "" :<li><a onClick={()=>this.actionPaging(currentPage-1)}>«</a></li>}
+                              {
+                                   dataGot.length >0 ? this.loadButtonPaging(dataGot):""
+                              }
+                              {currentPage == Math.ceil(dataGot.length / 8) ? "": <li><a onClick={()=>this.actionPaging(currentPage+1)}>»</a></li>}
+
                          </ul>
                     </div>
                </div>

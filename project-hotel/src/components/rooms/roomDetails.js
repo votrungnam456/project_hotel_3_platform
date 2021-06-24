@@ -14,7 +14,6 @@ class RoomDetails extends Component {
      componentDidMount(){
           axios.get(api.BASE_API+`/rooms/${this.props.match.params.id}`)
           .then(res=>{
-               // console.log(res.data.data.result)
                this.setState({
                     data:res.data.data
                })

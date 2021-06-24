@@ -174,7 +174,7 @@ class InfomationCustomer extends Component {
                                                                       data.map((value,index) =>{
                                                                            let formatNgayDen = new Date(value.Ngayden);
                                                                            let formatNgayDi = new Date(value.Ngaydi);
-                                                                           let getMaPDK = value.MaPDK
+                                                                           let getMaPhong = value.Maphong
                                                                            return(
                                                                                 <tr key={index}>
                                                                                      <td>{value.MaPDK}</td>
@@ -183,7 +183,7 @@ class InfomationCustomer extends Component {
                                                                                      <td>{value.TenPhong}</td>
                                                                                      <td>{value.GiaPhong}</td>
                                                                                      <td style={value.TinhTrangPDK === 0 ? {color:"green"} : value.TinhTrangPDK === 1 ? {color:"orange"} :{color:"red"}}>{value.TinhTrangPDK === 0 ? "Đã thanh toán" : value.TinhTrangPDK === 1 ? "Đã đặt" : "Đang sử dụng"}</td>
-                                                                                     <td>{value.TinhTrangPDK === 1 ? <button className="btn btn-default" onClick={()=>this.onClick(getMaPDK)}>Huỷ đặt</button> :"" }</td>
+                                                                                     <td>{value.TinhTrangPDK === 1 ? <button className="btn btn-default" onClick={()=>this.onClick(getMaPhong)}>Huỷ đặt</button> :"" }</td>
                                                                                 </tr>
                                                                            )
                                                                       })
