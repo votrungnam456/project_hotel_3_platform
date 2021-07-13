@@ -3,12 +3,13 @@ const queryBuilder = require('../config/database');
 class AprioriService {
     static async listDataService(req) {
         try {
+            let MaKP = req.params.MaKP;
             let getData = await queryBuilder().select('phieu_thanh_toan.MaPDK', 'kieuphong.TenKP', 'dichvu.TenDV').from('phieu_thanh_toan')
                 .join('phieu_dang_ky', { 'phieu_dang_ky.MaPDK': 'phieu_thanh_toan.MaPDK' }).
                 join('phong', { 'phong.Maphong': 'phieu_dang_ky.Maphong' }).
                 join('kieuphong', { 'phong.MaKP': 'kieuphong.MaKP' }).
                 join('hoadondichvu', { 'hoadondichvu.MaPDK': 'phieu_dang_ky.MaPDK' }).
-                join('dichvu', { 'dichvu.ID_DV': 'hoadondichvu.ID_DV' });
+                join('dichvu', { 'dichvu.ID_DV': 'hoadondichvu.ID_DV' }).where("phong.MaKP",MaKP);
             let arr = [];
             for (let i = 0; i < getData.length; i++) {
                 arr.push(getData[i]["MaPDK"])
@@ -32,7 +33,7 @@ class AprioriService {
                 }
                 arrResult.push(newObj);
             }
-            return arrResult;
+            return getData;
         } catch (e) {
             console.log(e);
             return e

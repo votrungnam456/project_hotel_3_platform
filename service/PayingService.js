@@ -43,10 +43,13 @@ class PayingService {
                 TinhTrang:0,
                 MaPDK:null
             });
-            return 1;//Thêm thành công
+            dataInsert.TongTien = dataInsert.TienThuePhong + dataInsert.TienDichVu
+            return [dataInsert];    //Thêm thành công
         } catch (e) {
             console.log(e);
-            return 0;
+            return [{
+                MaPTT: "-1"
+            }];
         }
     }
     //Tạo hoá đơn dịch vụ
