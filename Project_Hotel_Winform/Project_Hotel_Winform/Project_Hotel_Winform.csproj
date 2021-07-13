@@ -42,9 +42,28 @@
     <Reference Include="Guna.UI2">
       <HintPath>..\..\..\Hotel Management\Guna.UI2.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\Tuan 9\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\Tuan 9\Microsoft.Office.Interop.Word.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Compression.Base">
+      <HintPath>..\..\..\Tuan 9\Word_Excel_demo\Syncfusion.Compression.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.DocIO.Base">
+      <HintPath>..\..\..\Tuan 9\Word_Excel_demo\Syncfusion.DocIO.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.XlsIO.Base">
+      <HintPath>..\..\..\Tuan 9\Word_Excel_demo\Syncfusion.XlsIO.Base.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -111,24 +130,23 @@
     <Compile Include="All User Control\Service.Designer.cs">
       <DependentUpon>Service.cs</DependentUpon>
     </Compile>
-    <Compile Include="AprioriAlgorithm.cs" />
-    <Compile Include="Config.cs" />
-    <Compile Include="ConnectAPI.cs" />
+    <Compile Include="Class\AprioriAlgorithm.cs" />
+    <Compile Include="Class\Config.cs" />
+    <Compile Include="Class\ConnectAPI.cs" />
     <Compile Include="Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\AprioriData.cs" />
-    <Compile Include="Model\AprioriFieldName.cs" />
+    <Compile Include="Model\aprioriData.cs" />
+    <Compile Include="Model\aprioriFieldName.cs" />
     <Compile Include="Model\checkInRoom.cs" />
     <Compile Include="Model\checkOutRoom.cs" />
     <Compile Include="Model\Customers.cs" />
@@ -158,6 +176,10 @@
     <Compile Include="Model\userOn.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Word\Constants.cs" />
+    <Compile Include="Word\FileCommon.cs" />
+    <Compile Include="Word\Global.cs" />
+    <Compile Include="Word\WordExport.cs" />
     <EmbeddedResource Include="All User Control\AprioriForm.resx">
       <DependentUpon>AprioriForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -210,7 +232,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

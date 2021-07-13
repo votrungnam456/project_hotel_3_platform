@@ -8,8 +8,8 @@ namespace Project_Hotel_Winform.Model
 {
     public class listAprioriData
     {
-        List<AprioriData> Data = new List<AprioriData>();
+        List<aprioriData> Data = new List<aprioriData>();
 
-        public List<AprioriData> data { get => Data; set => Data = value; }
+        public List<aprioriData> data { get => Data; set => Data = value; }
     }
 }

@@ -94,7 +94,7 @@ namespace Project_Hotel_Winform
             }
             else
             {
-                checkOut = new Rooms(user.ID_NV);
+                checkOut = new Rooms(user.ID_NV, user.NameUserLogin);
                 checkOut.Size = new Size(1575, 798);
             }
             panel3.Controls.Add(checkOut);

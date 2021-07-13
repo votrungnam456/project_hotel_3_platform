@@ -26,3 +26,9 @@ C:\Users\DELL\Documents\School\ungdungthongminh\project_hotel_3_platform_winform
 C:\Users\DELL\Documents\School\ungdungthongminh\project_hotel_3_platform_winform\Project_Hotel_Winform\Project_Hotel_Winform\obj\Debug\Project_Hotel_Winform.csproj.AssemblyReference.cache
 C:\Users\DELL\Documents\School\ungdungthongminh\project_hotel_3_platform_winform\Project_Hotel_Winform\Project_Hotel_Winform\obj\Debug\Project_Hotel_Winform.All_User_Control.AprioriForm.resources
 C:\Users\DELL\Documents\School\ungdungthongminh\project_hotel_3_platform_winform\Project_Hotel_Winform\Project_Hotel_Winform\obj\Debug\Project_Hotel_Winform.All_User_Control.Rooms.resources
+C:\Users\DELL\Documents\School\ungdungthongminh\project_hotel_3_platform_winform\Project_Hotel_Winform\Project_Hotel_Winform\bin\Debug\Syncfusion.Compression.Base.dll
+C:\Users\DELL\Documents\School\ungdungthongminh\project_hotel_3_platform_winform\Project_Hotel_Winform\Project_Hotel_Winform\bin\Debug\Syncfusion.DocIO.Base.dll
+C:\Users\DELL\Documents\School\ungdungthongminh\project_hotel_3_platform_winform\Project_Hotel_Winform\Project_Hotel_Winform\bin\Debug\Syncfusion.XlsIO.Base.dll
+C:\Users\DELL\Documents\School\ungdungthongminh\project_hotel_3_platform_winform\Project_Hotel_Winform\Project_Hotel_Winform\bin\Debug\Syncfusion.Compression.Base.xml
+C:\Users\DELL\Documents\School\ungdungthongminh\project_hotel_3_platform_winform\Project_Hotel_Winform\Project_Hotel_Winform\bin\Debug\Syncfusion.DocIO.Base.xml
+C:\Users\DELL\Documents\School\ungdungthongminh\project_hotel_3_platform_winform\Project_Hotel_Winform\Project_Hotel_Winform\bin\Debug\Syncfusion.XlsIO.Base.xml

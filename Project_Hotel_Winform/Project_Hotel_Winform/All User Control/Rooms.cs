@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using Project_Hotel_Winform.Model;
+
 using System.Globalization;
 
 namespace Project_Hotel_Winform.All_User_Control
@@ -21,10 +22,12 @@ namespace Project_Hotel_Winform.All_User_Control
         List<Customers> lstCus = new List<Customers>();
         List<checkInRoom> listNhanPhong = new List<checkInRoom>();
         List<checkOutRoom> listTraPhong = new List<checkOutRoom>();
-
+        WordExport word = new WordExport();
         private string iD_NV;
-
+        private string tenNV;
         public string ID_NV { get => iD_NV; set => iD_NV = value; }
+        public string TenNV { get => tenNV; set => tenNV = value; }
+
         public Rooms()
         {
             InitializeComponent();
@@ -37,9 +40,10 @@ namespace Project_Hotel_Winform.All_User_Control
             loadTraPhong();
 
         }
-        public Rooms(string id_nv)
+        public Rooms(string id_nv, string tenNV)
         {
             ID_NV = id_nv;
+            TenNV = tenNV;
             InitializeComponent();
             disableTextBox();
             loadRooms();
@@ -406,27 +410,33 @@ namespace Project_Hotel_Winform.All_User_Control
 
         private async void guna2Button2_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show("Chua lam");
             if (GridViewCheckOut.CurrentRow.Cells[0].Value.ToString() != null)
             {
-                string MaPhong = GridViewCheckOut.CurrentRow.Cells[0].Value.ToString();
-                string PhieuDangKy = GridViewCheckOut.CurrentRow.Cells[5].Value.ToString();
+                string maPhong = GridViewCheckOut.CurrentRow.Cells[0].Value.ToString();
+                string phieuDangKy = GridViewCheckOut.CurrentRow.Cells[5].Value.ToString();
+                string tenKH = GridViewCheckOut.CurrentRow.Cells[3].Value.ToString();
+                string tenPhong = GridViewCheckOut.CurrentRow.Cells[1].Value.ToString();
                 Dictionary<string, string> values = new Dictionary<string, string>
                 {
-                    {"MaPhong",MaPhong},
-                    {"MaPDK",PhieuDangKy},
+                    {"MaPhong",maPhong},
+                    {"MaPDK",phieuDangKy},
                     {"ID_NV",ID_NV}
                 };
                 var returnData = api.postAPI("paying/createPaying", values);
                 var result = await Task.WhenAll(returnData);
-                var convertData = JsonConvert.DeserializeObject<returnData>(result[0]);
-                if (int.Parse(convertData.data) == 0)
+                var convertData = JsonConvert.DeserializeObject<listHistoryBill>(result[0]);           
+                if (convertData.data[0].MaPTT.ToString().Equals("-1"))
                 {
                     MessageBox.Show("Lỗi trong quá trình xử lý, vui lòng thử lại !!");
                 }
-                else if (int.Parse(convertData.data) == 1)
+                else
                 {
-                    MessageBox.Show("Trả phòng thành công");
+                    string tienPhong = convertData.data[0].TienThuePhong.ToString();
+                    string tienDV = convertData.data[0].TienDichVu.ToString();
+                    string tongTien = convertData.data[0].TongTien.ToString();
+                    string ngayLap = convertData.data[0].NgayThanhToan.ToString();
+                    MessageBox.Show("Trả phòng thành công !! Nhấn OK để bắt đầu in hoá đơn");
+                    word.InHoaDon(ngayLap, TenNV, tenKH, tenPhong, tienPhong, tienDV, tongTien);
                 }
                 loadNhanPhong();
                 loadRooms();

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Project_Hotel_Winform.Model
 {
-    public class AprioriData
+    public class aprioriData
     {
         string maPDK, tenKP, tenDV;
 

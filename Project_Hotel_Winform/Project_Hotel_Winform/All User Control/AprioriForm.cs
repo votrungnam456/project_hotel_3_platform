@@ -14,6 +14,7 @@ namespace Project_Hotel_Winform.All_User_Control
 {
     public partial class AprioriForm : UserControl
     {
+        // Khởi tạo các biến cần thiết
         ConnectAPI api = new ConnectAPI();
         AprioriAlgorithm aprioriAlgorithm = new AprioriAlgorithm();
         List<string> listFieldName;
@@ -25,12 +26,13 @@ namespace Project_Hotel_Winform.All_User_Control
             InitializeComponent();
             loadCbo();
         }
+        // lấy các Field apiori từ database
         public async Task<List<string>> loadFieldName()
         {
             listFieldName = new List<string>();
             var returnData = api.getAPI("apriori/listFieldName");
             var result = await Task.WhenAll(returnData);
-            var data = JsonConvert.DeserializeObject<AprioriFieldName>(result[0]);
+            var data = JsonConvert.DeserializeObject<aprioriFieldName>(result[0]);
 
             foreach (string item in data.data)
             {
@@ -38,15 +40,17 @@ namespace Project_Hotel_Winform.All_User_Control
             }
             return listFieldName;
         }
-
-        public async Task<List<List<int>>> loadAprioriData()
+        // lấy dữ liệu từ các giao dịch cũ của các khách hàng từ datbase thành data cho thuật toán
+        public async Task<List<List<int>>> loadAprioriData(string maKP)
         {
+
             transactions = new List<List<int>>();
-            var returnData = api.getAPI("apriori/listData");
+            // gọi api
+            var returnData = api.getAPI("apriori/listData/"+maKP );
             var result = await Task.WhenAll(returnData);
             var data = JsonConvert.DeserializeObject<listAprioriData>(result[0]);
-
-            foreach (AprioriData item in data.data)
+            // xử lý data đươc trả về từ api
+            foreach (aprioriData item in data.data)
             {
                 listInt = new List<int>();
                 //Lấy vị trí kiểu phòng trong danh sách của field name
@@ -63,7 +67,7 @@ namespace Project_Hotel_Winform.All_User_Control
             }
             return transactions;
         }
-
+        // Load combobox
         public async void loadCbo()
         {
             var returnData = api.getAPI("rooms/typeRooms");
@@ -75,15 +79,17 @@ namespace Project_Hotel_Winform.All_User_Control
             }
             cboLoaiPhong.DataSource = listTypeRooms;
             cboLoaiPhong.DisplayMember = "TenKP";
-            cboLoaiPhong.ValueMember = "TenKP";
+            cboLoaiPhong.ValueMember = "MaKP";
         }
         private async void btnTuVan_Click(object sender, EventArgs e)
         {
+            //Tạo các label để chứa các table từ thuật toán
             Label labelTrans = new Label();
             labelTrans.Text = "Transactions";
             labelTrans.Left = 20;
             labelTrans.Top = 20;
             string loaiPhong = cboLoaiPhong.SelectedValue.ToString();
+            string tenLoaiPhong = cboLoaiPhong.Text.ToString();
             panel1.Controls.Clear();
             DataGridView transDataGridView = new DataGridView();
             transDataGridView.Columns.Add("column", "Item");
@@ -93,8 +99,10 @@ namespace Project_Hotel_Winform.All_User_Control
             transDataGridView.Width = 280;
             transDataGridView.Left = 0;
             transDataGridView.Top = 50; 
+            // khởi tạo các biến để lưu trữ từ các function
             List<string> fieldName = await loadFieldName();
-            List<List<int>> transactions = await loadAprioriData();
+            List<List<int>> transactions = await loadAprioriData(loaiPhong);
+            // thực hiện apriori
             Apriori apriori = new Apriori(new DataFields(fieldName.Count, transactions, fieldName));
             int count = 0;
             foreach (string a in fieldName)
@@ -106,6 +114,7 @@ namespace Project_Hotel_Winform.All_User_Control
             panel1.Controls.Add(transDataGridView);
             apriori.CalculateCNodes(.22f);
 
+            // Hiện các label chứa table kết quả của thuật toán
             int tableNumber = 1;
             int j = 0;
             int space = 0;
@@ -138,16 +147,17 @@ namespace Project_Hotel_Winform.All_User_Control
                 panel1.Controls.Add(newDataGridView);
             }
             string resultTuVan = "";
-            //MessageBox.Show(loaiPhong);
-            //Console.WriteLine("\n -- Rules -- \n");
+            // Show message box ra kết quả
             foreach (var rule in apriori.Rules)
             {
                 //MessageBox.Show(rule.ToDetailedString(apriori.Data));
 
-                if (rule.NodeA.ToDetailedString(apriori.Data).Equals(loaiPhong))
+                if (rule.NodeA.ToDetailedString(apriori.Data).Equals(tenLoaiPhong))
                 {
-                    resultTuVan += "Dịch vụ: " + rule.NodeB.ToDetailedString(apriori.Data) + "Độ tin cậy: " + rule.Confidence * 100 + "%" + Environment.NewLine;
+                    resultTuVan += "Dịch vụ: " + rule.NodeB.ToDetailedString(apriori.Data) + " Độ tin cậy: " + rule.Confidence * 100 + "% " + Environment.NewLine;
                 }
+                
+
             }
             if (resultTuVan == "")
             {
