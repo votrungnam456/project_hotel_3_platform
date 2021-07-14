@@ -9,7 +9,7 @@ export default class Index extends Component {
           return (
                <div>
                     <Banner/>
-                    <Info/>
+                    <Info history ={this.props.history}/>
                     <Service/>
                </div>
           )

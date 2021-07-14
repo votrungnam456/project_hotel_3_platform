@@ -14,7 +14,7 @@ const routes = [
      {
           path: '/',
           exact: true,
-          main: () => <Home></Home>
+          main: ({history}) => <Home  history={history}></Home>
      },
      {
           path: '/intro',

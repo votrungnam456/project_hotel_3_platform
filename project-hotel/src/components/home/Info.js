@@ -49,8 +49,10 @@ class Info extends Component {
      onSubmit = (ev) =>{
           ev.preventDefault();
           let {id,numRoom,typeRoom,checkIn,checkOut,ghiChu,error} = this.state;
+          console.log(this.props.history);
           if(id == ""){
                this.props.history.push("/login");
+               return;
           }
           let dateIn = new Date(checkIn);
           let date = new Date();
