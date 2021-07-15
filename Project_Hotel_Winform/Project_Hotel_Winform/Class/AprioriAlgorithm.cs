@@ -11,17 +11,7 @@ namespace Project_Hotel_Winform
         public void writeApriori(Apriori aP, float minimunSupport)
         {
             aP.CalculateCNodes(minimunSupport);
-            //int table = 1;
-            //foreach (var Levels in aP.EachLevelOfNodes)
-            //{
-            //    Console.WriteLine("\n-- Table {0} --", table++);
-            //    foreach (var node in Levels)
-            //    {
-            //        Console.WriteLine(node.ToDetailedString(aP.Data));
-            //    }
-            //}
 
-            //Console.WriteLine("\n -- Rules -- \n");
             foreach (var rule in aP.Rules)
             {
 
@@ -30,7 +20,7 @@ namespace Project_Hotel_Winform
                     Console.WriteLine(rule.ToDetailedString(aP.Data));
                 }
             }
-            //Console.WriteLine(aP.Data.ToString());
+
         }
         public Apriori Exam1()
         {

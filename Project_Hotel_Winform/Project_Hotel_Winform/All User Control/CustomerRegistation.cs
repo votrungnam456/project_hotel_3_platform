@@ -64,7 +64,6 @@ namespace Project_Hotel_Winform.All_User_Control
 
         private async void guna2Button1_Click(object sender, EventArgs e)
         {
-            //string phong = cbRoom.SelectedItem.ToString();
             if (txtName.Text == "" || txtEmail.Text == "" || txtPwd.Text == "" || txtSDT.Text == "" || txtCMND.Text == "" || txtAddress.Text == "" || txtCountry.Text == "")
             {
                 MessageBox.Show("Thông tin khách hàng không được để trống");
@@ -109,7 +108,7 @@ namespace Project_Hotel_Winform.All_User_Control
             {
                 MessageBox.Show("Thêm khách hàng thành công");
             }    
-            //loadRooms();
+
         }
 
     }

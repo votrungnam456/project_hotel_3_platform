@@ -22,6 +22,8 @@ namespace Project_Hotel_Winform.All_User_Control
         List<Customers> lstCus = new List<Customers>();
         List<checkInRoom> listNhanPhong = new List<checkInRoom>();
         List<checkOutRoom> listTraPhong = new List<checkOutRoom>();
+        List<checkOutRoom> listPhongTrong = new List<checkOutRoom>();
+        List<checkOutRoom> listPhongDangSuDung = new List<checkOutRoom>();
         WordExport word = new WordExport();
         private string iD_NV;
         private string tenNV;
@@ -48,6 +50,8 @@ namespace Project_Hotel_Winform.All_User_Control
             disableTextBox();
             loadRooms();
             loadCboboxCustomers();
+            loadCboboxEmptyRooms();
+            loadCboboxUsingRooms();
             string now = DateTime.Now.ToString("MM/dd/yyyy");
             dateTimeCheckOut.MinDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
             loadNhanPhong();
@@ -184,6 +188,33 @@ namespace Project_Hotel_Winform.All_User_Control
             cboCustomer.DisplayMember = "TenKH";
             cboCustomer.ValueMember = "ID_KH";
         }
+        public async void loadCboboxUsingRooms()
+        {
+            listPhongDangSuDung = new List<checkOutRoom>();
+            var returnData = api.getAPI("rooms/listUsingRooms");
+            var result = await Task.WhenAll(returnData);
+            var data = JsonConvert.DeserializeObject<listChectOutRoom>(result[0]);
+            foreach (checkOutRoom item in data.data)
+            {
+                listPhongDangSuDung.Add(item);
+            }
+            cboUsingRooms.DataSource = listPhongDangSuDung;
+            cboUsingRooms.DisplayMember = "Tenphong";
+            cboUsingRooms.ValueMember = "Maphong";
+        }
+        public async void loadCboboxEmptyRooms() {
+            listPhongTrong = new List<checkOutRoom>();
+            var returnData = api.getAPI("rooms/listEmptyRooms");
+            var result = await Task.WhenAll(returnData);
+            var data = JsonConvert.DeserializeObject<listChectOutRoom>(result[0]);
+            foreach (checkOutRoom item in data.data)
+            {
+                listPhongTrong.Add(item);
+            }
+            cboEmptyRooms.DataSource = listPhongTrong;
+            cboEmptyRooms.DisplayMember = "Tenphong";
+            cboEmptyRooms.ValueMember = "Maphong";
+        }
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -261,7 +292,8 @@ namespace Project_Hotel_Winform.All_User_Control
                 else if (check)
                 {
                     MessageBox.Show("Đặt phòng thành công");
-
+                    loadCboboxUsingRooms();
+                    loadCboboxEmptyRooms();
                     loadNhanPhong();
                     loadRooms();
                     loadTraPhong();
@@ -304,6 +336,8 @@ namespace Project_Hotel_Winform.All_User_Control
                     loadNhanPhong();
                     loadRooms();
                     loadTraPhong();
+                    loadCboboxUsingRooms();
+                    loadCboboxEmptyRooms();
                 }
             }
         }
@@ -438,6 +472,8 @@ namespace Project_Hotel_Winform.All_User_Control
                     MessageBox.Show("Trả phòng thành công !! Nhấn OK để bắt đầu in hoá đơn");
                     word.InHoaDon(ngayLap, TenNV, tenKH, tenPhong, tienPhong, tienDV, tongTien);
                 }
+                loadCboboxUsingRooms();
+                loadCboboxEmptyRooms();
                 loadNhanPhong();
                 loadRooms();
                 loadTraPhong();
@@ -554,6 +590,33 @@ namespace Project_Hotel_Winform.All_User_Control
                 btnDatPhong.Text = "Đặt phòng";
                 btnDatPhong.Tag = 1;
             }
+        }
+
+        private async void guna2Button1_Click_1(object sender, EventArgs e)
+        {
+            string maPhongDoi = cboUsingRooms.SelectedValue.ToString();
+            string maPhongBiDoi = cboEmptyRooms.SelectedValue.ToString();
+            Dictionary<string, string> values = new Dictionary<string, string>
+                {
+                    {"MaPhongDoi",maPhongDoi },
+                    {"MaPhongBiDoi",maPhongBiDoi }
+                };
+            var returnData = api.postAPI("rooms/changeRooms", values);
+            var result = await Task.WhenAll(returnData);
+            var convertData = JsonConvert.DeserializeObject<returnData>(result[0]);
+            if (int.Parse(convertData.data) == 0)
+            {
+                MessageBox.Show("Có lỗi vui lòng thử lại !!");
+            }
+            else if (int.Parse(convertData.data) == 1)
+            {
+                MessageBox.Show("Đổi phòng thành công");
+            }
+            loadCboboxUsingRooms();
+            loadCboboxEmptyRooms();
+            loadNhanPhong();
+            loadTraPhong();
+            loadRooms();
         }
     }
 }

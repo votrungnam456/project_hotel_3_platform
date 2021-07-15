@@ -45,6 +45,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.checkBoxHuyDat = new System.Windows.Forms.CheckBox();
             this.flowPanelRooms = new System.Windows.Forms.FlowLayoutPanel();
             this.label8 = new System.Windows.Forms.Label();
             this.txtChuThich = new Guna.UI2.WinForms.Guna2TextBox();
@@ -80,14 +82,19 @@
             this.txtSearchCheckIn = new Guna.UI2.WinForms.Guna2TextBox();
             this.GridViewCheckIn = new Guna.UI2.WinForms.Guna2DataGridView();
             this.txtNhanPhong = new Guna.UI2.WinForms.Guna2Button();
-            this.checkBoxHuyDat = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.cboUsingRooms = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.cboEmptyRooms = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.GridViewCheckOut)).BeginInit();
             this.tabControl2.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridViewCheckIn)).BeginInit();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label10
@@ -291,6 +298,7 @@
             this.tabControl2.Controls.Add(this.tabPage4);
             this.tabControl2.Controls.Add(this.tabPage5);
             this.tabControl2.Controls.Add(this.tabPage1);
+            this.tabControl2.Controls.Add(this.tabPage2);
             this.tabControl2.Location = new System.Drawing.Point(16, 86);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
@@ -318,6 +326,26 @@
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "Đặt phòng";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(1251, 514);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(112, 19);
+            this.label1.TabIndex = 44;
+            this.label1.Text = "Huỷ đặt phòng";
+            // 
+            // checkBoxHuyDat
+            // 
+            this.checkBoxHuyDat.AutoSize = true;
+            this.checkBoxHuyDat.Location = new System.Drawing.Point(1277, 583);
+            this.checkBoxHuyDat.Name = "checkBoxHuyDat";
+            this.checkBoxHuyDat.Size = new System.Drawing.Size(18, 17);
+            this.checkBoxHuyDat.TabIndex = 43;
+            this.checkBoxHuyDat.UseVisualStyleBackColor = true;
+            this.checkBoxHuyDat.Click += new System.EventHandler(this.checkBoxHuyDat_Click);
             // 
             // flowPanelRooms
             // 
@@ -990,25 +1018,109 @@
             this.txtNhanPhong.Text = "Nhận phòng";
             this.txtNhanPhong.Click += new System.EventHandler(this.txtNhanPhong_Click);
             // 
-            // checkBoxHuyDat
+            // tabPage2
             // 
-            this.checkBoxHuyDat.AutoSize = true;
-            this.checkBoxHuyDat.Location = new System.Drawing.Point(1277, 583);
-            this.checkBoxHuyDat.Name = "checkBoxHuyDat";
-            this.checkBoxHuyDat.Size = new System.Drawing.Size(18, 17);
-            this.checkBoxHuyDat.TabIndex = 43;
-            this.checkBoxHuyDat.UseVisualStyleBackColor = true;
-            this.checkBoxHuyDat.Click += new System.EventHandler(this.checkBoxHuyDat_Click);
+            this.tabPage2.Controls.Add(this.label20);
+            this.tabPage2.Controls.Add(this.label5);
+            this.tabPage2.Controls.Add(this.cboEmptyRooms);
+            this.tabPage2.Controls.Add(this.cboUsingRooms);
+            this.tabPage2.Controls.Add(this.guna2Button1);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1533, 628);
+            this.tabPage2.TabIndex = 4;
+            this.tabPage2.Text = "Đổi phòng";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // guna2Button1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(1251, 514);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 19);
-            this.label1.TabIndex = 44;
-            this.label1.Text = "Huỷ đặt phòng";
+            this.guna2Button1.BorderRadius = 20;
+            this.guna2Button1.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+            this.guna2Button1.BorderThickness = 1;
+            this.guna2Button1.CheckedState.BorderColor = System.Drawing.Color.White;
+            this.guna2Button1.CheckedState.CustomBorderColor = System.Drawing.Color.White;
+            this.guna2Button1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(221)))));
+            this.guna2Button1.CheckedState.ForeColor = System.Drawing.Color.White;
+            this.guna2Button1.CheckedState.Parent = this.guna2Button1;
+            this.guna2Button1.CustomImages.Parent = this.guna2Button1;
+            this.guna2Button1.FillColor = System.Drawing.Color.White;
+            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button1.ForeColor = System.Drawing.Color.Black;
+            this.guna2Button1.HoverState.Parent = this.guna2Button1;
+            this.guna2Button1.Location = new System.Drawing.Point(710, 308);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.ShadowDecoration.Parent = this.guna2Button1;
+            this.guna2Button1.Size = new System.Drawing.Size(149, 48);
+            this.guna2Button1.TabIndex = 37;
+            this.guna2Button1.Text = "Đổi phòng";
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click_1);
+            // 
+            // cboUsingRooms
+            // 
+            this.cboUsingRooms.BackColor = System.Drawing.Color.Transparent;
+            this.cboUsingRooms.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboUsingRooms.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboUsingRooms.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboUsingRooms.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboUsingRooms.FocusedState.Parent = this.cboUsingRooms;
+            this.cboUsingRooms.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboUsingRooms.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cboUsingRooms.HoverState.Parent = this.cboUsingRooms;
+            this.cboUsingRooms.ItemHeight = 30;
+            this.cboUsingRooms.Items.AddRange(new object[] {
+            "ac",
+            "non-ac"});
+            this.cboUsingRooms.ItemsAppearance.Parent = this.cboUsingRooms;
+            this.cboUsingRooms.Location = new System.Drawing.Point(261, 189);
+            this.cboUsingRooms.Name = "cboUsingRooms";
+            this.cboUsingRooms.ShadowDecoration.Parent = this.cboUsingRooms;
+            this.cboUsingRooms.Size = new System.Drawing.Size(415, 36);
+            this.cboUsingRooms.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
+            this.cboUsingRooms.TabIndex = 38;
+            // 
+            // cboEmptyRooms
+            // 
+            this.cboEmptyRooms.BackColor = System.Drawing.Color.Transparent;
+            this.cboEmptyRooms.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboEmptyRooms.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboEmptyRooms.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboEmptyRooms.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboEmptyRooms.FocusedState.Parent = this.cboEmptyRooms;
+            this.cboEmptyRooms.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboEmptyRooms.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cboEmptyRooms.HoverState.Parent = this.cboEmptyRooms;
+            this.cboEmptyRooms.ItemHeight = 30;
+            this.cboEmptyRooms.Items.AddRange(new object[] {
+            "ac",
+            "non-ac"});
+            this.cboEmptyRooms.ItemsAppearance.Parent = this.cboEmptyRooms;
+            this.cboEmptyRooms.Location = new System.Drawing.Point(862, 189);
+            this.cboEmptyRooms.Name = "cboEmptyRooms";
+            this.cboEmptyRooms.ShadowDecoration.Parent = this.cboEmptyRooms;
+            this.cboEmptyRooms.Size = new System.Drawing.Size(415, 36);
+            this.cboEmptyRooms.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
+            this.cboEmptyRooms.TabIndex = 39;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(257, 98);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(152, 19);
+            this.label5.TabIndex = 92;
+            this.label5.Text = "Phòng đang sử dụng";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(858, 98);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(123, 19);
+            this.label20.TabIndex = 93;
+            this.label20.Text = "Phòng còn trống";
             // 
             // Rooms
             // 
@@ -1028,6 +1140,8 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridViewCheckIn)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1083,5 +1197,11 @@
         private System.Windows.Forms.FlowLayoutPanel flowPanelRooms;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox checkBoxHuyDat;
+        private System.Windows.Forms.TabPage tabPage2;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label5;
+        private Guna.UI2.WinForms.Guna2ComboBox cboEmptyRooms;
+        private Guna.UI2.WinForms.Guna2ComboBox cboUsingRooms;
     }
 }
