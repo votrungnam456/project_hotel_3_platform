@@ -14,6 +14,53 @@ class RoomService {
             return e
         }
     }
+    static async changeRoomsService(req) {
+        try {
+            let MaPhongBiDoi= req.body.MaPhongBiDoi;
+            let MaPhongDoi= req.body.MaPhongDoi;
+            let PhongDoi = await queryBuilder().select('*').from('phong').where("Maphong",MaPhongDoi).first();
+            let PhongBiDoi = await queryBuilder().select('*').from('phong').where("Maphong",MaPhongBiDoi).first();
+            await queryBuilder('phieu_dang_ky').where("MaPDK", PhongDoi.MaPDK).update({
+                'Maphong':MaPhongBiDoi,
+                'GiaPhong':PhongBiDoi.Gia
+            });
+            await queryBuilder('phong').where("Maphong", MaPhongDoi).update({
+                'TinhTrang':0,
+                'MaPDK':null
+            });
+            await queryBuilder('phong').where("Maphong", MaPhongBiDoi).update({
+                'TinhTrang':PhongDoi.TinhTrang,
+                'MaPDK':PhongDoi.MaPDK
+            });
+            return 1
+        } catch (e) {
+            console.log(e);
+            return 0
+        }
+    }
+
+    static async listUsingRoomsService(req) {
+        try {
+            let result = await queryBuilder().select('phong.MaPhong','phong.Tenphong').
+                                            from('phong').where({
+                                                'TinhTrang':1
+                                            }).orWhere({'TinhTrang':2}).orderBy('phong.Maphong');
+            return result;
+        } catch (e) {
+            console.log(e);
+            return e
+        }
+    }
+    static async listEmptyRoomsService(req) {
+        try {
+            let result = await queryBuilder().select('phong.MaPhong','phong.Tenphong').
+                                            from('phong').where('TinhTrang',0).orderBy('phong.Maphong');
+            return result;
+        } catch (e) {
+            console.log(e);
+            return e
+        }
+    }
     static async listCheckInRoomService(req) {
         try {
             let result = await queryBuilder().select('phong.MaPhong','phong.Tenphong','phong.Gia','kieuphong.TenKP','khachhang.TenKH','khachhang.Email','khachhang.CMND','khachhang.SoDT','phieu_dang_ky.NgayDen').

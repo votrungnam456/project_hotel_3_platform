@@ -7,8 +7,8 @@ class PayingService {
     static async createPaying(req){
         try {
             let params = req.body;
-            let MaPDK = params.MaPDK;
-            let ID_NV = params.ID_NV;
+            let MaPDK = params.MaPDK ||null;
+            let ID_NV = params.ID_NV || null;
             let MaPhong = params.MaPhong
             let today = new Date();
             let now = new Date(today.getFullYear()+'-'+(today.getMonth()+1)+'-'+(today.getDate()+1));

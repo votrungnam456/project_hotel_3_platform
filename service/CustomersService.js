@@ -70,7 +70,9 @@ class RoomService {
             let params = req.body;
             let Email = params.Email;
             let MatKhau = params.MatKhau;
-            let result = await queryBuilder('khachhang').select('khachhang.ID_KH','khachhang.TenKH','khachhang.Gtinh','khachhang.Cmnd','khachhang.Dchi','khachhang.Qtich','khachhang.Sodt','khachhang.Email').where({
+            let result = await queryBuilder('khachhang')
+            .select('khachhang.ID_KH','khachhang.TenKH','khachhang.Gtinh','khachhang.Cmnd','khachhang.Dchi','khachhang.Qtich','khachhang.Sodt','khachhang.Email')
+            .where({
                 "Email":Email,
                 "MatKhau":MatKhau
             }).first();

@@ -3,6 +3,8 @@ const router = express.Router();
 const RoomsController = require('../controller/RoomsController');
 
 router.get('/list', RoomsController.list);
+router.get('/listEmptyRooms', RoomsController.listEmptyRooms);
+router.get('/listUsingRooms', RoomsController.listUsingRooms);
 router.get('/listCheckIn', RoomsController.listCheckIn);
 router.get('/listCheckIn/search/:content', RoomsController.listSearchCheckIn);
 router.get('/listCheckOut', RoomsController.listCheckOut);
@@ -10,6 +12,7 @@ router.get('/listCheckOut/search/:content', RoomsController.listSearchCheckOut);
 router.get('/typeRooms',RoomsController.typeRoom)
 router.get('/:MaPhong', RoomsController.getItem);
 router.post('/create', RoomsController.createRoom);
+router.post('/changeRooms', RoomsController.changeRooms);
 router.put('/:MaPhong', RoomsController.updateRoom);
 router.put('/checkIn/:MaPhong', RoomsController.checkInRoom);
 router.put('/checkOut/:MaPhong', RoomsController.checkOutRoom);

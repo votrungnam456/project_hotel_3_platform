@@ -51,6 +51,17 @@ app.get('/',cors() ,(req, res, next) => {
                 "DELETE":{
                     "/:ID_NV":"Xoá nhân viên"
                 }
+            },
+            "/rooms":{
+                "GET":{
+                    "/list":"Lấy danh sách phòng",
+                    "/typeRooms":"Lấy danh sách kiểu phòng"
+                }
+            },
+            "/booking":{
+                "POST":{
+                    "/create":"đặt phòng"
+                }
             }
         }
     });

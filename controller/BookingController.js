@@ -20,28 +20,6 @@ class BookingController {
             });
         }
     }
-    // static async getItem(req, res, next) {
-    //     try {
-    //         let data = await RoomsService.getItemService(req);
-    //         console.log(data)
-    //         res.status(200).json({
-    //             status: "SUCCESS",
-    //             errors: null,
-    //             data: {
-    //                 result: data
-    //             }
-    //         });
-    //     } catch (e) {
-    //         res.status(200).json({
-    //             status: "FAIL",
-    //             errors: [{
-    //                 code: 1000,
-    //                 message: "Server Error"
-    //             }],
-    //             data: null
-    //         });
-    //     }
-    // }
 
     static async createBookingRoom(req, res, next){
         try {

@@ -48,8 +48,6 @@ class RoomService {
             let params = req.body;
             let numRoom = params.SoPhongDat;
             let typeRoom = params.LoaiPhong;
-            // let Maphong = params.Maphong;
-
             let checkRoom = await queryBuilder('phong').where(
                 {
                     "MaKP":typeRoom,

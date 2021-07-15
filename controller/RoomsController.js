@@ -20,6 +20,65 @@ class RoomsController {
             });
         }
     }
+    static async changeRooms(req, res, next) {
+        try {
+            let data = await RoomsService.changeRoomsService(req);
+            res.status(200).json({
+                status: "SUCCESS",
+                errors: null,
+               data
+            });
+        } catch (e) {
+            res.status(200).json({
+                status: "FAIL",
+                errors: [{
+                    code: 1000,
+                    message: "Server Error"
+                }],
+                data: null
+            });
+        }
+    }
+    static async listUsingRooms(req, res, next) {
+        try {
+            let data = await RoomsService.listUsingRoomsService(req);
+            res.status(200).json({
+                status: "SUCCESS",
+                errors: null,
+               data
+            });
+        } catch (e) {
+            res.status(200).json({
+                status: "FAIL",
+                errors: [{
+                    code: 1000,
+                    message: "Server Error"
+                }],
+                data: null
+            });
+        }
+    }
+    
+    static async listEmptyRooms(req, res, next) {
+        try {
+            let data = await RoomsService.listEmptyRoomsService(req);
+            res.status(200).json({
+                status: "SUCCESS",
+                errors: null,
+               data
+            });
+        } catch (e) {
+            res.status(200).json({
+                status: "FAIL",
+                errors: [{
+                    code: 1000,
+                    message: "Server Error"
+                }],
+                data: null
+            });
+        }
+    }
+    
     static async listCheckIn(req, res, next) {
         try {
             let data = await RoomsService.listCheckInRoomService(req);
