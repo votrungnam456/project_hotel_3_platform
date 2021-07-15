@@ -465,12 +465,16 @@ namespace Project_Hotel_Winform.All_User_Control
                 }
                 else
                 {
-                    string tienPhong = convertData.data[0].TienThuePhong.ToString();
-                    string tienDV = convertData.data[0].TienDichVu.ToString();
-                    string tongTien = convertData.data[0].TongTien.ToString();
-                    string ngayLap = convertData.data[0].NgayThanhToan.ToString();
                     MessageBox.Show("Trả phòng thành công !! Nhấn OK để bắt đầu in hoá đơn");
-                    word.InHoaDon(ngayLap, TenNV, tenKH, tenPhong, tienPhong, tienDV, tongTien);
+                    DialogResult dialogResult = MessageBox.Show("Bạn có muốn in hoá đơn ??", "In hoá dơn", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        string tienPhong = convertData.data[0].TienThuePhong.ToString();
+                        string tienDV = convertData.data[0].TienDichVu.ToString();
+                        string tongTien = convertData.data[0].TongTien.ToString();
+                        string ngayLap = convertData.data[0].NgayThanhToan.ToString();
+                        word.InHoaDon(ngayLap, TenNV, tenKH, tenPhong, tienPhong, tienDV, tongTien);
+                    }
                 }
                 loadCboboxUsingRooms();
                 loadCboboxEmptyRooms();
@@ -617,6 +621,11 @@ namespace Project_Hotel_Winform.All_User_Control
             loadNhanPhong();
             loadTraPhong();
             loadRooms();
+        }
+
+        private void tabPage4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

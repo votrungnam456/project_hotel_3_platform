@@ -57,6 +57,7 @@ namespace Project_Hotel_Winform.All_User_Control
                 }
                 GridViewEmployees.DataSource = ListEmployees;
                 GridViewEmployees.Columns[0].Visible = false;
+                GridViewEmployees.Columns[7].Visible = false;
                 GridViewEmployees.Columns[8].Visible = false;
             }
             catch

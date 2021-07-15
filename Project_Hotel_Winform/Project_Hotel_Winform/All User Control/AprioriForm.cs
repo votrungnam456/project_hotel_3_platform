@@ -16,7 +16,7 @@ namespace Project_Hotel_Winform.All_User_Control
     {
         // Khởi tạo các biến cần thiết
         ConnectAPI api = new ConnectAPI();
-        AprioriAlgorithm aprioriAlgorithm = new AprioriAlgorithm();
+        //AprioriAlgorithm aprioriAlgorithm = new AprioriAlgorithm();
         List<string> listFieldName;
         List<int> listInt;
         List<List<int>> transactions;
@@ -134,13 +134,10 @@ namespace Project_Hotel_Winform.All_User_Control
                 newDataGridView.Left = 280 * j;
                 newDataGridView.Top = 200 * space + 50;
                 string detail;
-                //MessageBox.Show("\n-- Table {0} --", table++.ToString());
                 foreach (var node in Levels)
                 {
                     detail = node.ToDetailedString(apriori.Data);
                     newDataGridView.Rows.Add(detail);
-                    //MessageBox.Show(node.ToDetailedString(apriori.Data));
-                    //newDataGridView.DataSource = node.ToDetailedString(apriori.Data);
                 }
                 panel1.Controls.Add(labelTable);
                 tableNumber++;

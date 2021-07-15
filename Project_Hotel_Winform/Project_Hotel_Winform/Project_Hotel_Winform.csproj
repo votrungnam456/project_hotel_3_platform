@@ -130,7 +130,6 @@
     <Compile Include="All User Control\Service.Designer.cs">
       <DependentUpon>Service.cs</DependentUpon>
     </Compile>
-    <Compile Include="Class\AprioriAlgorithm.cs" />
     <Compile Include="Class\ConnectAPI.cs" />
     <Compile Include="Dashboard.cs">
       <SubType>Form</SubType>
