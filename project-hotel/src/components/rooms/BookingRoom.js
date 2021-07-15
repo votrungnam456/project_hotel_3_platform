@@ -39,15 +39,8 @@ class BookingRoom extends Component {
      onSubmit = (ev) =>{
           ev.preventDefault();
           let {checkIn, checkOut} = this.state;
-
           let date = new Date();
           let now = new Date(date.getFullYear()+'-'+(date.getMonth()+1)+'-'+(date.getDate()+1));
-          // if(+now > +checkIn){
-          //      this.setState({
-          //           message:4
-          //      })
-          //      return ;
-          // }
           let dateIn = new Date(checkIn);
           let dateOut = null;
           if(checkOut != ""){
@@ -67,7 +60,6 @@ class BookingRoom extends Component {
                })
                return;
           }
-
           axios.post(api.BASE_API+"/booking/create",{
                Ngayden: dateIn,
                Ngaydi:dateOut,
@@ -79,7 +71,6 @@ class BookingRoom extends Component {
                     message:res.data.data
                })
                console.log(this.state)
-               // console.log(res)
           }).catch(error=>console.log(error))
      }
      onChange = (ev) =>{
