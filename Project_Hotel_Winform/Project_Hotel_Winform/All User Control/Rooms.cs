@@ -234,7 +234,7 @@ namespace Project_Hotel_Winform.All_User_Control
         {
             if (btnDatPhong.Tag.ToString() == "1")
             {
-                string checkIn = dateTimeCheckOut.Value.AddDays(1).ToString("yyyy-MM-dd");
+                string checkIn = dateTimeCheckOut.Value.ToString("yyyy-MM-dd");
                 int dayStay;
                 if (txtDay.Text != "")
                 {
@@ -245,7 +245,7 @@ namespace Project_Hotel_Winform.All_User_Control
                 {
                     dayStay = 0;
                 }
-                string checkOut = dateTimeCheckOut.Value.AddDays(dayStay + 1).ToString("yyyy-MM-dd");
+                string checkOut = dateTimeCheckOut.Value.AddDays(dayStay).ToString("yyyy-MM-dd");
                 string id_KH = cboCustomer.SelectedValue.ToString();
 
                 string chuThich;

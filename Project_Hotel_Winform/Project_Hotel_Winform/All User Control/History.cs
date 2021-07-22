@@ -42,8 +42,8 @@ namespace Project_Hotel_Winform.All_User_Control
             foreach (historyBookingRoom item in data.data)
             {
 
-                item.Ngayden = DateTime.ParseExact(item.Ngayden.AddDays(1).ToString("dd/MM/yyyy"),"dd/MM/yyyy", CultureInfo.InvariantCulture);
-                item.Ngaydi = DateTime.ParseExact(item.Ngaydi.AddDays(1).ToString("dd/MM/yyyy"), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                item.Ngayden = DateTime.ParseExact(item.Ngayden.ToString("dd/MM/yyyy"),"dd/MM/yyyy", CultureInfo.InvariantCulture);
+                item.Ngaydi = DateTime.ParseExact(item.Ngaydi.ToString("dd/MM/yyyy"), "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 lstHistoryBookingRoom.Add(item);
             }
 
@@ -58,7 +58,7 @@ namespace Project_Hotel_Winform.All_User_Control
             var data = JsonConvert.DeserializeObject<listHistoryService>(result[0]);
             foreach (historyService item in data.data)
             {
-                item.NgayLap = DateTime.ParseExact(item.NgayLap.AddDays(1).ToString("dd/MM/yyyy"), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                item.NgayLap = DateTime.ParseExact(item.NgayLap.ToString("dd/MM/yyyy"), "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 lsHhistoryServices.Add(item);
             }
 
@@ -74,7 +74,7 @@ namespace Project_Hotel_Winform.All_User_Control
             var data = JsonConvert.DeserializeObject<listHistoryBill>(result[0]);
             foreach (historyBill item in data.data)
             {
-                item.NgayThanhToan = DateTime.ParseExact(item.NgayThanhToan.AddDays(1).ToString("dd/MM/yyyy"), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                item.NgayThanhToan = DateTime.ParseExact(item.NgayThanhToan.ToString("dd/MM/yyyy"), "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 lstHistoryBills.Add(item);
             }
 
