@@ -82,12 +82,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="All User Control\AprioriForm.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="All User Control\AprioriForm.Designer.cs">
-      <DependentUpon>AprioriForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="All User Control\Rooms.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -178,9 +172,6 @@
     <Compile Include="Word\FileCommon.cs" />
     <Compile Include="Word\Global.cs" />
     <Compile Include="Word\WordExport.cs" />
-    <EmbeddedResource Include="All User Control\AprioriForm.resx">
-      <DependentUpon>AprioriForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="All User Control\Rooms.resx">
       <DependentUpon>Rooms.cs</DependentUpon>
     </EmbeddedResource>

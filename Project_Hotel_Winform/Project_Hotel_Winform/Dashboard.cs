@@ -172,11 +172,7 @@ namespace Project_Hotel_Winform
 
         private void btnTuVan_Click(object sender, EventArgs e)
         {
-            panelMoving.Visible = false;
-            panel3.Controls.Clear();
-            AprioriForm apriori = new AprioriForm();
-            apriori.Size = new Size(1575, 798);
-            panel3.Controls.Add(apriori);
+
         }
     }
 }

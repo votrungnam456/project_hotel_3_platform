@@ -16,7 +16,7 @@ namespace Project_Hotel_Winform.Model
         public string CMND { get; set; }
         public string Email { get; set; }
         public string SoDT { get; set; }
-
         public DateTime NgayDen { get; set; }
+        public string MaKP { get; set; }
     }
 }
