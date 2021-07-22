@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import * as api from '../../constant/api';
+import DialogBookingSuccess from './DialogBookingSuccess';
 class BookingRoom extends Component {
      constructor(props){
           super(props);
@@ -36,11 +37,15 @@ class BookingRoom extends Component {
                })
           }
      }
+     openDialog = (obj)=>{
+          this.a = obj && obj.handleClickOpen
+     }
+     
      onSubmit = (ev) =>{
           ev.preventDefault();
           let {checkIn, checkOut} = this.state;
           let date = new Date();
-          let now = new Date(date.getFullYear()+'-'+(date.getMonth()+1)+'-'+(date.getDate()+1));
+          let now = new Date(date.getFullYear()+'-'+(date.getMonth()+1)+'-'+(date.getDate()));
           let dateIn = new Date(checkIn);
           let dateOut = null;
           if(checkOut != ""){
@@ -70,7 +75,7 @@ class BookingRoom extends Component {
                this.setState({
                     message:res.data.data
                })
-               console.log(this.state)
+               this.a();
           }).catch(error=>console.log(error))
      }
      onChange = (ev) =>{
@@ -128,6 +133,7 @@ class BookingRoom extends Component {
                          <button type="submit" className="btn btn-default">Xác nhận đặt phòng</button>
                          <p style={message == 1?{color : "green"}:{message:"red"}}>{message == 1? "Đặt phòng thành công": message == 2 ? "Ngày trả phòng phải lớn hơn ngày đặt phòng" : message == 3 ? "Ngày nhận phòng không được để trống hoặc nhỏ hơn ngày hiện tại" : message == 4 ? "Ngày nhận phòng phải trước hoặc trong ngày hôm nay" : "" }</p>
                     </form>
+                    <DialogBookingSuccess history={this.props.history} ref={this.openDialog}></DialogBookingSuccess>
                </div>
           );
      }

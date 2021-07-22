@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import * as api from '../../constant/api';
 import axios from 'axios';
 import date from 'date-and-time';
+import DialogCancelBooking from './DialogCancelBooking'
 class InfomationCustomer extends Component {
      constructor(props) {
           super(props);
@@ -13,11 +14,6 @@ class InfomationCustomer extends Component {
           }
      }
      componentDidMount() {
-          // if (this.props.user != null) {
-          //      this.setState({
-          //           user: this.props.user
-          //      })
-          // }
           let dataUser = JSON.parse(localStorage.getItem("user"));
           if(dataUser != null){
                this.setState({
@@ -25,8 +21,13 @@ class InfomationCustomer extends Component {
                })
           }
      }
-     onClick = (params) => {
-          if(params === 0){
+     setData = (data) =>{
+          console.log(data);
+          this.setState({
+               data
+          })
+     }
+     onClick = () => {
                if (this.state.enableTable == 0) {
                     this.setState({
                          enableTable: 1
@@ -44,18 +45,6 @@ class InfomationCustomer extends Component {
                          enableTable: 0
                     })
                }
-          }
-          else {
-               axios.delete(api.BASE_API + '/rooms/cancelBooking/'+params).
-                    then(res => {
-                         axios.get(api.BASE_API + '/customers/bookingInfo/' + this.state.user.ID_KH)
-                         .then(res => {
-                              this.setState({
-                                   data: res.data.data
-                              })
-                         })
-                    })
-          }
      }
      render() {
           let { user, data } = this.state;
@@ -145,7 +134,7 @@ class InfomationCustomer extends Component {
                          <div className="row">
                               <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>
                               <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                   <button onClick={() => this.onClick(0)} className="btn btn-default">Hiện thông tin đặt phòng</button>
+                                   <button onClick={this.onClick} className="btn btn-default">Hiện thông tin đặt phòng</button>
                               </div>
 
                          </div>
@@ -183,7 +172,7 @@ class InfomationCustomer extends Component {
                                                                                      <td>{value.TenPhong}</td>
                                                                                      <td>{value.GiaPhong}</td>
                                                                                      <td style={value.TinhTrangPDK === 0 ? {color:"green"} : value.TinhTrangPDK === 1 ? {color:"orange"} :{color:"red"}}>{value.TinhTrangPDK === 0 ? "Đã thanh toán" : value.TinhTrangPDK === 1 ? "Đã đặt" : "Đang sử dụng"}</td>
-                                                                                     <td>{value.TinhTrangPDK === 1 ? <button className="btn btn-default" onClick={()=>this.onClick(getMaPhong)}>Huỷ đặt</button> :"" }</td>
+                                                                                     <td>{value.TinhTrangPDK === 1 ? <p><DialogCancelBooking data={(data)=>this.setData(data)} user={this.state.user} maPhong = {getMaPhong}></DialogCancelBooking></p> :"" }</td>
                                                                                 </tr>
                                                                            )
                                                                       })
