@@ -24,6 +24,9 @@ class PayingService {
                 TienPhong = data["GiaPhong"] * date.subtract(now,NgayDen).toDays();
             }
             now = now.toISOString().split("T")[0]
+            await queryBuilder('phieu_dang_ky').where("MaPDK", MaPDK).update({
+                Ngaydi: now
+            });
             let getHHDV = await queryBuilder('hoadondichvu').where("MaPDK",MaPDK);
             let TienDichVu = 0;
             getHHDV.forEach(hoadon => {
